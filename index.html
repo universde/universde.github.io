@@ -1,247 +1,298 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#123c69">
   <title>Mon Univers éducatif</title>
   <style>
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f3f7fc;
-      color: #20304a;
-      line-height: 1.6;
+      background: #f1f5fb;
+      color: #193657;
     }
     header {
-      background: #123c69;
+      background: linear-gradient(135deg, #123b70, #087fbd);
       color: white;
-      padding: 18px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .logo { font-size: 21px; font-weight: bold; }
-    nav { display: flex; flex-wrap: wrap; gap: 16px; }
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    .hero {
-      padding: 55px 6%;
-      background: linear-gradient(135deg, #123c69, #087f8c);
-      color: white;
+      padding: 30px 16px;
       text-align: center;
     }
-    .hero h1 { font-size: 34px; margin: 0 0 12px; }
-    .hero p { max-width: 650px; margin: 0 auto 24px; }
-    .btn {
-      display: inline-block;
-      background: #ffd166;
-      color: #183153;
-      padding: 12px 20px;
-      border-radius: 9px;
+    header h1 { font-size: 30px; margin: 8px 0 18px; }
+    header p { font-size: 17px; line-height: 1.6; }
+    nav {
+      background: white;
+      padding: 14px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      color: #164c83;
       text-decoration: none;
       font-weight: bold;
-      border: 0;
-      cursor: pointer;
+      margin: 0 12px;
     }
-    section.content { width: 92%; max-width: 1100px; margin: 32px auto; }
-    h2 { font-size: 26px; color: #123c69; }
-    .intro { text-align: center; }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 18px 0;
-    }
-    select, input {
-      padding: 12px;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: white;
-      font-size: 15px;
-      min-width: 0;
-    }
-    .filters input { flex: 1; }
-    .cards {
+    main { max-width: 1000px; margin: auto; padding: 20px 14px; }
+    .outils {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    input, select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ccd6e2;
+      border-radius: 12px;
+      background: white;
+      font-size: 16px;
+    }
+    h2 { text-align: center; margin: 28px 0; }
+    #liste {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 18px;
     }
-    .card {
+    .carte {
       background: white;
-      border: 1px solid #dce5ef;
-      border-radius: 14px;
+      border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 4px 12px #123c6910;
+      box-shadow: 0 4px 14px #19365712;
     }
-    .card img {
+    .carte img {
       display: block;
       width: 100%;
-      height: auto;
-      max-height: 650px;
+      height: 300px;
       object-fit: contain;
-      background: #eaf0f7;
+      background: #e7edf5;
+      cursor: pointer;
     }
-    .photo-placeholder {
-      min-height: 145px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 18px;
-      background: #e0f2fe;
-      color: #123c69;
-    }
-    .card-body { padding: 15px; }
-    .card h3 { margin: 0 0 8px; }
-    .tag {
+    .infos { padding: 16px; }
+    .infos h3 { margin: 0 0 10px; }
+    .infos p { color: #586a80; }
+    .bouton {
       display: inline-block;
-      padding: 4px 9px;
-      background: #e0f2fe;
-      color: #075985;
-      border-radius: 20px;
-      font-size: 12px;
+      border: 0;
+      border-radius: 9px;
+      padding: 11px 16px;
+      background: #087fbd;
+      color: white;
+      text-decoration: none;
       font-weight: bold;
+      cursor: pointer;
     }
-    .courses {
-      background: #e0f2fe;
-      padding: 22px;
-      border-radius: 14px;
-    }
-    .empty {
-      background: white;
-      border-radius: 12px;
-      padding: 22px;
+    #message {
       text-align: center;
-      grid-column: 1 / -1;
+      padding: 30px 15px;
+      background: white;
+      border-radius: 16px;
+      line-height: 1.7;
     }
     footer {
-      background: #123c69;
-      color: white;
       text-align: center;
-      padding: 22px;
-      margin-top: 45px;
+      padding: 24px;
+      background: #123b70;
+      color: white;
+      margin-top: 40px;
     }
-    @media (max-width: 600px) {
-      header { flex-direction: column; align-items: flex-start; }
-      .hero h1 { font-size: 27px; }
-      .cards { grid-template-columns: 1fr; }
-      nav { gap: 12px; }
+    #visionneuse {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      background: #000e;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+    #visionneuse img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+    #fermer {
+      position: absolute;
+      right: 18px;
+      top: 15px;
+      color: white;
+      font-size: 30px;
+      background: none;
+      border: 0;
+    }
+    @media (min-width: 600px) {
+      .outils { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">🎓 Mon Univers éducatif</div>
-  <nav>
-    <a href="#accueil">Accueil</a>
-    <a href="#epreuves">Épreuves</a>
-    <a href="#cours">Cours</a>
-  </nav>
+<header id="accueil">
+  <h1>📚 Mon Univers éducatif</h1>
+  <p>Révise, apprends et consulte les épreuves du lycée directement en images.</p>
 </header>
 
+<nav>
+  <a href="#accueil">Accueil</a>
+  <a href="#epreuves">Épreuves</a>
+  <a href="#cours">Cours</a>
+</nav>
+
 <main>
-  <section class="hero" id="accueil">
-    <h1>Apprendre · Réviser · Réussir</h1>
-    <p>
-      Bienvenue sur Mon Univers éducatif, ton espace pour réviser,
-      consulter des sujets d'examen et progresser au lycée.
-    </p>
-    <a class="btn" href="#epreuves">Découvrir les épreuves</a>
-  </section>
-
-  <section class="content intro" id="epreuves">
-    <h2>📚 Les épreuves du lycée</h2>
-    <p>Consulte les sujets directement en images, sur ton téléphone.</p>
-
-    <div class="filters">
+  <section id="epreuves">
+    <h2>📖 Les épreuves du lycée</h2>
+    <div class="outils">
       <input id="recherche" type="search"
-        placeholder="Rechercher une matière..."
-        aria-label="Rechercher une matière">
-      <select id="niveau" aria-label="Choisir un niveau">
+        placeholder="Rechercher une épreuve...">
+      <select id="niveau">
         <option value="">Tous les niveaux</option>
-        <option>Seconde</option>
-        <option>Première</option>
-        <option>Terminale</option>
+        <option value="Seconde">Seconde</option>
+        <option value="Première">Première</option>
+        <option value="Terminale">Terminale</option>
       </select>
     </div>
-
-    <div class="cards" id="liste-epreuves">
-      <div class="empty">
-        <h3>✨ De nouvelles épreuves arrivent !</h3>
-        <p>Les nouveaux sujets seront affichés ici dès leur ajout.</p>
-      </div>
-    </div>
+    <div id="liste"></div>
+    <div id="message">Chargement des épreuves...</div>
   </section>
 
-  <section class="content" id="cours">
-    <div class="courses">
-      <h2>📖 Espace cours</h2>
-      <p>
-        Retrouve ici ton espace de révision en mathématiques,
-        physique-chimie et sciences.
-      </p>
-      <p>De nouvelles ressources seront ajoutées progressivement.</p>
+  <section id="cours">
+    <h2>🎓 Espace cours</h2>
+    <div id="messageCours" style="text-align:center">
+      Les cours seront ajoutés prochainement.
     </div>
   </section>
 </main>
 
+<div id="visionneuse">
+  <button id="fermer" aria-label="Fermer">×</button>
+  <img id="grandeImage" alt="Sujet d'épreuve agrandi">
+</div>
+
 <footer>
-  <p>© 2026 Mon Univers éducatif</p>
-  <p>Apprendre aujourd'hui pour réussir demain.</p>
+  <p>Mon Univers éducatif — Apprendre et réussir ensemble.</p>
 </footer>
 
 <script>
-  // Les nouvelles épreuves seront ajoutées ici.
-  // Chaque sujet sera affiché directement en photo.
+const fichiers = [
+  "IMG_20261024_010958_875.jpg",
+  "IMG_20261024_011231_012.jpg",
+  "IMG_20261024_011300_109.jpg",
+  "IMG_20261024_011350_351.jpg",
+  "IMG_20261024_011000_901.jpg",
+  "IMG_20261024_011000_329.jpg",
+  "IMG_20261024_011044_445.jpg",
+  "IMG_20261024_011734_251.jpg",
+  "IMG_20261024_011741_197.jpg",
+  "IMG_20261024_011807_240.jpg",
+  "IMG_20261024_011810_206.jpg",
+  "IMG_20261024_011824_272.jpg",
+  "IMG_20261024_011831_884.jpg",
+  "IMG_20261024_011852_881.jpg",
+  "IMG_20261024_011909_124.jpg",
+  "IMG_20261024_011925_334.jpg",
+  "IMG_20261024_011930_251.jpg",
+  "IMG_20261024_011938_208.jpg",
+  "IMG_20261024_012127_389.jpg",
+  "IMG_20261024_012147_790.jpg",
+  "IMG_20261024_012210_055.jpg",
+  "IMG_20261024_012220_450.jpg",
+  "IMG_20261024_012242_779.jpg",
+  "IMG_20261024_012250_462.jpg",
+  "IMG_20261024_012300_099.jpg",
+  "IMG_20261024_012322_160.jpg",
+  "IMG_20261024_012330_045.jpg",
+  "IMG_20261024_012332_329.jpg",
+  "IMG_20261024_012350_083.jpg",
+  "IMG_20261024_012412_742.jpg",
+  "IMG_20261024_012428_299.jpg",
+  "IMG_20261024_012457_371.jpg"
+];
 
-  const epreuves = [];
+const liste = document.getElementById("liste");
+const message = document.getElementById("message");
+const recherche = document.getElementById("recherche");
+const niveau = document.getElementById("niveau");
 
-  const liste = document.getElementById("liste-epreuves");
-  const recherche = document.getElementById("recherche");
-  const niveau = document.getElementById("niveau");
+function afficher() {
+  liste.innerHTML = "";
+  const terme = recherche.value.toLowerCase().trim();
+  const choix = niveau.value;
+  let total = 0;
 
-  function afficherEpreuves() {
-    const mot = recherche.value.trim().toLowerCase();
-    const niv = niveau.value;
+  fichiers.forEach((nom, index) => {
+    const titre = "Épreuve " + (index + 1);
+    const texte = (titre + " " + nom).toLowerCase();
 
-    const resultat = epreuves.filter(epreuve =>
-      (epreuve.matiere + " " + epreuve.annee)
-        .toLowerCase().includes(mot) &&
-      (!niv || epreuve.niveau === niv)
-    );
+    if (terme && !texte.includes(terme)) return;
+    if (choix) return;
 
-    if (resultat.length === 0) {
-      liste.innerHTML = `
-        <div class="empty">
-          <h3>Aucune épreuve trouvée</h3>
-          <p>Les nouveaux sujets seront affichés ici.</p>
-        </div>`;
-      return;
-    }
+    const carte = document.createElement("article");
+    carte.className = "carte";
 
-    liste.innerHTML = resultat.map(epreuve => `
-      <article class="card">
-        <img src="${epreuve.photo}"
-             alt="Sujet de ${epreuve.matiere}"
-             loading="lazy">
-        <div class="card-body">
-          <span class="tag">${epreuve.niveau}</span>
-          <h3>${epreuve.matiere}</h3>
-          <p>Année : ${epreuve.annee}</p>
-        </div>
-      </article>
-    `).join("");
+    const image = document.createElement("img");
+    image.src = nom;
+    image.alt = titre;
+    image.loading = "lazy";
+
+    image.onerror = () => {
+      carte.remove();
+      message.hidden = liste.children.length > 0;
+      message.textContent =
+        "Certaines photos n'ont pas pu être chargées. Vérifie leurs noms sur GitHub.";
+    };
+
+    image.onclick = () => {
+      document.getElementById("grandeImage").src = nom;
+      document.getElementById("visionneuse").style.display = "flex";
+    };
+
+    const infos = document.createElement("div");
+    infos.className = "infos";
+
+    const h3 = document.createElement("h3");
+    h3.textContent = titre;
+
+    const p = document.createElement("p");
+    p.textContent = nom;
+
+    const lien = document.createElement("a");
+    lien.className = "bouton";
+    lien.href = nom;
+    lien.target = "_blank";
+    lien.rel = "noopener";
+    lien.textContent = "Voir le sujet";
+
+    infos.append(h3, p, lien);
+    carte.append(image, infos);
+    liste.appendChild(carte);
+    total++;
+  });
+
+  message.hidden = total > 0;
+  if (!total) {
+    message.textContent = choix
+      ? "Le niveau ne peut pas encore être déterminé pour ces photos."
+      : "Aucune épreuve trouvée. Vérifie les noms des fichiers.";
   }
+}
 
-  recherche.addEventListener("input", afficherEpreuves);
-  niveau.addEventListener("change", afficherEpreuves);
+recherche.addEventListener("input", afficher);
+niveau.addEventListener("change", afficher);
+
+document.getElementById("fermer").onclick = () => {
+  document.getElementById("visionneuse").style.display = "none";
+  document.getElementById("grandeImage").src = "";
+};
+
+document.getElementById("visionneuse").onclick = event => {
+  if (event.target.id === "visionneuse") {
+    document.getElementById("visionneuse").style.display = "none";
+  }
+};
+
+afficher();
 </script>
-
 </body>
- </html>
- 
+  </html>
+  
