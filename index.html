@@ -4,18 +4,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Mon Univers éducatif : cours, épreuves et exercices pour les élèves du Togo, de la seconde à la terminale.">
-<title>Mon Univers éducatif | Togo</title>
+<title>Mon Univers éducatif 🇹🇬</title>
 
 <style>
-:root {
-  --green: #08783e;
-  --yellow: #f5c400;
-  --red: #d92727;
-  --dark: #173b2a;
-  --light: #f5f8f5;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -24,208 +15,105 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: var(--light);
-  color: #24352b;
-  line-height: 1.6;
+  background: #f3f6fc;
+  color: #243047;
 }
 
 header {
-  background: white;
-  padding: 16px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
-  box-shadow: 0 2px 12px #00000012;
-}
-
-.logo {
-  color: var(--green);
-  font-size: 21px;
-  font-weight: bold;
-}
-
-.logo span {
-  color: var(--red);
-}
-
-nav {
-  display: flex;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-nav a {
-  color: var(--dark);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-nav a:hover {
-  color: var(--green);
-}
-
-.hero {
-  background: linear-gradient(135deg, #075c32, #109653);
+  background: linear-gradient(135deg, #087b45, #064d32);
   color: white;
   text-align: center;
-  padding: 75px 20px;
+  padding: 35px 15px;
 }
 
-.flag {
-  font-size: 43px;
+header h1 {
+  font-size: 29px;
   margin-bottom: 12px;
 }
 
-.hero h1 {
-  font-size: clamp(30px, 6vw, 48px);
-  margin-bottom: 15px;
+header p {
+  font-size: 15px;
+  line-height: 1.6;
 }
 
-.hero p {
-  max-width: 650px;
-  margin: auto;
-  font-size: 18px;
-}
-
-.buttons {
-  margin-top: 28px;
+nav {
+  background: #ffffff;
+  padding: 15px;
   display: flex;
   justify-content: center;
-  gap: 13px;
+  gap: 25px;
   flex-wrap: wrap;
+  box-shadow: 0 2px 8px #0001;
 }
 
-.btn {
-  display: inline-block;
-  padding: 13px 23px;
-  border-radius: 30px;
+nav a {
   text-decoration: none;
+  color: #087b45;
   font-weight: bold;
 }
 
-.btn-yellow {
-  background: var(--yellow);
-  color: #25351f;
-}
-
-.btn-white {
-  background: white;
-  color: var(--green);
-}
-
 section {
-  padding: 55px 6%;
-}
-
-.section-title {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.section-title h2 {
-  color: var(--green);
-  font-size: 29px;
-}
-
-.section-title p {
-  color: #64736a;
-}
-
-.welcome {
-  text-align: center;
-  max-width: 800px;
+  padding: 30px 16px;
+  max-width: 1000px;
   margin: auto;
 }
 
-.cards {
+h2 {
+  color: #087b45;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.intro {
+  text-align: center;
+  line-height: 1.8;
+}
+
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
 }
 
 .card {
   background: white;
-  padding: 25px;
-  border-radius: 16px;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px #0001;
   text-align: center;
-  box-shadow: 0 5px 20px #0000000b;
-  border-bottom: 4px solid var(--yellow);
-}
-
-.card .emoji {
-  font-size: 43px;
 }
 
 .card h3 {
-  color: var(--green);
-  margin: 10px 0;
+  color: #087b45;
+  margin-bottom: 12px;
 }
 
 .card p {
-  color: #64736a;
-  margin-bottom: 15px;
+  line-height: 1.6;
 }
 
-.card a {
-  color: var(--green);
-  font-weight: bold;
-  text-decoration: none;
+button {
+  background: #087b45;
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 8px;
+  margin-top: 15px;
+  cursor: pointer;
 }
 
-.levels {
-  background: #eaf4ed;
-  text-align: center;
-}
-
-.level-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 25px;
-}
-
-.level {
-  background: white;
-  padding: 15px 25px;
-  border-radius: 12px;
-  font-weight: bold;
-  color: var(--green);
+.exam img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 
 footer {
-  background: #123b29;
+  background: #064d32;
   color: white;
   text-align: center;
-  padding: 30px 15px;
-}
-
-footer a {
-  color: #f5d34b;
-  text-decoration: none;
-  margin: 0 9px;
-}
-
-footer p {
-  margin-top: 12px;
-}
-
-@media(max-width: 600px) {
-  header {
-    justify-content: center;
-    text-align: center;
-  }
-
-  nav {
-    justify-content: center;
-    gap: 12px;
-  }
-
-  .hero {
-    padding: 55px 18px;
-  }
+  padding: 25px 12px;
+  line-height: 1.8;
 }
 </style>
 </head>
@@ -233,118 +121,76 @@ footer p {
 <body>
 
 <header>
-  <div class="logo">MON UNIVERS <span>ÉDUCATIF</span> 🇹🇬</div>
-
-  <nav>
-    <a href="#accueil">Accueil</a>
-    <a href="#matieres">Matières</a>
-    <a href="#niveaux">Niveaux</a>
-    <a href="#epreuves">Épreuves</a>
-  </nav>
+  <h1>🇹🇬 Mon Univers éducatif</h1>
+  <p>Le savoir au service de la réussite scolaire au Togo</p>
+  <p>Apprendre • Comprendre • Réussir</p>
 </header>
 
-<main>
-<section class="hero" id="accueil">
-  <div class="flag">🇹🇬</div>
-  <h1>Bienvenue sur Mon Univers éducatif</h1>
-  <p>
-    Le savoir au service de la réussite scolaire au Togo.
-    Apprends, révise et prépare tes examens avec confiance !
+<nav>
+  <a href="#accueil">Accueil</a>
+  <a href="#cours">Cours</a>
+  <a href="#epreuves">Épreuves</a>
+</nav>
+
+<section id="accueil">
+  <h2>Bienvenue sur notre plateforme</h2>
+  <p class="intro">
+    Mon Univers éducatif est une plateforme dédiée aux élèves
+    du lycée au Togo, de la Seconde à la Terminale.
+    Retrouvez des cours et des sujets d'examens pour
+    améliorer vos connaissances et préparer votre réussite.
   </p>
-
-  <div class="buttons">
-    <a class="btn btn-yellow" href="#matieres">Découvrir les cours</a>
-    <a class="btn btn-white" href="#epreuves">Voir les épreuves</a>
-  </div>
 </section>
 
-<section>
-  <div class="welcome">
-    <div class="section-title">
-      <h2>Bienvenue dans ton espace éducatif</h2>
+<section id="cours">
+  <h2>Nos matières</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>📐 Mathématiques</h3>
+      <p>Cours et exercices pour progresser en mathématiques.</p>
     </div>
-    <p>
-      Mon Univers éducatif accompagne les élèves togolais
-      de la seconde à la terminale avec des ressources
-      pour apprendre, comprendre et réussir.
-    </p>
-  </div>
-</section>
 
-<section id="matieres">
-  <div class="section-title">
-    <h2>Nos matières</h2>
-    <p>Découvre les principales disciplines scolaires.</p>
-  </div>
+    <div class="card">
+      <h3>⚛️ Physique-Chimie</h3>
+      <p>Apprenez les notions essentielles de physique et chimie.</p>
+    </div>
 
-  <div class="cards">
-    <article class="card">
-      <div class="emoji">📐</div>
-      <h3>Mathématiques</h3>
-      <p>Cours, exercices et révisions.</p>
-      <a href="#niveaux">Découvrir →</a>
-    </article>
-
-    <article class="card">
-      <div class="emoji">⚗️</div>
-      <h3>Physique-Chimie</h3>
-      <p>Comprendre les sciences et les expériences.</p>
-      <a href="#niveaux">Découvrir →</a>
-    </article>
-
-    <article class="card">
-      <div class="emoji">🔬</div>
-      <h3>Sciences</h3>
-      <p>Développer ses connaissances scientifiques.</p>
-      <a href="#niveaux">Découvrir →</a>
-    </article>
-  </div>
-</section>
-
-<section class="levels" id="niveaux">
-  <div class="section-title">
-    <h2>Choisis ton niveau</h2>
-    <p>Des ressources adaptées à ta classe.</p>
-  </div>
-
-  <div class="level-list">
-    <div class="level">Seconde</div>
-    <div class="level">Première</div>
-    <div class="level">Terminale</div>
+    <div class="card">
+      <h3>🔬 Sciences</h3>
+      <p>Découvrez et approfondissez les sciences.</p>
+    </div>
   </div>
 </section>
 
 <section id="epreuves">
-  <div class="section-title">
-    <h2>Les épreuves scolaires</h2>
-    <p>Retrouve les sujets pour t'entraîner et préparer tes examens.</p>
-  </div>
-
-  <div class="welcome">
-    <p>
-      Consulte les épreuves disponibles dans notre espace
-      de révision. De nouveaux sujets seront ajoutés
-      progressivement.
-    </p>
-  </div>
-
-  <!-- Nous ajouterons ici les photos de tes épreuves -->
-</section>
-</main>
-
-<footer>
-  <h3>MON UNIVERS ÉDUCATIF 🇹🇬</h3>
-  <p>Le savoir au service de la réussite scolaire au Togo.</p>
-
-  <p>
-    <a href="apropos.html">À propos</a>
-    <a href="contact.html">Contact</a>
-    <a href="confidentialite.html">Confidentialité</a>
+  <h2>Nos épreuves</h2>
+  <p class="intro">
+    Retrouvez les sujets d'examens pour vous entraîner.
   </p>
 
-  <p>© 2026 Mon Univers éducatif. Tous droits réservés.</p>
+  <div class="grid">
+
+    <div class="card exam">
+      <h3>Physique – Seconde</h3>
+      <p>Sujet d'examen 2026</p>
+
+      <img
+        src="physique%20seconde%202026.jpg"
+        alt="Épreuve de Physique Seconde 2026"
+      >
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p><strong>Mon Univers éducatif 🇹🇬</strong></p>
+  <p>Le savoir au service de la réussite scolaire au Togo.</p>
+  <p>© 2026 - Tous droits réservés.</p>
 </footer>
 
 </body>
   </html>
-    
+  
