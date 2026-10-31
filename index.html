@@ -1,196 +1,25 @@
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mon Univers éducatif 🇹🇬</title>
+<section id="epreuves" class="epreuves-section">
+  <h2>📚 Nos épreuves</h2>
+  <p>Retrouve les sujets d'examens et entraîne-toi.</p>
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <div class="recherche-epreuves">
+    <input
+      type="search"
+      id="rechercheEpreuves"
+      placeholder="Tape AREX pour rechercher..."
+    >
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f3f6fc;
-  color: #243047;
-}
-
-header {
-  background: linear-gradient(135deg, #087b45, #064d32);
-  color: white;
-  text-align: center;
-  padding: 35px 15px;
-}
-
-header h1 {
-  font-size: 29px;
-  margin-bottom: 12px;
-}
-
-header p {
-  font-size: 15px;
-  line-height: 1.6;
-}
-
-nav {
-  background: #ffffff;
-  padding: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 8px #0001;
-}
-
-nav a {
-  text-decoration: none;
-  color: #087b45;
-  font-weight: bold;
-}
-
-section {
-  padding: 30px 16px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-h2 {
-  color: #087b45;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.intro {
-  text-align: center;
-  line-height: 1.8;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-}
-
-.card {
-  background: white;
-  padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px #0001;
-  text-align: center;
-}
-
-.card h3 {
-  color: #087b45;
-  margin-bottom: 12px;
-}
-
-.card p {
-  line-height: 1.6;
-}
-
-button {
-  background: #087b45;
-  color: white;
-  border: none;
-  padding: 11px 20px;
-  border-radius: 8px;
-  margin-top: 15px;
-  cursor: pointer;
-}
-
-.exam img {
-  width: 100%;
-  border-radius: 10px;
-  margin-top: 15px;
-}
-
-footer {
-  background: #064d32;
-  color: white;
-  text-align: center;
-  padding: 25px 12px;
-  line-height: 1.8;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <h1>🇹🇬 Mon Univers éducatif</h1>
-  <p>Le savoir au service de la réussite scolaire au Togo</p>
-  <p>Apprendre • Comprendre • Réussir</p>
-</header>
-
-<nav>
-  <a href="#accueil">Accueil</a>
-  <a href="#cours">Cours</a>
-  <a href="#epreuves">Épreuves</a>
-</nav>
-
-<section id="accueil">
-  <h2>Bienvenue sur notre plateforme</h2>
-  <p class="intro">
-    Mon Univers éducatif est une plateforme dédiée aux élèves
-    du lycée au Togo, de la Seconde à la Terminale.
-    Retrouvez des cours et des sujets d'examens pour
-    améliorer vos connaissances et préparer votre réussite.
-  </p>
-</section>
-
-<section id="cours">
-  <h2>Nos matières</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>📐 Mathématiques</h3>
-      <p>Cours et exercices pour progresser en mathématiques.</p>
-    </div>
-
-    <div class="card">
-      <h3>⚛️ Physique-Chimie</h3>
-      <p>Apprenez les notions essentielles de physique et chimie.</p>
-    </div>
-
-    <div class="card">
-      <h3>🔬 Sciences</h3>
-      <p>Découvrez et approfondissez les sciences.</p>
-    </div>
+    <select id="niveauEpreuves">
+      <option value="">Choisir le niveau</option>
+      <option value="seconde">Seconde</option>
+    </select>
   </div>
-</section>
 
-<section id="epreuves">
-  <h2>Nos épreuves</h2>
-  <p class="intro">
-    Retrouvez les sujets d'examens pour vous entraîner.
+  <p id="messageEpreuves">
+    Tape AREX et choisis le niveau Seconde pour voir les épreuves.
   </p>
 
-  <div class="grid">
-
-    <div class="card exam">
-      <h3>Physique – Seconde</h3>
-      <p>Sujet d'examen 2026</p>
-
-      <img
-        src="physique%20seconde%202026.jpg"
-        alt="Épreuve de Physique Seconde 2026"
-      >
-
-    </div>
-
-  </div>
+  <div id="listeEpreuves" class="grille-epreuves"></div>
 </section>
 
-<footer>
-  <p><strong>Mon Univers éducatif 🇹🇬</strong></p>
-  <p>Le savoir au service de la réussite scolaire au Togo.</p>
-  <p>© 2026 - Tous droits réservés.</p>
-</footer>
-
-</body>
-  </html>
-  
