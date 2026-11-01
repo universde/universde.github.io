@@ -7,7 +7,6 @@
   <title>Mon Univers éducatif | Togo</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="entete">
@@ -23,78 +22,94 @@
 </nav>
 
 <main>
+  <section id="accueil" class="hero">
+    <span class="etiquette">PLATEFORME ÉDUCATIVE DU TOGO</span>
+    <h1>Construisons ensemble ta réussite scolaire.</h1>
+    <p>Découvre des épreuves, des cours et des ressources pour progresser de la Seconde à la Terminale.</p>
+    <a href="#epreuves" class="bouton-principal">Rechercher une épreuve</a>
+  </section>
 
-<section id="accueil" class="hero">
-  <span class="etiquette">PLATEFORME ÉDUCATIVE DU TOGO</span>
-  <h1>Construisons ensemble ta réussite scolaire.</h1>
-  <p>
-    Découvre des épreuves, des ressources et des supports
-    pédagogiques pour progresser de la Seconde à la Terminale.
-  </p>
-  <a href="#epreuves" class="bouton-principal">Découvrir les épreuves</a>
-</section>
+  <section class="statistiques">
+    <div class="stat-carte">
+      <span>👥</span>
+      <strong id="nombre-visites">0</strong>
+      <p>Visites sur cet appareil</p>
+    </div>
+  </section>
 
-<section id="matieres" class="section">
-  <div class="titre-section">
-    <span>APPRENDRE ET PROGRESSER</span>
-    <h2>Nos matières</h2>
-  </div>
+  <section id="matieres" class="section">
+    <div class="titre-section">
+      <span>APPRENDRE ET PROGRESSER</span>
+      <h2>Nos matières</h2>
+    </div>
 
-  <div class="grille-matieres">
-    <article class="matiere">
-      <div class="icone">📐</div>
-      <h3>Mathématiques</h3>
-      <p>Développe tes connaissances et tes méthodes de calcul.</p>
-    </article>
+    <div class="grille-matieres">
+      <article class="matiere">
+        <div class="icone">📐</div>
+        <h3>Mathématiques</h3>
+        <p>Développe tes connaissances et tes méthodes de calcul.</p>
+      </article>
 
-    <article class="matiere">
-      <div class="icone">⚗️</div>
-      <h3>Physique-Chimie</h3>
-      <p>Explore les sciences et comprends les phénomènes physiques.</p>
-    </article>
+      <article class="matiere">
+        <div class="icone">⚗️</div>
+        <h3>Physique-Chimie</h3>
+        <p>Explore les sciences et comprends les phénomènes physiques.</p>
+      </article>
 
-    <article class="matiere">
-      <div class="icone">🔬</div>
-      <h3>Sciences</h3>
-      <p>Découvre et approfondis les connaissances scientifiques.</p>
-    </article>
-  </div>
-</section>
+      <article class="matiere">
+        <div class="icone">🔬</div>
+        <h3>Sciences</h3>
+        <p>Découvre et approfondis les connaissances scientifiques.</p>
+      </article>
+    </div>
+  </section>
 
-<section id="epreuves" class="section epreuves-section">
-  <div class="titre-section">
-    <span>ENTRAÎNEMENT SCOLAIRE</span>
-    <h2>Bibliothèque des épreuves</h2>
-    <p>Retrouve directement les sujets disponibles.</p>
-  </div>
+  <section id="epreuves" class="section epreuves-section">
+    <div class="titre-section">
+      <span>ENTRAÎNEMENT SCOLAIRE</span>
+      <h2>Bibliothèque des épreuves</h2>
+      <p>Retrouve facilement les sujets qui t'intéressent.</p>
+    </div>
 
-  <div class="recherche">
-    <input
-      type="search"
-      id="recherche"
-      placeholder="Rechercher AREX..."
-      aria-label="Rechercher une épreuve">
+    <div class="recherche">
+      <input type="search" id="recherche"
+        placeholder="🔎 Rechercher AREX, Physique..."
+        aria-label="Rechercher une épreuve">
 
-    <select id="niveau" aria-label="Choisir un niveau">
-      <option value="">Tous les niveaux</option>
-      <option value="seconde">Seconde</option>
-      <option value="premiere">Première</option>
-      <option value="terminale">Terminale</option>
-    </select>
-  </div>
+      <select id="niveau" aria-label="Choisir un niveau">
+        <option value="">Tous les niveaux</option>
+        <option value="seconde">Seconde</option>
+        <option value="premiere">Première</option>
+        <option value="terminale">Terminale</option>
+      </select>
 
-  <p id="message" aria-live="polite"></p>
-  <div id="liste-epreuves" class="grille-epreuves"></div>
-</section>
+      <select id="matiere" aria-label="Choisir une matière">
+        <option value="">Toutes les matières</option>
+        <option value="physique-chimie">Physique-Chimie</option>
+        <option value="mathematiques">Mathématiques</option>
+        <option value="sciences">Sciences</option>
+      </select>
 
-<section id="cours" class="section cours-section">
-  <div class="titre-section">
-    <span>RESSOURCES PÉDAGOGIQUES</span>
-    <h2>Nos cours</h2>
-    <p>Un espace consacré aux apprentissages et à la progression scolaire.</p>
-  </div>
-</section>
+      <select id="annee" aria-label="Choisir une année">
+        <option value="">Toutes les années</option>
+        <option value="2026">2026</option>
+        <option value="2025">2025</option>
+        <option value="2024">2024</option>
+        <option value="2023">2023</option>
+      </select>
+    </div>
 
+    <p id="message" aria-live="polite"></p>
+    <div id="liste-epreuves" class="grille-epreuves"></div>
+  </section>
+
+  <section id="cours" class="section cours-section">
+    <div class="titre-section">
+      <span>RESSOURCES PÉDAGOGIQUES</span>
+      <h2>Nos cours</h2>
+      <p>Un espace consacré aux apprentissages et à la progression scolaire.</p>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -105,4 +120,4 @@
 
 <script src="script.js"></script>
 </body>
-    </html>
+  </html>
