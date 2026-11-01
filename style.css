@@ -1,313 +1,90 @@
+// Liste des épreuves
+// Remplace les noms de fichiers par les vrais noms de tes photos.
 
-/* =========================
-   MON UNIVERS EDUCATION
-   Style général du site
-========================= */
+const epreuves = [
+{
+nom: "AREX - Physique Seconde 2026",
+recherche: "AREX",
+niveau: "seconde",
+matiere: "Physique-Chimie",
+image: "physique seconde 2026.jpg"
+}
+];
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+// Éléments de la page
+const recherche = document.getElementById("recherche");
+const niveau = document.getElementById("niveau");
+const liste = document.getElementById("liste-epreuves");
+const message = document.getElementById("message");
+
+// Afficher les épreuves
+function afficherEpreuves() {
+const mot = recherche.value.trim().toLowerCase();
+const classe = niveau.value.toLowerCase();
+
+const resultats = epreuves.filter(epreuve => {
+const correspondRecherche =
+(epreuve.nom + " " + epreuve.matiere + " " +
+epreuve.recherche).toLowerCase().includes(mot);
+
+const correspondNiveau =
+  classe === "" || epreuve.niveau === classe;
+
+return correspondRecherche && correspondNiveau;
+
+});
+
+liste.innerHTML = "";
+
+if (resultats.length === 0) {
+message.textContent = "Aucune épreuve trouvée pour cette recherche.";
+return;
 }
 
-html {
-    scroll-behavior: smooth;
+message.textContent = resultats.length + " épreuve(s) trouvée(s).";
+
+resultats.forEach(epreuve => {
+const carte = document.createElement("article");
+carte.className = "carte";
+
+const image = document.createElement("img");
+image.src = epreuve.image;
+image.alt = epreuve.nom;
+image.loading = "lazy";
+
+image.onerror = function() {
+  image.alt = "Photo introuvable : " + epreuve.image;
+};
+
+const contenu = document.createElement("div");
+contenu.className = "carte-contenu";
+
+const titre = document.createElement("h3");
+titre.textContent = epreuve.nom;
+
+const matiere = document.createElement("p");
+matiere.textContent = epreuve.matiere;
+
+const classe = document.createElement("p");
+classe.textContent = "Niveau : " + epreuve.niveau;
+
+const lien = document.createElement("a");
+lien.className = "bouton";
+lien.href = epreuve.image;
+lien.target = "_blank";
+lien.rel = "noopener";
+lien.textContent = "Voir le sujet";
+
+contenu.append(titre, matiere, classe, lien);
+carte.append(image, contenu);
+liste.appendChild(carte);
+
+});
 }
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fc;
-    color: #243047;
-    line-height: 1.7;
-}
+// Actualiser les résultats
+recherche.addEventListener("input", afficherEpreuves);
+niveau.addEventListener("change", afficherEpreuves);
 
-a {
-    text-decoration: none;
-}
-
-/* EN-TÊTE */
-
-.header {
-    background: #ffffff;
-    padding: 18px 7%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.06);
-}
-
-.logo {
-    font-size: 21px;
-    font-weight: bold;
-    color: #142b59;
-}
-
-.logo span {
-    color: #2878f0;
-}
-
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-}
-
-nav a {
-    color: #243047;
-    font-size: 14px;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-nav a:hover {
-    color: #2878f0;
-}
-
-/* ACCUEIL */
-
-.hero {
-    min-height: 480px;
-    padding: 80px 7%;
-    display: flex;
-    align-items: center;
-    background: linear-gradient(135deg, #102b59, #176bd1);
-    color: white;
-}
-
-.hero-content {
-    max-width: 700px;
-}
-
-.welcome {
-    color: #a9d2ff;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 18px;
-}
-
-.hero h1 {
-    font-size: clamp(34px, 6vw, 56px);
-    line-height: 1.2;
-    margin-bottom: 22px;
-}
-
-.hero h1 span {
-    color: #80c5ff;
-}
-
-.hero-content > p:not(.welcome) {
-    max-width: 540px;
-    color: #e2edff;
-    margin-bottom: 30px;
-}
-
-.btn {
-    display: inline-block;
-    background: #ffffff;
-    color: #1455a8;
-    padding: 13px 25px;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #dcecff;
-    transform: translateY(-2px);
-}
-
-/* SECTIONS */
-
-.section {
-    padding: 70px 7%;
-}
-
-.section h2 {
-    text-align: center;
-    color: #142b59;
-    font-size: 30px;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    text-align: center;
-    color: #69768b;
-    margin-bottom: 40px;
-}
-
-/* CARTES DES MATIÈRES */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-    margin-top: 30px;
-}
-
-.card {
-    background: #ffffff;
-    padding: 28px 22px;
-    border-radius: 14px;
-    box-shadow: 0 5px 22px rgba(27, 54, 95, 0.07);
-    border: 1px solid #e8edf6;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 30px rgba(27, 54, 95, 0.13);
-}
-
-.icon {
-    font-size: 38px;
-    margin-bottom: 12px;
-}
-
-.card h3 {
-    color: #183969;
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.card p {
-    color: #68758a;
-    font-size: 14px;
-    margin-bottom: 18px;
-}
-
-.card a {
-    color: #176bd1;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-/* RESSOURCES */
-
-.resources {
-    background: #edf3fc;
-}
-
-.resource-box {
-    max-width: 750px;
-    margin: 18px auto;
-    background: #ffffff;
-    padding: 24px;
-    border-radius: 12px;
-    border-left: 5px solid #2878f0;
-    box-shadow: 0 4px 16px rgba(27, 54, 95, 0.05);
-}
-
-.resource-box h3 {
-    color: #183969;
-    margin-bottom: 8px;
-}
-
-.resource-box p {
-    color: #68758a;
-}
-
-/* CITATION ET MOTIVATION */
-
-.quote-section {
-    background: #142b59;
-    color: #ffffff;
-    text-align: center;
-    padding: 70px 8%;
-}
-
-.quote-mark {
-    font-size: 75px;
-    color: #80c5ff;
-    line-height: 1;
-}
-
-.quote-section h2 {
-    font-size: clamp(23px, 4vw, 34px);
-    max-width: 800px;
-    margin: 15px auto;
-}
-
-.quote-section > p:last-child {
-    color: #d2e3ff;
-    margin-top: 18px;
-}
-
-/* À PROPOS */
-
-.about {
-    text-align: center;
-    max-width: 1000px;
-    margin: auto;
-}
-
-.about p {
-    max-width: 750px;
-    margin: 20px auto 0;
-    color: #68758a;
-}
-
-/* PIED DE PAGE */
-
-footer {
-    background: #0b1b38;
-    color: #d7e4fa;
-    text-align: center;
-    padding: 25px 15px;
-    font-size: 13px;
-}
-
-footer p + p {
-    margin-top: 5px;
-}
-
-/* ADAPTATION AUX TÉLÉPHONES */
-
-@media (max-width: 600px) {
-    .header {
-        padding: 16px 5%;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .logo {
-        font-size: 19px;
-    }
-
-    nav {
-        justify-content: center;
-        gap: 12px;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-
-    .hero {
-        min-height: 400px;
-        padding: 60px 6%;
-    }
-
-    .section {
-        padding: 50px 6%;
-    }
-
-    .section h2 {
-        font-size: 26px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr;
-    }
-
-    .card {
-        padding: 24px;
-    }
-
-    .quote-section {
-        padding: 55px 6%;
-    }
-  }
-  
+// Affichage initial
+afficherEpreuves();
