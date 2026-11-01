@@ -1,16 +1,8 @@
-
-/* =================================
-   MON UNIVERS ÉDUCATIF 🇹🇬
-   Nouveau design moderne
-================================= */
-
 :root {
   --vert: #08783e;
   --vert-fonce: #034b2b;
   --jaune: #ffd52a;
   --bleu: #0756c9;
-  --violet: #7900c9;
-  --blanc: #ffffff;
   --texte: #17213b;
 }
 
@@ -35,40 +27,43 @@ body {
 
 .entete {
   background: white;
-  padding: 18px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
+  padding: 20px 6%;
+  text-align: center;
   box-shadow: 0 4px 18px #00000012;
-  position: relative;
-  z-index: 5;
 }
 
-.entete h1 {
+.logo {
   color: var(--vert);
-  font-size: 27px;
+  font-size: 25px;
   font-weight: 900;
 }
 
-nav {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+.entete p {
+  margin-top: 5px;
 }
 
-nav a {
-  color: #17213b;
+/* NAVIGATION */
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 12px;
+  background: white;
+  border-top: 1px solid #eee;
+}
+
+.navigation a {
+  color: var(--texte);
   text-decoration: none;
   font-weight: bold;
-  padding: 10px 15px;
-  border-radius: 30px;
+  padding: 9px 15px;
+  border-radius: 25px;
   transition: 0.3s;
 }
 
-nav a:hover {
+.navigation a:hover {
   background: var(--vert);
   color: white;
 }
@@ -77,130 +72,181 @@ nav a:hover {
 
 .hero {
   padding: 75px 7%;
-  min-height: 430px;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
   color: white;
-  background:
-    linear-gradient(110deg, #034b2b 0%, #08783e 48%, #0756c9 100%);
-  position: relative;
-  overflow: hidden;
+  background: linear-gradient(110deg, #034b2b, #08783e, #0756c9);
 }
 
-.hero::after {
-  content: "🇹🇬";
-  position: absolute;
-  right: 8%;
-  bottom: 5px;
-  font-size: 150px;
-  opacity: 0.16;
+.etiquette {
+  background: #ffffff25;
+  padding: 8px 15px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.hero h2 {
-  font-size: clamp(32px, 5vw, 58px);
-  line-height: 1.15;
+.hero h1 {
+  font-size: clamp(32px, 5vw, 55px);
+  line-height: 1.2;
   max-width: 750px;
   margin-bottom: 20px;
 }
 
 .hero p {
-  font-size: 19px;
+  font-size: 18px;
   max-width: 650px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
-.hero a {
+.bouton-principal {
   display: inline-block;
-  width: fit-content;
   background: var(--jaune);
   color: #17351f;
-  padding: 13px 25px;
+  padding: 14px 25px;
   border-radius: 30px;
   font-weight: bold;
   text-decoration: none;
   transition: 0.3s;
 }
 
-.hero a:hover {
+.bouton-principal:hover {
   transform: translateY(-4px);
+}
+
+/* COMPTEUR */
+
+.statistiques {
+  padding: 30px 6%;
+  display: flex;
+  justify-content: center;
+}
+
+.stat-carte {
+  width: 100%;
+  max-width: 350px;
+  padding: 25px;
+  text-align: center;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px #17345b12;
+  border-bottom: 5px solid var(--vert);
+}
+
+.stat-carte span {
+  display: block;
+  font-size: 35px;
+}
+
+.stat-carte strong {
+  display: block;
+  font-size: 38px;
+  color: var(--vert);
 }
 
 /* SECTIONS */
 
-section {
+.section {
   padding: 55px 6%;
 }
 
-section h2 {
+.titre-section {
   text-align: center;
-  font-size: 32px;
+  margin-bottom: 35px;
+}
+
+.titre-section > span {
+  color: var(--vert);
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.titre-section h2 {
   color: var(--vert-fonce);
-  margin-bottom: 30px;
+  font-size: 32px;
+  margin: 8px 0;
 }
 
 /* MATIÈRES */
 
-.matieres,
-#matieres {
-  background: #f3f7ff;
+.grille-matieres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
 }
 
-.carte-matiere {
+.matiere {
   background: white;
   border-radius: 20px;
   padding: 28px;
-  margin: 15px 0;
+  text-align: center;
   box-shadow: 0 8px 25px #17345b12;
   border-bottom: 5px solid var(--vert);
   transition: 0.3s;
 }
 
-.carte-matiere:hover {
+.matiere:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 30px #17345b25;
+}
+
+.icone {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.matiere h3 {
+  color: var(--vert-fonce);
+  margin-bottom: 10px;
 }
 
 /* ÉPREUVES */
 
-#epreuves {
+.epreuves-section {
   background: white;
 }
 
-#recherche {
-  display: block;
-  width: 100%;
-  max-width: 650px;
-  margin: 15px auto;
-  padding: 16px 20px;
-  border: 2px solid #dce5f0;
-  border-radius: 35px;
-  font-size: 16px;
-  outline: none;
-}
-
-#recherche:focus {
-  border-color: var(--vert);
-  box-shadow: 0 0 0 4px #08783e18;
-}
-
-#niveau {
-  display: block;
-  width: 100%;
-  max-width: 350px;
-  margin: 15px auto 30px;
-  padding: 14px;
-  border: 2px solid #dce5f0;
-  border-radius: 30px;
-  background: white;
-  font-size: 16px;
-}
-
-#liste-epreuves {
+.recherche {
+  max-width: 900px;
+  margin: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.recherche input,
+.recherche select {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #dce5f0;
+  border-radius: 14px;
+  background: white;
+  font-size: 15px;
+  outline: none;
+  min-width: 0;
+}
+
+.recherche input:focus,
+.recherche select:focus {
+  border-color: var(--vert);
+  box-shadow: 0 0 0 3px #08783e18;
+}
+
+#message {
+  text-align: center;
+  color: #536178;
+  margin: 25px 0;
+  font-weight: bold;
+}
+
+.grille-epreuves {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 22px;
-  margin-top: 30px;
 }
 
 .carte-epreuve {
@@ -214,7 +260,6 @@ section h2 {
 
 .carte-epreuve:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 30px #00000020;
 }
 
 .carte-epreuve img {
@@ -231,7 +276,12 @@ section h2 {
 
 .contenu-epreuve h3 {
   color: var(--vert-fonce);
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+}
+
+.contenu-epreuve p {
+  color: #536178;
+  margin-bottom: 5px;
 }
 
 .bouton-voir {
@@ -239,36 +289,24 @@ section h2 {
   background: var(--vert);
   color: white;
   text-decoration: none;
-  padding: 10px 20px;
+  padding: 11px 20px;
   border-radius: 25px;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .bouton-voir:hover {
   background: var(--vert-fonce);
 }
 
-#message {
-  text-align: center;
-  color: #536178;
-  margin: 20px 0;
-}
-
 /* COURS */
 
-#cours {
+.cours-section {
   background: #edf5ff;
 }
 
-#cours h2 {
+.cours-section h2 {
   color: var(--bleu);
-}
-
-/* BOUTONS */
-
-button {
-  cursor: pointer;
 }
 
 /* PIED DE PAGE */
@@ -276,51 +314,26 @@ button {
 footer {
   background: var(--vert-fonce);
   color: white;
-  padding: 30px 6%;
+  padding: 35px 6%;
   text-align: center;
 }
 
-footer a {
-  color: var(--jaune);
-  text-decoration: none;
-}
-
-/* ANIMATION */
-
-@keyframes apparition {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-section {
-  animation: apparition 0.7s ease;
+footer p {
+  margin-top: 8px;
 }
 
 /* TÉLÉPHONE */
 
 @media (max-width: 700px) {
-  .entete {
-    flex-direction: column;
-    text-align: center;
-    padding: 18px 4%;
+  .logo {
+    font-size: 21px;
   }
 
-  .entete h1 {
-    font-size: 23px;
+  .navigation {
+    gap: 4px;
   }
 
-  nav {
-    justify-content: center;
-    gap: 5px;
-  }
-
-  nav a {
+  .navigation a {
     font-size: 13px;
     padding: 8px 10px;
   }
@@ -330,7 +343,7 @@ section {
     min-height: 350px;
   }
 
-  .hero h2 {
+  .hero h1 {
     font-size: 34px;
   }
 
@@ -338,15 +351,19 @@ section {
     font-size: 16px;
   }
 
-  section {
+  .section {
     padding: 40px 5%;
   }
 
-  section h2 {
+  .titre-section h2 {
     font-size: 26px;
   }
 
-  #liste-epreuves {
+  .recherche {
     grid-template-columns: 1fr;
   }
+
+  .grille-epreuves {
+    grid-template-columns: 1fr;
   }
+}
