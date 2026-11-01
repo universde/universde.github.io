@@ -1,161 +1,304 @@
 * {
   box-sizing: border-box;
-  }
+  margin: 0;
+  padding: 0;
+}
 
 html {
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-margin: 0;
-font-family: Arial, sans-serif;
-background: #f4f6fa;
-color: #222;
+  font-family: Arial, sans-serif;
+  background: #f7f8fb;
+  color: #263449;
+  line-height: 1.6;
 }
 
-.header {
-background: linear-gradient(135deg, #073b75, #087bba);
-color: white;
-text-align: center;
-padding: 35px 15px;
+/* En-tête */
+
+.entete {
+  background: #102644;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+  border-bottom: 4px solid #d4ad55;
 }
 
-.header h1 {
-margin: 0 0 10px;
-font-size: 27px;
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
 
-.header p {
-margin: 0;
+.entete p {
+  color: #e7d6a8;
+  margin-top: 8px;
 }
+
+/* Navigation */
 
 .navigation {
-display: flex;
-justify-content: center;
-flex-wrap: wrap;
-gap: 25px;
-padding: 15px;
-background: #ffffff;
-box-shadow: 0 2px 6px #00000015;
+  background: white;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 16px;
+  box-shadow: 0 3px 10px #0000000d;
 }
 
 .navigation a {
-color: #07518a;
-text-decoration: none;
-font-weight: bold;
+  color: #102644;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .navigation a:hover {
-color: #e58b18;
+  color: #bd9238;
 }
 
-.accueil {
-text-align: center;
-padding: 45px 20px;
+/* Accueil */
+
+.hero {
+  background: linear-gradient(135deg, #102644, #1b4269);
+  color: white;
+  text-align: center;
+  padding: 85px 20px;
 }
+
+.etiquette,
+.titre-section span {
+  color: #d9b65f;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  max-width: 750px;
+  margin: 18px auto;
+  line-height: 1.3;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 28px;
+  color: #e0e7ef;
+}
+
+.bouton-principal {
+  display: inline-block;
+  background: #d4ad55;
+  color: #102644;
+  padding: 13px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.bouton-principal:hover {
+  background: #f0d48e;
+}
+
+/* Sections */
 
 .section {
-padding: 30px 18px;
-max-width: 1100px;
-margin: auto;
+  max-width: 1100px;
+  margin: auto;
+  padding: 65px 20px;
 }
 
-.section h2 {
-color: #07518a;
+.titre-section {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.titre-section h2 {
+  color: #102644;
+  font-size: 29px;
+  margin: 8px 0;
+}
+
+.titre-section p {
+  color: #667085;
+}
+
+/* Matières */
+
+.grille-matieres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.matiere {
+  background: white;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 12px;
+  border: 1px solid #e8eaf0;
+  border-bottom: 4px solid #d4ad55;
+  box-shadow: 0 5px 18px #00000008;
+}
+
+.icone {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.matiere h3 {
+  color: #102644;
+  margin-bottom: 10px;
+}
+
+.matiere p {
+  color: #667085;
+}
+
+/* Recherche */
+
+.epreuves-section {
+  background: #eef1f6;
+  max-width: 100%;
+}
+
+.epreuves-section > * {
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .recherche {
-display: flex;
-gap: 12px;
-flex-wrap: wrap;
-margin: 25px 0;
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  margin-bottom: 20px;
 }
 
 .recherche input,
 .recherche select {
-flex: 1;
-min-width: 180px;
-padding: 14px;
-border: 1px solid #ccc;
-border-radius: 8px;
-font-size: 16px;
-background: white;
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #d4d9e2;
+  border-radius: 7px;
+  background: white;
+  font-size: 16px;
 }
 
-.grille {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-gap: 20px;
+/* Cartes des épreuves */
+
+.grille-epreuves {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
 }
 
-.carte {
-background: white;
-border-radius: 12px;
-overflow: hidden;
-box-shadow: 0 3px 12px #00000015;
+.carte-epreuve {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e1e5ec;
+  box-shadow: 0 5px 15px #0000000c;
 }
 
-.carte img {
-display: block;
-width: 100%;
-height: auto;
-max-height: 500px;
-object-fit: contain;
-background: #eee;
+.carte-epreuve img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  display: block;
+  background: #e9edf2;
 }
 
-.carte-contenu {
-padding: 15px;
+.contenu-epreuve {
+  padding: 18px;
 }
 
-.carte h3 {
-margin-top: 0;
-color: #07518a;
+.contenu-epreuve h3 {
+  color: #102644;
+  margin-bottom: 8px;
 }
 
-.bouton {
-display: inline-block;
-background: #087bba;
-color: white;
-padding: 10px 16px;
-border-radius: 7px;
-text-decoration: none;
-margin-top: 8px;
-cursor: pointer;
+.contenu-epreuve p {
+  color: #667085;
+  margin-bottom: 8px;
 }
 
-.bouton:hover {
-background: #064d80;
+.bouton-voir {
+  display: inline-block;
+  background: #102644;
+  color: white;
+  padding: 10px 18px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.bouton-voir:hover {
+  background: #d4ad55;
+  color: #102644;
 }
 
 #message {
-text-align: center;
-padding: 15px;
+  text-align: center;
+  padding: 12px;
+  color: #102644;
 }
+
+/* Cours */
+
+.cours-section {
+  text-align: center;
+  background: white;
+}
+
+/* Pied de page */
 
 footer {
-background: #073b75;
-color: white;
-text-align: center;
-padding: 22px;
-margin-top: 35px;
+  background: #102644;
+  color: white;
+  text-align: center;
+  padding: 35px 15px;
+  border-top: 4px solid #d4ad55;
 }
 
-@media(max-width: 600px) {
-.header h1 {
-font-size: 23px;
+footer h3 {
+  margin-bottom: 10px;
+  color: #e6c778;
 }
 
-.navigation {
-gap: 16px;
-}
+/* Téléphones */
 
-.recherche {
-flex-direction: column;
-}
+@media (max-width: 600px) {
+  .logo {
+    font-size: 20px;
+  }
 
-.recherche input,
-.recherche select {
-width: 100%;
-}
+  .hero {
+    padding: 60px 18px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .navigation {
+    gap: 17px;
+  }
+
+  .section {
+    padding: 45px 15px;
+  }
+
+  .recherche {
+    flex-direction: column;
+  }
+
+  .recherche input,
+  .recherche select {
+    width: 100%;
+  }
 }
