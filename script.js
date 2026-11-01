@@ -1,6 +1,6 @@
 // ==========================================
 // MON UNIVERS EDUCATIF 🇹🇬
-// Chargement automatique des épreuves GitHub
+// GESTION AUTOMATIQUE DES EPREUVES
 // ==========================================
 
 const PROPRIETAIRE = "universde";
@@ -14,19 +14,17 @@ const message = document.getElementById("message");
 
 let epreuves = [];
 
-// Déterminer le niveau à partir du nom du fichier
+// Identifier le niveau
 function trouverNiveau(nom) {
 const texte = nom.toLowerCase();
 
 if (texte.includes("terminale")) return "terminale";
-if (texte.includes("premiere") || texte.includes("première")) {
-return "premiere";
-}
+if (texte.includes("premiere") || texte.includes("première")) return "premiere";
 
 return "seconde";
 }
 
-// Déterminer la matière
+// Identifier la matière
 function trouverMatiere(nom) {
 const texte = nom.toLowerCase();
 
@@ -37,7 +35,7 @@ if (texte.includes("science")) return "Sciences";
 return "Autre matière";
 }
 
-// Charger les photos depuis GitHub
+// Charger les épreuves
 async function chargerEpreuves() {
 message.textContent = "Chargement des épreuves...";
 
@@ -56,11 +54,11 @@ const fichiers = await reponse.json();
 epreuves = fichiers
   .filter(fichier =>
     fichier.type === "file" &&
-    /\.(jpg|jpeg|png|webp)$/i.test(fichier.name)
+    /\.(jpg|jpeg|png|webp)$/i.test(fichier.name) &&
+    !fichier.name.startsWith("IMG_20261024")
   )
   .map(fichier => ({
     nom: fichier.name.replace(/\.[^.]+$/, ""),
-    fichier: fichier.name,
     code: "AREX",
     niveau: trouverNiveau(fichier.name),
     matiere: trouverMatiere(fichier.name),
@@ -72,7 +70,7 @@ afficherEpreuves();
 } catch (erreur) {
 console.error(erreur);
 message.textContent =
-"Impossible de charger les épreuves. Vérifie ta connexion et réessaie.";
+"Impossible de charger les épreuves. Vérifie ta connexion.";
 }
 }
 
@@ -113,7 +111,6 @@ image.alt = epreuve.nom;
 image.loading = "lazy";
 
 image.onerror = () => {
-  image.alt = "Image indisponible";
   image.style.display = "none";
 };
 
@@ -143,9 +140,9 @@ liste.appendChild(carte);
 });
 }
 
-// Recherche et filtre
+// Recherche et sélection du niveau
 recherche.addEventListener("input", afficherEpreuves);
 niveau.addEventListener("change", afficherEpreuves);
 
-// Démarrage
+// Démarrer
 chargerEpreuves();
