@@ -1,90 +1,304 @@
-// Liste des épreuves
-// Remplace les noms de fichiers par les vrais noms de tes photos.
-
-const epreuves = [
-{
-nom: "AREX - Physique Seconde 2026",
-recherche: "AREX",
-niveau: "seconde",
-matiere: "Physique-Chimie",
-image: "physique seconde 2026.jpg"
-}
-];
-
-// Éléments de la page
-const recherche = document.getElementById("recherche");
-const niveau = document.getElementById("niveau");
-const liste = document.getElementById("liste-epreuves");
-const message = document.getElementById("message");
-
-// Afficher les épreuves
-function afficherEpreuves() {
-const mot = recherche.value.trim().toLowerCase();
-const classe = niveau.value.toLowerCase();
-
-const resultats = epreuves.filter(epreuve => {
-const correspondRecherche =
-(epreuve.nom + " " + epreuve.matiere + " " +
-epreuve.recherche).toLowerCase().includes(mot);
-
-const correspondNiveau =
-  classe === "" || epreuve.niveau === classe;
-
-return correspondRecherche && correspondNiveau;
-
-});
-
-liste.innerHTML = "";
-
-if (resultats.length === 0) {
-message.textContent = "Aucune épreuve trouvée pour cette recherche.";
-return;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-message.textContent = resultats.length + " épreuve(s) trouvée(s).";
-
-resultats.forEach(epreuve => {
-const carte = document.createElement("article");
-carte.className = "carte";
-
-const image = document.createElement("img");
-image.src = epreuve.image;
-image.alt = epreuve.nom;
-image.loading = "lazy";
-
-image.onerror = function() {
-  image.alt = "Photo introuvable : " + epreuve.image;
-};
-
-const contenu = document.createElement("div");
-contenu.className = "carte-contenu";
-
-const titre = document.createElement("h3");
-titre.textContent = epreuve.nom;
-
-const matiere = document.createElement("p");
-matiere.textContent = epreuve.matiere;
-
-const classe = document.createElement("p");
-classe.textContent = "Niveau : " + epreuve.niveau;
-
-const lien = document.createElement("a");
-lien.className = "bouton";
-lien.href = epreuve.image;
-lien.target = "_blank";
-lien.rel = "noopener";
-lien.textContent = "Voir le sujet";
-
-contenu.append(titre, matiere, classe, lien);
-carte.append(image, contenu);
-liste.appendChild(carte);
-
-});
+html {
+  scroll-behavior: smooth;
 }
 
-// Actualiser les résultats
-recherche.addEventListener("input", afficherEpreuves);
-niveau.addEventListener("change", afficherEpreuves);
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f8fb;
+  color: #263449;
+  line-height: 1.6;
+}
 
-// Affichage initial
-afficherEpreuves();
+/* En-tête */
+
+.entete {
+  background: #102644;
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+  border-bottom: 4px solid #d4ad55;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.entete p {
+  color: #e7d6a8;
+  margin-top: 8px;
+}
+
+/* Navigation */
+
+.navigation {
+  background: white;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 16px;
+  box-shadow: 0 3px 10px #0000000d;
+}
+
+.navigation a {
+  color: #102644;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navigation a:hover {
+  color: #bd9238;
+}
+
+/* Accueil */
+
+.hero {
+  background: linear-gradient(135deg, #102644, #1b4269);
+  color: white;
+  text-align: center;
+  padding: 85px 20px;
+}
+
+.etiquette,
+.titre-section span {
+  color: #d9b65f;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.hero h1 {
+  font-size: 36px;
+  max-width: 750px;
+  margin: 18px auto;
+  line-height: 1.3;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 28px;
+  color: #e0e7ef;
+}
+
+.bouton-principal {
+  display: inline-block;
+  background: #d4ad55;
+  color: #102644;
+  padding: 13px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.bouton-principal:hover {
+  background: #f0d48e;
+}
+
+/* Sections */
+
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 65px 20px;
+}
+
+.titre-section {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.titre-section h2 {
+  color: #102644;
+  font-size: 29px;
+  margin: 8px 0;
+}
+
+.titre-section p {
+  color: #667085;
+}
+
+/* Matières */
+
+.grille-matieres {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 22px;
+}
+
+.matiere {
+  background: white;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 12px;
+  border: 1px solid #e8eaf0;
+  border-bottom: 4px solid #d4ad55;
+  box-shadow: 0 5px 18px #00000008;
+}
+
+.icone {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.matiere h3 {
+  color: #102644;
+  margin-bottom: 10px;
+}
+
+.matiere p {
+  color: #667085;
+}
+
+/* Recherche */
+
+.epreuves-section {
+  background: #eef1f6;
+  max-width: 100%;
+}
+
+.epreuves-section > * {
+  max-width: 1060px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.recherche {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+
+.recherche input,
+.recherche select {
+  flex: 1;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid #d4d9e2;
+  border-radius: 7px;
+  background: white;
+  font-size: 16px;
+}
+
+/* Cartes des épreuves */
+
+.grille-epreuves {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.carte-epreuve {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #e1e5ec;
+  box-shadow: 0 5px 15px #0000000c;
+}
+
+.carte-epreuve img {
+  width: 100%;
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  display: block;
+  background: #e9edf2;
+}
+
+.contenu-epreuve {
+  padding: 18px;
+}
+
+.contenu-epreuve h3 {
+  color: #102644;
+  margin-bottom: 8px;
+}
+
+.contenu-epreuve p {
+  color: #667085;
+  margin-bottom: 8px;
+}
+
+.bouton-voir {
+  display: inline-block;
+  background: #102644;
+  color: white;
+  padding: 10px 18px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 8px;
+}
+
+.bouton-voir:hover {
+  background: #d4ad55;
+  color: #102644;
+}
+
+#message {
+  text-align: center;
+  padding: 12px;
+  color: #102644;
+}
+
+/* Cours */
+
+.cours-section {
+  text-align: center;
+  background: white;
+}
+
+/* Pied de page */
+
+footer {
+  background: #102644;
+  color: white;
+  text-align: center;
+  padding: 35px 15px;
+  border-top: 4px solid #d4ad55;
+}
+
+footer h3 {
+  margin-bottom: 10px;
+  color: #e6c778;
+}
+
+/* Téléphones */
+
+@media (max-width: 600px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .hero {
+    padding: 60px 18px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .navigation {
+    gap: 17px;
+  }
+
+  .section {
+    padding: 45px 15px;
+  }
+
+  .recherche {
+    flex-direction: column;
+  }
+
+  .recherche input,
+  .recherche select {
+    width: 100%;
+  }
+  }
