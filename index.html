@@ -1,25 +1,46 @@
+<!DOCTYPE html><html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mon Univers éducatif : ressources scolaires et épreuves pour les élèves du Togo.">
+  <title>Mon Univers éducatif 🇹🇬</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body><header class="header">
+  <h1>🇹🇬 Mon Univers éducatif</h1>
+  <p>Le savoir au service de la réussite scolaire au Togo</p>
+</header><nav class="navigation">
+  <a href="#accueil">Accueil</a>
+  <a href="#epreuves">Épreuves</a>
+  <a href="#cours">Cours</a>
+</nav><main>
+  <section id="accueil" class="accueil">
+    <h2>Bienvenue sur Mon Univers éducatif</h2>
+    <p>Retrouve des ressources scolaires pour réussir tes études, de la Seconde à la Terminale.</p>
+  </section>  <section id="epreuves" class="section">
+    <h2>📚 Nos épreuves</h2>
+    <p>Recherche et consulte les sujets disponibles.</p><div class="recherche">
+  <input type="search" id="recherche"
+    placeholder="Tape AREX pour rechercher..."
+    aria-label="Rechercher une épreuve">
+  
+  <select id="niveau" aria-label="Choisir le niveau">
+    <option value="">Tous les niveaux</option>
+    <option value="seconde">Seconde</option>
+    <option value="premiere">Première</option>
+    <option value="terminale">Terminale</option>
+  </select>
+</div>
 
-<section id="epreuves" class="epreuves-section">
-  <h2>📚 Nos épreuves</h2>
-  <p>Retrouve les sujets d'examens et entraîne-toi.</p>
+<div id="liste-epreuves" class="grille"></div>
+<p id="message" aria-live="polite"></p>
 
-  <div class="recherche-epreuves">
-    <input
-      type="search"
-      id="rechercheEpreuves"
-      placeholder="Tape AREX pour rechercher..."
-    >
-
-    <select id="niveauEpreuves">
-      <option value="">Choisir le niveau</option>
-      <option value="seconde">Seconde</option>
-    </select>
-  </div>
-
-  <p id="messageEpreuves">
-    Tape AREX et choisis le niveau Seconde pour voir les épreuves.
-  </p>
-
-  <div id="listeEpreuves" class="grille-epreuves"></div>
-</section>
-
+  </section>  <section id="cours" class="section">
+    <h2>📖 Cours</h2>
+    <p>Les ressources pédagogiques seront bientôt disponibles.</p>
+  </section>
+</main><footer>
+  <p>© 2026 Mon Univers éducatif 🇹🇬</p>
+  <p>Apprendre aujourd'hui, réussir demain.</p>
+</footer><script src="script.js"></script></body>
+    </html>
