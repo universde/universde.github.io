@@ -1,3 +1,8 @@
+// ==========================================
+// MON UNIVERS EDUCATIF 🇹🇬
+// Chargement automatique des épreuves GitHub
+// ==========================================
+
 const PROPRIETAIRE = "universde";
 const DEPOT = "universde.github.io";
 const BRANCHE = "main";
@@ -9,94 +14,123 @@ const message = document.getElementById("message");
 
 let epreuves = [];
 
+// Déterminer le niveau à partir du nom du fichier
+function trouverNiveau(nom) {
+const texte = nom.toLowerCase();
+
+if (texte.includes("terminale")) return "terminale";
+if (texte.includes("premiere") || texte.includes("première")) {
+return "premiere";
+}
+
+return "seconde";
+}
+
+// Déterminer la matière
+function trouverMatiere(nom) {
+const texte = nom.toLowerCase();
+
+if (texte.includes("physique")) return "Physique-Chimie";
+if (texte.includes("math")) return "Mathématiques";
+if (texte.includes("science")) return "Sciences";
+
+return "Autre matière";
+}
+
+// Charger les photos depuis GitHub
 async function chargerEpreuves() {
 message.textContent = "Chargement des épreuves...";
 
 try {
-const url = "https://api.github.com/repos/${PROPRIETAIRE}/${DEPOT}/contents?ref=${BRANCHE}";
+const url =
+"https://api.github.com/repos/universde/universde.github.io/contents/?ref=main";
 
 const reponse = await fetch(url);
 
 if (!reponse.ok) {
-  throw new Error("Impossible de récupérer les fichiers.");
+  throw new Error("Erreur GitHub : " + reponse.status);
 }
 
 const fichiers = await reponse.json();
 
 epreuves = fichiers
-  .filter(f => f.type === "file" && /\.(jpg|jpeg|png|webp)$/i.test(f.name))
-  .map(f => {
-    const nom = f.name;
-    const texte = nom.toLowerCase();
-
-    let classe = "seconde";
-    if (texte.includes("terminale")) classe = "terminale";
-    else if (texte.includes("premiere") || texte.includes("première")) classe = "premiere";
-
-    let matiere = "Autre matière";
-    if (texte.includes("physique")) matiere = "Physique-Chimie";
-    else if (texte.includes("math")) matiere = "Mathématiques";
-    else if (texte.includes("science")) matiere = "Sciences";
-
-    return {
-      nom: nom.replace(/\.(jpg|jpeg|png|webp)$/i, ""),
-      niveau: classe,
-      matiere: matiere,
-      image: `https://${PROPRIETAIRE}.github.io/${encodeURIComponent(nom)}`
-    };
-  });
+  .filter(fichier =>
+    fichier.type === "file" &&
+    /\.(jpg|jpeg|png|webp)$/i.test(fichier.name)
+  )
+  .map(fichier => ({
+    nom: fichier.name.replace(/\.[^.]+$/, ""),
+    fichier: fichier.name,
+    code: "AREX",
+    niveau: trouverNiveau(fichier.name),
+    matiere: trouverMatiere(fichier.name),
+    image: `https://universde.github.io/${encodeURIComponent(fichier.name)}`
+  }));
 
 afficherEpreuves();
 
 } catch (erreur) {
-message.textContent = "Erreur de chargement. Vérifie le dépôt GitHub.";
+console.error(erreur);
+message.textContent =
+"Impossible de charger les épreuves. Vérifie ta connexion et réessaie.";
 }
 }
 
+// Afficher les épreuves
 function afficherEpreuves() {
 const mot = recherche.value.trim().toLowerCase();
 const classe = niveau.value;
 
-const resultats = epreuves.filter(e => {
-const correspondTexte =
-(e.nom + " " + e.matiere).toLowerCase().includes(mot);
+liste.innerHTML = "";
 
-const correspondNiveau =
-  classe === "" || e.niveau === classe;
+const resultats = epreuves.filter(epreuve => {
+const texte = (
+epreuve.nom + " " +
+epreuve.code + " " +
+epreuve.matiere
+).toLowerCase();
 
-return correspondTexte && correspondNiveau;
+return texte.includes(mot) &&
+  (classe === "" || epreuve.niveau === classe);
 
 });
 
-liste.innerHTML = "";
+if (resultats.length === 0) {
+message.textContent = "Aucune épreuve trouvée.";
+return;
+}
 
-message.textContent = resultats.length
-? resultats.length + " épreuve(s) trouvée(s)."
-: "Aucune épreuve trouvée.";
+message.textContent =
+resultats.length + " épreuve(s) disponible(s).";
 
-resultats.forEach(e => {
+resultats.forEach(epreuve => {
 const carte = document.createElement("article");
 carte.className = "carte-epreuve";
 
 const image = document.createElement("img");
-image.src = e.image;
-image.alt = e.nom;
+image.src = epreuve.image;
+image.alt = epreuve.nom;
 image.loading = "lazy";
+
+image.onerror = () => {
+  image.alt = "Image indisponible";
+  image.style.display = "none";
+};
 
 const contenu = document.createElement("div");
 contenu.className = "contenu-epreuve";
 
 const titre = document.createElement("h3");
-titre.textContent = e.nom;
+titre.textContent = epreuve.nom;
 
 const matiere = document.createElement("p");
-matiere.textContent = "Matière : " + e.matiere;
+matiere.textContent = "Matière : " + epreuve.matiere;
 
 const classe = document.createElement("p");
-classe.textContent = "Niveau : " + e.niveau;
+classe.textContent = "Niveau : " + epreuve.niveau;
 
 const bouton = document.createElement("a");
-bouton.href = e.image;
+bouton.href = epreuve.image;
 bouton.target = "_blank";
 bouton.rel = "noopener";
 bouton.className = "bouton-voir";
@@ -109,7 +143,9 @@ liste.appendChild(carte);
 });
 }
 
+// Recherche et filtre
 recherche.addEventListener("input", afficherEpreuves);
 niveau.addEventListener("change", afficherEpreuves);
 
+// Démarrage
 chargerEpreuves();
