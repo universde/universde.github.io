@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Politique de confidentialité - Mon Univers éducatif</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+      margin: 0;
+      padding: 20px;
+      background: #f4f7fb;
+      color: #222;
+    }
+    main {
+      max-width: 850px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+    }
+    h1, h2 { color: #0756a5; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Politique de confidentialité</h1>
+  <p>Bienvenue sur Mon Univers éducatif.</p>
+
+  <h2>1. Informations générales</h2>
+  <p>Mon Univers éducatif est un site consacré à l'apprentissage et à la réussite scolaire au Togo.</p>
+
+  <h2>2. Données personnelles</h2>
+  <p>Nous ne demandons pas aux visiteurs de fournir des informations personnelles pour consulter les contenus du site. Si vous nous contactez, les informations transmises seront utilisées uniquement pour répondre à votre message.</p>
+
+  <h2>3. Cookies</h2>
+  <p>Notre site ou certains services tiers peuvent utiliser des cookies et des technologies similaires pour améliorer la navigation et comprendre l'utilisation du site.</p>
+
+  <h2>4. Publicité et Google AdSense</h2>
+  <p>Nous pouvons utiliser Google AdSense pour afficher des annonces. Google et ses partenaires peuvent utiliser des cookies, des adresses IP ou d'autres technologies afin de diffuser et mesurer les annonces.</p>
+  <p>Les visiteurs peuvent gérer la personnalisation des annonces dans les <a href="https://myadcenter.google.com/">paramètres des annonces Google</a>.</p>
+  <p>Pour en savoir plus : <a href="https://policies.google.com/technologies/partner-sites">Comment Google utilise les données des sites partenaires</a>.</p>
+
+  <h2>5. Services tiers</h2>
+  <p>Certains services externes intégrés au site peuvent appliquer leurs propres règles de confidentialité.</p>
+
+  <h2>6. Protection des informations</h2>
+  <p>Nous prenons des mesures raisonnables pour protéger les informations qui nous sont communiquées.</p>
+
+  <h2>7. Modifications</h2>
+  <p>Cette politique peut être mise à jour pour tenir compte de l'évolution du site et des services utilisés.</p>
+
+  <h2>8. Contact</h2>
+  <p>Pour toute question concernant cette politique, consultez notre page Contact.</p>
+
+  <p>Dernière mise à jour : novembre 2026.</p>
+</main>
+</body>
+</html>
