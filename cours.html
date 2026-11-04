@@ -3,107 +3,108 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physique-Chimie Seconde | Mon Univers éducatif</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bibliothèque des cours | Mon Univers éducatif</title>
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;
  font-family:Arial,sans-serif;
- background:#f2f6fc;
- color:#25334a;
- line-height:1.7;
+ background:#f1f5fb;
+ color:#203047;
 }
 header{
- background:linear-gradient(120deg,#103c75,#167ac5);
+ background:linear-gradient(135deg,#073b75,#1595d4);
  color:white;
  text-align:center;
- padding:30px 15px;
+ padding:35px 15px;
 }
-header h1{margin:0;font-size:27px}
-header p{margin:8px 0}
+header h1{font-size:27px;margin:0}
+header p{margin-bottom:0}
 nav{
- background:#092d55;
- padding:13px;
+ background:#082e58;
+ padding:14px;
  text-align:center;
 }
 nav a{
  color:white;
  text-decoration:none;
- margin:0 10px;
+ margin:0 12px;
  font-weight:bold;
 }
 .container{
- max-width:900px;
- margin:22px auto;
- padding:15px;
+ max-width:950px;
+ margin:auto;
+ padding:20px 15px;
 }
-.card{
+.intro,.section,.lesson{
  background:white;
- padding:22px;
- border-radius:15px;
- margin-bottom:18px;
- box-shadow:0 3px 12px #0000000c;
+ border-radius:14px;
+ padding:20px;
+ margin-bottom:20px;
+ box-shadow:0 3px 12px #0000000d;
 }
-h2{color:#1267a7}
-h3{color:#185b91}
-table{
- width:100%;
- border-collapse:collapse;
- margin:12px 0;
+h2{color:#116ba8}
+.levels,.subjects{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
 }
-td,th{
- border:1px solid #dce5ef;
- padding:9px;
- text-align:left;
-}
-th{background:#e6f2ff}
-.formule{
- background:#eaf4ff;
- padding:12px;
- border-left:4px solid #1683d2;
- border-radius:6px;
- margin:12px 0;
+.level{
+ border:2px solid #d8e7f5;
+ border-radius:12px;
+ padding:17px 5px;
+ text-align:center;
+ background:#f6faff;
+ cursor:pointer;
  font-weight:bold;
 }
-img{
- max-width:100%;
+.level.active{
+ background:#087bc1;
+ color:white;
+ border-color:#087bc1;
+}
+.subject{
+ padding:18px 10px;
  border-radius:12px;
+ text-align:center;
+ background:#edf5ff;
+ border:1px solid #dceaff;
+ font-weight:bold;
 }
 button{
  background:#087bc1;
  color:white;
  border:0;
+ padding:11px 16px;
  border-radius:8px;
- padding:12px 18px;
- font-size:15px;
  cursor:pointer;
+ font-size:15px;
 }
-.question{
- padding:12px 0;
- border-bottom:1px solid #ddd;
+button:hover{background:#075b94}
+.lesson{
+ border-left:5px solid #168bd0;
 }
-.resultat{
- font-weight:bold;
- margin-top:15px;
-}
+.lesson p{color:#64748b}
+.hidden{display:none}
 footer{
- background:#092d55;
- color:white;
  text-align:center;
- padding:20px;
- margin-top:30px;
+ background:#082e58;
+ color:white;
+ padding:22px;
+}
+@media(max-width:520px){
+ .levels,.subjects{grid-template-columns:1fr}
+ nav a{margin:5px;display:inline-block}
 }
 </style>
 </head>
-
 <body>
 
 <header>
 <h1>📚 Mon Univers éducatif 🇹🇬</h1>
 <p>Le savoir au service de la réussite scolaire au Togo</p>
-<h2 style="color:white">Cours de Physique-Chimie</h2>
-<p>Niveau Seconde</p>
+<h2 style="color:white">Bibliothèque des cours</h2>
 </header>
 
 <nav>
@@ -114,144 +115,86 @@ footer{
 
 <main class="container">
 
-<section class="card">
-<h2>Leçon 1 : Grandeurs physiques et mesures</h2>
-<p><b>Niveau :</b> Seconde</p>
-<p><b>Matière :</b> Physique-Chimie</p>
-<p><b>Objectif :</b> Comprendre les grandeurs physiques,
-leurs unités et les instruments de mesure.</p>
+<section class="intro">
+<h2>Bienvenue dans nos cours !</h2>
+<p>Retrouve des cours complets, des explications
+simples et des exemples corrigés pour progresser.</p>
 </section>
 
-<section class="card">
-<h2>I. Définition d'une grandeur physique</h2>
-<p>Une grandeur physique est une propriété d'un corps
-ou d'un phénomène que l'on peut mesurer.</p>
-<p>Une mesure comporte une valeur numérique et une unité.</p>
-<div class="formule">Exemple : L = 5 m</div>
-</section>
-
-<section class="card">
-<h2>II. Les grandeurs fondamentales</h2>
-<table>
-<tr><th>Grandeur</th><th>Unité SI</th><th>Symbole</th></tr>
-<tr><td>Longueur</td><td>Mètre</td><td>m</td></tr>
-<tr><td>Masse</td><td>Kilogramme</td><td>kg</td></tr>
-<tr><td>Temps</td><td>Seconde</td><td>s</td></tr>
-<tr><td>Température</td><td>Kelvin</td><td>K</td></tr>
-<tr><td>Intensité électrique</td><td>Ampère</td><td>A</td></tr>
-</table>
-</section>
-
-<section class="card">
-<h2>III. Les grandeurs dérivées</h2>
-<table>
-<tr><th>Grandeur</th><th>Formule</th><th>Unité SI</th></tr>
-<tr><td>Surface</td><td>L × l</td><td>m²</td></tr>
-<tr><td>Volume</td><td>L × l × h</td><td>m³</td></tr>
-<tr><td>Vitesse</td><td>d / t</td><td>m/s</td></tr>
-<tr><td>Masse volumique</td><td>m / V</td><td>kg/m³</td></tr>
-</table>
-</section>
-
-<section class="card">
-<h2>IV. Les instruments de mesure</h2>
-<ul>
-<li>Règle graduée : mesure les longueurs.</li>
-<li>Balance : mesure la masse.</li>
-<li>Éprouvette graduée : mesure les volumes.</li>
-<li>Thermomètre : mesure la température.</li>
-<li>Chronomètre : mesure les durées.</li>
-</ul>
-</section>
-
-<section class="card">
-<h2>V. Les conversions d'unités</h2>
-<h3>Longueurs</h3>
-<p>1 km = 1 000 m</p>
-<p>1 m = 100 cm</p>
-<p>1 cm = 10 mm</p>
-<div class="formule">Exemple : 3,5 km = 3 500 m</div>
-
-<h3>Durées</h3>
-<p>1 h = 60 min = 3 600 s</p>
-<div class="formule">Exemple : 2 h 15 min = 8 100 s</div>
-
-<h3>Volumes</h3>
-<p>1 m³ = 1 000 L</p>
-<p>1 L = 1 000 mL</p>
-<p>1 L = 1 dm³</p>
-</section>
-
-<section class="card">
-<h2>VI. Exemples corrigés</h2>
-<h3>Exemple 1 : Calcul de la vitesse</h3>
-<p>Un élève parcourt 100 m en 20 s.</p>
-<div class="formule">
-v = d / t = 100 / 20 = 5 m/s
-</div>
-
-<h3>Exemple 2 : Masse volumique</h3>
-<p>Un objet possède une masse de 200 g
-et un volume de 100 cm³.</p>
-<div class="formule">
-ρ = m / V = 200 / 100 = 2 g/cm³
+<section class="section">
+<h2>1. Choisis ton niveau</h2>
+<div class="levels">
+<button class="level active" onclick="niveau('Seconde',this)">
+Seconde
+</button>
+<button class="level" onclick="niveau('Première',this)">
+Première
+</button>
+<button class="level" onclick="niveau('Terminale',this)">
+Terminale
+</button>
 </div>
 </section>
 
-<section class="card">
-<h2>VII. Résumé</h2>
-<ul>
-<li>Une grandeur physique est mesurable.</li>
-<li>Une mesure possède une valeur et une unité.</li>
-<li>Le mètre est l'unité SI de longueur.</li>
-<li>Le kilogramme est l'unité SI de masse.</li>
-<li>La seconde est l'unité SI du temps.</li>
-<li>La vitesse est égale à la distance divisée par le temps.</li>
-</ul>
+<section class="section">
+<h2>2. Choisis ta matière</h2>
+<div class="subjects">
+<div class="subject">📐<br>Mathématiques</div>
+<div class="subject">⚗️<br>Physique-Chimie</div>
+<div class="subject">🧬<br>Sciences</div>
+</div>
 </section>
 
-<section class="card">
-<h2>VIII. Exercices d'application</h2>
-<p>Choisis la bonne réponse pour chaque question.</p>
+<section class="section">
+<h2 id="titre">3. Cours disponibles : Seconde</h2>
 
-<div class="question">
-<p>1. Quelle est l'unité SI de longueur ?</p>
-<label><input type="radio" name="q1" value="a"> Kilogramme</label><br>
-<label><input type="radio" name="q1" value="b"> Mètre</label><br>
-<label><input type="radio" name="q1" value="c"> Seconde</label>
+<div id="seconde">
+<div class="lesson">
+<h3>Physique-Chimie</h3>
+<p>Leçon 1 : Grandeurs physiques et mesures</p>
+<a href="cours.html#lecon1">
+<button>Lire le cours</button>
+</a>
+</div>
+<div class="lesson">
+<h3>Mathématiques</h3>
+<p>Les premières leçons seront bientôt disponibles.</p>
+</div>
+<div class="lesson">
+<h3>Sciences</h3>
+<p>Les premières leçons seront bientôt disponibles.</p>
+</div>
 </div>
 
-<div class="question">
-<p>2. 4 km correspondent à :</p>
-<label><input type="radio" name="q2" value="a"> 400 m</label><br>
-<label><input type="radio" name="q2" value="b"> 4 000 m</label><br>
-<label><input type="radio" name="q2" value="c"> 40 000 m</label>
+<div id="premiere" class="hidden">
+<div class="lesson">
+<h3>Mathématiques</h3>
+<p>Cours de Première : bientôt disponibles.</p>
+</div>
+<div class="lesson">
+<h3>Physique-Chimie</h3>
+<p>Cours de Première : bientôt disponibles.</p>
+</div>
+<div class="lesson">
+<h3>Sciences</h3>
+<p>Cours de Première : bientôt disponibles.</p>
+</div>
 </div>
 
-<div class="question">
-<p>3. Quel instrument mesure la masse ?</p>
-<label><input type="radio" name="q3" value="a"> Balance</label><br>
-<label><input type="radio" name="q3" value="b"> Thermomètre</label><br>
-<label><input type="radio" name="q3" value="c"> Chronomètre</label>
+<div id="terminale" class="hidden">
+<div class="lesson">
+<h3>Mathématiques</h3>
+<p>Cours de Terminale : bientôt disponibles.</p>
 </div>
-
-<div class="question">
-<p>4. Un mobile parcourt 60 m en 10 s.
-Sa vitesse est :</p>
-<label><input type="radio" name="q4" value="a"> 6 m/s</label><br>
-<label><input type="radio" name="q4" value="b"> 10 m/s</label><br>
-<label><input type="radio" name="q4" value="c"> 600 m/s</label>
+<div class="lesson">
+<h3>Physique-Chimie</h3>
+<p>Cours de Terminale : bientôt disponibles.</p>
 </div>
-
-<div class="question">
-<p>5. Quelle est l'unité SI du temps ?</p>
-<label><input type="radio" name="q5" value="a"> Heure</label><br>
-<label><input type="radio" name="q5" value="b"> Minute</label><br>
-<label><input type="radio" name="q5" value="c"> Seconde</label>
+<div class="lesson">
+<h3>Sciences</h3>
+<p>Cours de Terminale : bientôt disponibles.</p>
 </div>
-
-<button onclick="corriger()">Corriger mes réponses</button>
-<div id="resultat" class="resultat"></div>
+</div>
 </section>
 
 </main>
@@ -262,31 +205,23 @@ Sa vitesse est :</p>
 </footer>
 
 <script>
-function corriger(){
- const reponses={
- q1:"b",
- q2:"b",
- q3:"a",
- q4:"a",
- q5:"c"
- };
- let score=0;
- for(let q in reponses){
-  const choix=document.querySelector(
-   'input[name="'+q+'"]:checked'
-  );
-  if(choix && choix.value===reponses[q]){
-   score++;
-  }
- }
- document.getElementById("resultat").innerHTML=
- "Ton résultat : "+score+"/5"+
- "<br>"+(score===5?
- "Excellent travail !":
- "Continue à réviser et à progresser !");
+function niveau(nom, bouton){
+ document.querySelectorAll('.level').forEach(b=>{
+  b.classList.remove('active');
+ });
+ bouton.classList.add('active');
+
+ document.getElementById('seconde').classList.add('hidden');
+ document.getElementById('premiere').classList.add('hidden');
+ document.getElementById('terminale').classList.add('hidden');
+
+ const id=nom.toLowerCase();
+ document.getElementById(id).classList.remove('hidden');
+ document.getElementById('titre').textContent=
+ '3. Cours disponibles : '+nom;
 }
 </script>
 
 </body>
-  </html>
-  
+ </html>
+ 
