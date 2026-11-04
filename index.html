@@ -21,7 +21,67 @@
   <a href="#cours">Cours</a>
 </nav>
 
-<main>
+
+<section class="nos-cours">
+  <h2>📚 Découvrez nos cours</h2>
+  <p>
+    Révise tes leçons et améliore tes connaissances
+    avec Mon Univers éducatif 🇹🇬.
+  </p>
+
+  <div class="cours-container">
+    <div class="cours-carte">
+      <h3>📐 Mathématiques</h3>
+      <p>Leçons, méthodes et exercices.</p>
+      <a href="mathematiques.html">Voir le cours</a>
+    </div>
+
+    <div class="cours-carte">
+      <h3>⚛️ Physique-Chimie</h3>
+      <p>Comprendre les phénomènes physiques.</p>
+      <a href="physique-chimie.html">Voir le cours</a>
+    </div>
+
+    <div class="cours-carte">
+      <h3>🔬 Sciences</h3>
+      <p>Découvrir le monde vivant.</p>
+      <a href="sciences.html">Voir le cours</a>
+    </div>
+  </div>
+
+  <a class="tous-les-cours" href="cours.html">
+    Découvrir toute la bibliothèque
+  </a>
+</section>
+
+<style>
+.nos-cours{
+  padding:25px 15px;
+  text-align:center;
+}
+.cours-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  margin:25px 0;
+}
+.cours-carte{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #0002;
+}
+.cours-carte a,.tous-les-cours{
+  display:inline-block;
+  background:#087bc1;
+  color:white;
+  padding:11px 17px;
+  border-radius:8px;
+  text-decoration:none;
+  margin-top:10px;
+}
+  </style>
+  <main>
   <section id="accueil" class="hero">
     <span class="etiquette">PLATEFORME ÉDUCATIVE DU TOGO</span>
     <h1>Construisons ensemble ta réussite scolaire.</h1>
