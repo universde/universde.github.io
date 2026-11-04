@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bibliothèque des cours | Mon Univers éducatif</title>
 <style>
 *{box-sizing:border-box}
@@ -11,7 +10,7 @@ body{
  margin:0;
  font-family:Arial,sans-serif;
  background:#f1f5fb;
- color:#203047;
+ color:#26364a;
 }
 header{
  background:linear-gradient(135deg,#073b75,#1595d4);
@@ -19,8 +18,8 @@ header{
  text-align:center;
  padding:35px 15px;
 }
-header h1{font-size:27px;margin:0}
-header p{margin-bottom:0}
+header h1{margin:0;font-size:27px}
+header p{margin:8px 0}
 nav{
  background:#082e58;
  padding:14px;
@@ -37,14 +36,14 @@ nav a{
  margin:auto;
  padding:20px 15px;
 }
-.intro,.section,.lesson{
+.card{
  background:white;
- border-radius:14px;
- padding:20px;
+ border-radius:15px;
+ padding:22px;
  margin-bottom:20px;
- box-shadow:0 3px 12px #0000000d;
+ box-shadow:0 3px 12px #0000000c;
 }
-h2{color:#116ba8}
+h2{color:#1267a7}
 .levels,.subjects{
  display:grid;
  grid-template-columns:repeat(3,1fr);
@@ -62,40 +61,38 @@ h2{color:#116ba8}
 .level.active{
  background:#087bc1;
  color:white;
- border-color:#087bc1;
 }
 .subject{
- padding:18px 10px;
- border-radius:12px;
+ display:block;
  text-align:center;
+ text-decoration:none;
+ color:#185b91;
  background:#edf5ff;
  border:1px solid #dceaff;
+ border-radius:12px;
+ padding:22px 8px;
  font-weight:bold;
+ transition:.2s;
 }
-button{
- background:#087bc1;
- color:white;
- border:0;
- padding:11px 16px;
- border-radius:8px;
- cursor:pointer;
- font-size:15px;
+.subject:hover{
+ background:#dceeff;
+ transform:translateY(-3px);
 }
-button:hover{background:#075b94}
-.lesson{
- border-left:5px solid #168bd0;
+.subject span{
+ display:block;
+ font-size:32px;
+ margin-bottom:8px;
 }
-.lesson p{color:#64748b}
-.hidden{display:none}
 footer{
- text-align:center;
  background:#082e58;
  color:white;
+ text-align:center;
  padding:22px;
+ margin-top:30px;
 }
 @media(max-width:520px){
  .levels,.subjects{grid-template-columns:1fr}
- nav a{margin:5px;display:inline-block}
+ nav a{display:inline-block;margin:5px}
 }
 </style>
 </head>
@@ -115,86 +112,47 @@ footer{
 
 <main class="container">
 
-<section class="intro">
+<section class="card">
 <h2>Bienvenue dans nos cours !</h2>
-<p>Retrouve des cours complets, des explications
-simples et des exemples corrigés pour progresser.</p>
+<p>
+Découvre des cours complets, des explications
+détaillées, des exemples corrigés et des exercices
+pour réussir tes études.
+</p>
 </section>
 
-<section class="section">
+<section class="card">
 <h2>1. Choisis ton niveau</h2>
 <div class="levels">
-<button class="level active" onclick="niveau('Seconde',this)">
-Seconde
-</button>
-<button class="level" onclick="niveau('Première',this)">
-Première
-</button>
-<button class="level" onclick="niveau('Terminale',this)">
-Terminale
-</button>
+<button class="level active" onclick="niveau('Seconde',this)">Seconde</button>
+<button class="level" onclick="niveau('Première',this)">Première</button>
+<button class="level" onclick="niveau('Terminale',this)">Terminale</button>
 </div>
 </section>
 
-<section class="section">
+<section class="card">
 <h2>2. Choisis ta matière</h2>
+
 <div class="subjects">
-<div class="subject">📐<br>Mathématiques</div>
-<div class="subject">⚗️<br>Physique-Chimie</div>
-<div class="subject">🧬<br>Sciences</div>
-</div>
-</section>
+<a class="subject" href="mathematiques.html">
+<span>📐</span>Mathématiques
+</a>
 
-<section class="section">
-<h2 id="titre">3. Cours disponibles : Seconde</h2>
+<a class="subject" href="physique-chimie.html">
+<span>⚗️</span>Physique-Chimie
+</a>
 
-<div id="seconde">
-<div class="lesson">
-<h3>Physique-Chimie</h3>
-<p>Leçon 1 : Grandeurs physiques et mesures</p>
-<a href="cours.html#lecon1">
-<button>Lire le cours</button>
+<a class="subject" href="sciences.html">
+<span>🧬</span>Sciences
 </a>
 </div>
-<div class="lesson">
-<h3>Mathématiques</h3>
-<p>Les premières leçons seront bientôt disponibles.</p>
-</div>
-<div class="lesson">
-<h3>Sciences</h3>
-<p>Les premières leçons seront bientôt disponibles.</p>
-</div>
-</div>
+</section>
 
-<div id="premiere" class="hidden">
-<div class="lesson">
-<h3>Mathématiques</h3>
-<p>Cours de Première : bientôt disponibles.</p>
-</div>
-<div class="lesson">
-<h3>Physique-Chimie</h3>
-<p>Cours de Première : bientôt disponibles.</p>
-</div>
-<div class="lesson">
-<h3>Sciences</h3>
-<p>Cours de Première : bientôt disponibles.</p>
-</div>
-</div>
-
-<div id="terminale" class="hidden">
-<div class="lesson">
-<h3>Mathématiques</h3>
-<p>Cours de Terminale : bientôt disponibles.</p>
-</div>
-<div class="lesson">
-<h3>Physique-Chimie</h3>
-<p>Cours de Terminale : bientôt disponibles.</p>
-</div>
-<div class="lesson">
-<h3>Sciences</h3>
-<p>Cours de Terminale : bientôt disponibles.</p>
-</div>
-</div>
+<section class="card">
+<h2 id="titre">Niveau sélectionné : Seconde</h2>
+<p id="description">
+Sélectionne une matière pour découvrir les leçons.
+</p>
 </section>
 
 </main>
@@ -205,23 +163,20 @@ Terminale
 </footer>
 
 <script>
-function niveau(nom, bouton){
+function niveau(nom,bouton){
  document.querySelectorAll('.level').forEach(b=>{
   b.classList.remove('active');
  });
  bouton.classList.add('active');
 
- document.getElementById('seconde').classList.add('hidden');
- document.getElementById('premiere').classList.add('hidden');
- document.getElementById('terminale').classList.add('hidden');
-
- const id=nom.toLowerCase();
- document.getElementById(id).classList.remove('hidden');
  document.getElementById('titre').textContent=
- '3. Cours disponibles : '+nom;
+ 'Niveau sélectionné : '+nom;
+
+ document.getElementById('description').textContent=
+ 'Choisis une matière pour consulter les cours de '+nom+'.';
 }
 </script>
 
 </body>
  </html>
- 
+                                                        
