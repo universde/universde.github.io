@@ -1,98 +1,79 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bibliothèque des cours | Mon Univers éducatif</title>
 <style>
 *{box-sizing:border-box}
 body{
  margin:0;
  font-family:Arial,sans-serif;
- background:#f1f5fb;
- color:#26364a;
+ background:#f2f5fa;
+ color:#243449;
 }
 header{
- background:linear-gradient(135deg,#073b75,#1595d4);
+ background:linear-gradient(120deg,#073b75,#168bd0);
  color:white;
  text-align:center;
  padding:35px 15px;
 }
-header h1{margin:0;font-size:27px}
-header p{margin:8px 0}
 nav{
- background:#082e58;
+ background:#092d55;
  padding:14px;
  text-align:center;
 }
 nav a{
  color:white;
  text-decoration:none;
- margin:0 12px;
+ margin:10px;
  font-weight:bold;
 }
 .container{
  max-width:950px;
- margin:auto;
- padding:20px 15px;
+ margin:25px auto;
+ padding:15px;
 }
-.card{
+.intro,.subject{
  background:white;
- border-radius:15px;
+ border-radius:14px;
  padding:22px;
- margin-bottom:20px;
+ margin-bottom:18px;
  box-shadow:0 3px 12px #0000000c;
 }
 h2{color:#1267a7}
-.levels,.subjects{
- display:grid;
- grid-template-columns:repeat(3,1fr);
- gap:12px;
+.subject{
+ border-left:5px solid #168bd0;
 }
-.level{
- border:2px solid #d8e7f5;
- border-radius:12px;
- padding:17px 5px;
- text-align:center;
- background:#f6faff;
- cursor:pointer;
- font-weight:bold;
-}
-.level.active{
+.subject a{
+ display:inline-block;
  background:#087bc1;
  color:white;
-}
-.subject{
- display:block;
- text-align:center;
  text-decoration:none;
- color:#185b91;
- background:#edf5ff;
- border:1px solid #dceaff;
- border-radius:12px;
- padding:22px 8px;
+ padding:11px 18px;
+ border-radius:8px;
+ margin-top:8px;
+}
+.subject a:hover{background:#075c91}
+.level{
+ display:inline-block;
+ background:#e5f2ff;
+ color:#075c91;
+ padding:7px 13px;
+ border-radius:20px;
  font-weight:bold;
- transition:.2s;
 }
-.subject:hover{
- background:#dceeff;
- transform:translateY(-3px);
-}
-.subject span{
- display:block;
- font-size:32px;
- margin-bottom:8px;
+.coming{
+ color:#777;
+ font-size:14px;
 }
 footer{
- background:#082e58;
+ background:#092d55;
  color:white;
  text-align:center;
- padding:22px;
- margin-top:30px;
-}
-@media(max-width:520px){
- .levels,.subjects{grid-template-columns:1fr}
- nav a{display:inline-block;margin:5px}
+ padding:20px;
+ margin-top:35px;
 }
 </style>
 </head>
@@ -102,56 +83,61 @@ footer{
 <h1>📚 Mon Univers éducatif 🇹🇬</h1>
 <p>Le savoir au service de la réussite scolaire au Togo</p>
 <h2 style="color:white">Bibliothèque des cours</h2>
+<p>Apprends, révise et prépare ta réussite scolaire.</p>
 </header>
 
 <nav>
 <a href="index.html">Accueil</a>
-<a href="index.html#epreuves">Épreuves</a>
 <a href="cours.html">Cours</a>
+<a href="index.html#epreuves">Épreuves</a>
 </nav>
 
 <main class="container">
 
-<section class="card">
-<h2>Bienvenue dans nos cours !</h2>
+<section class="intro">
+<h2>Bienvenue dans les cours</h2>
 <p>
-Découvre des cours complets, des explications
-détaillées, des exemples corrigés et des exercices
-pour réussir tes études.
+Retrouve ici des leçons expliquées, des exemples
+corrigés et des exercices interactifs pour progresser.
 </p>
+<p class="level">Niveau Seconde</p>
 </section>
 
-<section class="card">
-<h2>1. Choisis ton niveau</h2>
-<div class="levels">
-<button class="level active" onclick="niveau('Seconde',this)">Seconde</button>
-<button class="level" onclick="niveau('Première',this)">Première</button>
-<button class="level" onclick="niveau('Terminale',this)">Terminale</button>
-</div>
+<h2>📖 Choisis ta matière</h2>
+
+<section class="subject">
+<h2>📐 Mathématiques</h2>
+<p>
+Découvre les notions essentielles, les méthodes
+de calcul et les exercices corrigés.
+</p>
+<a href="mathematiques.html">Consulter les cours</a>
 </section>
 
-<section class="card">
-<h2>2. Choisis ta matière</h2>
-
-<div class="subjects">
-<a class="subject" href="mathematiques.html">
-<span>📐</span>Mathématiques
-</a>
-
-<a class="subject" href="physique-chimie.html">
-<span>⚗️</span>Physique-Chimie
-</a>
-
-<a class="subject" href="sciences.html">
-<span>🧬</span>Sciences
-</a>
-</div>
+<section class="subject">
+<h2>⚛️ Physique-Chimie</h2>
+<p>
+Apprends les grandeurs physiques, les mesures
+et les notions fondamentales de physique-chimie.
+</p>
+<a href="physique-chimie.html">Consulter les cours</a>
 </section>
 
-<section class="card">
-<h2 id="titre">Niveau sélectionné : Seconde</h2>
-<p id="description">
-Sélectionne une matière pour découvrir les leçons.
+<section class="subject">
+<h2>🔬 Sciences</h2>
+<p>
+Découvre les notions scientifiques et les cours
+sur le monde vivant.
+</p>
+<a href="sciences.html">Consulter les cours</a>
+</section>
+
+<section class="intro">
+<h2>🎓 Autres niveaux</h2>
+<p><b>Première :</b> cours en préparation.</p>
+<p><b>Terminale :</b> cours en préparation.</p>
+<p class="coming">
+De nouvelles leçons seront ajoutées progressivement.
 </p>
 </section>
 
@@ -162,21 +148,6 @@ Sélectionne une matière pour découvrir les leçons.
 <p>Apprendre aujourd'hui, réussir demain.</p>
 </footer>
 
-<script>
-function niveau(nom,bouton){
- document.querySelectorAll('.level').forEach(b=>{
-  b.classList.remove('active');
- });
- bouton.classList.add('active');
-
- document.getElementById('titre').textContent=
- 'Niveau sélectionné : '+nom;
-
- document.getElementById('description').textContent=
- 'Choisis une matière pour consulter les cours de '+nom+'.';
-}
-</script>
-
 </body>
  </html>
-                                                        
+ 
