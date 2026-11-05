@@ -1,17 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Mon Univers éducatif, plateforme de ressources scolaires au Togo.">
+  <meta name="description" content="Mon Univers éducatif : cours, épreuves et exercices pour les élèves du Togo, de la Seconde à la Terminale.">
+  <meta name="theme-color" content="#111111">
   <title>Mon Univers éducatif | Togo</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="entete">
-  <div class="logo">🇹🇬 MON UNIVERS ÉDUCATIF</div>
-  <p>Le savoir au service de la réussite scolaire au Togo</p>
+  <a href="#accueil" class="logo">
+    🇹🇬 MON UNIVERS ÉDUCATIF
+  </a>
+  <p>Le savoir au service de la réussite scolaire au Togo.</p>
 </header>
 
 <nav class="navigation">
@@ -21,119 +26,112 @@
   <a href="#cours">Cours</a>
 </nav>
 
+<main>
 
-<section class="nos-cours">
-  <h2>📚 Découvrez nos cours</h2>
-  <p>
-    Révise tes leçons et améliore tes connaissances
-    avec Mon Univers éducatif 🇹🇬.
-  </p>
-
-  <div class="cours-container">
-    <div class="cours-carte">
-      <h3>📐 Mathématiques</h3>
-      <p>Leçons, méthodes et exercices.</p>
-      <a href="mathematiques.html">Voir le cours</a>
-    </div>
-
-    <div class="cours-carte">
-      <h3>⚛️ Physique-Chimie</h3>
-      <p>Comprendre les phénomènes physiques.</p>
-      <a href="physique-chimie.html">Voir le cours</a>
-    </div>
-
-    <div class="cours-carte">
-      <h3>🔬 Sciences</h3>
-      <p>Découvrir le monde vivant.</p>
-      <a href="sciences.html">Voir le cours</a>
-    </div>
-  </div>
-
-  <a class="tous-les-cours" href="cours.html">
-    Découvrir toute la bibliothèque
-  </a>
-</section>
-
-<style>
-.nos-cours{
-  padding:25px 15px;
-  text-align:center;
-}
-.cours-container{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:18px;
-  margin:25px 0;
-}
-.cours-carte{
-  background:white;
-  padding:20px;
-  border-radius:14px;
-  box-shadow:0 3px 12px #0002;
-}
-.cours-carte a,.tous-les-cours{
-  display:inline-block;
-  background:#087bc1;
-  color:white;
-  padding:11px 17px;
-  border-radius:8px;
-  text-decoration:none;
-  margin-top:10px;
-}
-  </style>
-  <main>
+  <!-- ACCUEIL -->
   <section id="accueil" class="hero">
-    <span class="etiquette">PLATEFORME ÉDUCATIVE DU TOGO</span>
-    <h1>Construisons ensemble ta réussite scolaire.</h1>
-    <p>Découvre des épreuves, des cours et des ressources pour progresser de la Seconde à la Terminale.</p>
-    <a href="#epreuves" class="bouton-principal">Rechercher une épreuve</a>
+
+    <div class="hero-contenu">
+      <span class="etiquette">
+        PLATEFORME ÉDUCATIVE DU TOGO 🇹🇬
+      </span>
+
+      <h1>
+        Ton avenir commence par le savoir.
+      </h1>
+
+      <p>
+        Découvre des cours, des épreuves et des ressources
+        pédagogiques pour réussir de la Seconde à la Terminale.
+      </p>
+
+      <div class="hero-boutons">
+        <a href="#epreuves" class="bouton-principal">
+          Découvrir les épreuves
+        </a>
+
+        <a href="#cours" class="bouton-secondaire">
+          Explorer les cours
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <div class="image-texte">
+        <span>APPRENDRE</span>
+        <h2>Étudier aujourd'hui, réussir demain.</h2>
+        <p>Ensemble pour l'excellence scolaire.</p>
+      </div>
+    </div>
+
   </section>
 
+  <!-- STATISTIQUES -->
   <section class="statistiques">
     <div class="stat-carte">
-      <span>👥</span>
       <strong id="nombre-visites">0</strong>
       <p>Visites sur cet appareil</p>
     </div>
+
+    <div class="stat-carte">
+      <strong>3</strong>
+      <p>Matières principales</p>
+    </div>
+
+    <div class="stat-carte">
+      <strong>3</strong>
+      <p>Niveaux scolaires</p>
+    </div>
   </section>
 
+  <!-- MATIERES -->
   <section id="matieres" class="section">
+
     <div class="titre-section">
       <span>APPRENDRE ET PROGRESSER</span>
-      <h2>Nos matières</h2>
+      <h2>Explore nos matières</h2>
+      <p>Développe tes connaissances et prépare ta réussite.</p>
     </div>
 
     <div class="grille-matieres">
+
       <article class="matiere">
-        <div class="icone">📐</div>
+        <div class="icone">01</div>
         <h3>Mathématiques</h3>
-        <p>Développe tes connaissances et tes méthodes de calcul.</p>
+        <p>Calcul, raisonnement, exercices et méthodes.</p>
+        <a href="mathematiques.html">Explorer →</a>
       </article>
 
       <article class="matiere">
-        <div class="icone">⚗️</div>
+        <div class="icone">02</div>
         <h3>Physique-Chimie</h3>
-        <p>Explore les sciences et comprends les phénomènes physiques.</p>
+        <p>Comprendre les phénomènes physiques et chimiques.</p>
+        <a href="physique-chimie.html">Explorer →</a>
       </article>
 
       <article class="matiere">
-        <div class="icone">🔬</div>
+        <div class="icone">03</div>
         <h3>Sciences</h3>
-        <p>Découvre et approfondis les connaissances scientifiques.</p>
+        <p>Découvrir le monde vivant et scientifique.</p>
+        <a href="sciences.html">Explorer →</a>
       </article>
+
     </div>
   </section>
 
+  <!-- EPREUVES -->
   <section id="epreuves" class="section epreuves-section">
+
     <div class="titre-section">
       <span>ENTRAÎNEMENT SCOLAIRE</span>
       <h2>Bibliothèque des épreuves</h2>
-      <p>Retrouve facilement les sujets qui t'intéressent.</p>
+      <p>Retrouve les sujets adaptés à ton niveau.</p>
     </div>
 
     <div class="recherche">
+
       <input type="search" id="recherche"
-        placeholder="🔎 Rechercher AREX, Physique..."
+        placeholder="Rechercher une épreuve..."
         aria-label="Rechercher une épreuve">
 
       <select id="niveau" aria-label="Choisir un niveau">
@@ -157,29 +155,63 @@
         <option value="2024">2024</option>
         <option value="2023">2023</option>
       </select>
+
     </div>
 
     <p id="message" aria-live="polite"></p>
+
     <div id="liste-epreuves" class="grille-epreuves"></div>
+
   </section>
 
+  <!-- COURS -->
   <section id="cours" class="section cours-section">
+
     <div class="titre-section">
       <span>RESSOURCES PÉDAGOGIQUES</span>
-      <h2>Nos cours</h2>
-      <p>Un espace consacré aux apprentissages et à la progression scolaire.</p>
+      <h2>Apprends à ton rythme</h2>
+      <p>Des ressources pour approfondir tes connaissances.</p>
     </div>
+
+    <div class="cours-container">
+
+      <article class="cours-carte">
+        <h3>Mathématiques</h3>
+        <p>Leçons, méthodes et exercices.</p>
+        <a href="mathematiques.html">Voir les cours →</a>
+      </article>
+
+      <article class="cours-carte">
+        <h3>Physique-Chimie</h3>
+        <p>Comprendre les phénomènes scientifiques.</p>
+        <a href="physique-chimie.html">Voir les cours →</a>
+      </article>
+
+      <article class="cours-carte">
+        <h3>Sciences</h3>
+        <p>Explorer et approfondir les sciences.</p>
+        <a href="sciences.html">Voir les cours →</a>
+      </article>
+
+    </div>
+
+    <a href="cours.html" class="bouton-principal">
+      Toute la bibliothèque des cours
+    </a>
+
   </section>
+
 </main>
 
-<a href="confidentialite.html">
-  Politique de confidentialité
-    </a><footer>
-  <h3>🇹🇬 Mon Univers éducatif</h3>
+<footer>
+  <h3>🇹🇬 MON UNIVERS ÉDUCATIF</h3>
   <p>Le savoir au service de la réussite scolaire au Togo.</p>
+  <a href="confidentialite.html">Politique de confidentialité</a>
   <p>© 2026 - Tous droits réservés.</p>
 </footer>
 
 <script src="script.js"></script>
+
 </body>
   </html>
+          
