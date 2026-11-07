@@ -1,6 +1,6 @@
 /* =================================
    MON UNIVERS ÉDUCATIF 🇹🇬
-   Recherche intelligente
+   Bibliothèque des épreuves AREX
 ================================= */
 
 const PROPRIETAIRE = "universde";
@@ -11,8 +11,6 @@ const matiere = document.getElementById("matiere");
 const annee = document.getElementById("annee");
 const liste = document.getElementById("liste-epreuves");
 const message = document.getElementById("message");
-
-// LES 28 NOUVELLES ÉPREUVES AREX
 
 const fichiers = [
   "Img_20261024_010958_876.jpg",
@@ -45,10 +43,8 @@ const fichiers = [
   "IMG_20261024_012428_300.jpg"
 ];
 
-// ORGANISATION DES ÉPREUVES
-
 const epreuves = fichiers.map((nom, index) => ({
-  nom: nom,
+  nom,
   numero: index + 1,
   code: "AREX",
   niveau: "Seconde",
@@ -57,62 +53,43 @@ const epreuves = fichiers.map((nom, index) => ({
   image: `https://${PROPRIETAIRE}.github.io/${encodeURIComponent(nom)}`
 }));
 
-// NORMALISER LES MOTS POUR LA RECHERCHE
-
 function normaliser(texte) {
-  return texte
-    .toLowerCase()
+  return texte.toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 }
 
-// AFFICHER LES ÉPREUVES
-
 function afficherEpreuves() {
-
-  const mot = normaliser(recherche.value);
-  const classe = normaliser(niveau.value);
-  const discipline = normaliser(matiere.value);
-  const session = annee.value;
-
-  const resultats = epreuves.filter(epreuve => {
-
-    const informations = normaliser(
-      epreuve.code + " " +
-      epreuve.nom + " " +
-      epreuve.niveau + " " +
-      epreuve.matiere + " " +
-      epreuve.annee
-    );
-
-    const correspondRecherche =
-      !mot || informations.includes(mot);
-
-    const correspondNiveau =
-      !classe ||
-      normaliser(epreuve.niveau) === classe;
-
-    const correspondMatiere =
-      !discipline ||
-      normaliser(epreuve.matiere) === discipline;
-
-    const correspondAnnee =
-      !session || epreuve.annee === session;
-
-    return (
-      correspondRecherche &&
-      correspondNiveau &&
-      correspondMatiere &&
-      correspondAnnee
-    );
-  });
 
   liste.innerHTML = "";
 
-  if (resultats.length === 0) {
+  const classe = normaliser(niveau.value);
+  const discipline = normaliser(matiere.value);
+
+  // Ne rien afficher avant le choix du niveau et de la matière
+  if (classe !== "seconde" || discipline !== "physique-chimie") {
     message.textContent =
-      "Aucune épreuve trouvée. Essaie une autre recherche.";
+      "Choisis Seconde puis Physique-Chimie pour consulter les épreuves AREX.";
+    return;
+  }
+
+  const mot = normaliser(recherche.value);
+  const session = annee.value;
+
+  const resultats = epreuves.filter(epreuve => {
+    const informations = normaliser(
+      epreuve.code + " " + epreuve.nom
+    );
+
+    return (
+      (!mot || informations.includes(mot)) &&
+      (!session || epreuve.annee === session)
+    );
+  });
+
+  if (resultats.length === 0) {
+    message.textContent = "Aucune épreuve trouvée.";
     return;
   }
 
@@ -126,34 +103,27 @@ function afficherEpreuves() {
 
     const image = document.createElement("img");
     image.src = epreuve.image;
-    image.alt =
-      "Épreuve AREX de Physique-Chimie numéro " +
-      epreuve.numero;
+    image.alt = "Épreuve AREX numéro " + epreuve.numero;
     image.loading = "lazy";
 
     image.onerror = function() {
       this.alt = "Photo introuvable sur GitHub";
-      this.style.minHeight = "180px";
     };
 
     const contenu = document.createElement("div");
     contenu.className = "contenu-epreuve";
 
     const titre = document.createElement("h3");
-    titre.textContent =
-      "AREX - " + epreuve.matiere;
+    titre.textContent = "AREX - Physique-Chimie";
 
     const classeTexte = document.createElement("p");
-    classeTexte.textContent =
-      "Niveau : " + epreuve.niveau;
+    classeTexte.textContent = "Niveau : Seconde";
 
     const anneeTexte = document.createElement("p");
-    anneeTexte.textContent =
-      "Année : " + epreuve.annee;
+    anneeTexte.textContent = "Année : 2026";
 
     const numero = document.createElement("p");
-    numero.textContent =
-      "Sujet numéro : " + epreuve.numero;
+    numero.textContent = "Sujet numéro : " + epreuve.numero;
 
     const bouton = document.createElement("a");
     bouton.className = "bouton-voir";
@@ -162,38 +132,34 @@ function afficherEpreuves() {
     bouton.rel = "noopener";
     bouton.textContent = "Voir l'épreuve";
 
-    contenu.appendChild(titre);
-    contenu.appendChild(classeTexte);
-    contenu.appendChild(anneeTexte);
-    contenu.appendChild(numero);
-    contenu.appendChild(bouton);
+    contenu.append(
+      titre,
+      classeTexte,
+      anneeTexte,
+      numero,
+      bouton
+    );
 
-    carte.appendChild(image);
-    carte.appendChild(contenu);
-
+    carte.append(image, contenu);
     liste.appendChild(carte);
   });
 }
-
-// ÉCOUTER LES RECHERCHES
 
 recherche.addEventListener("input", afficherEpreuves);
 niveau.addEventListener("change", afficherEpreuves);
 matiere.addEventListener("change", afficherEpreuves);
 annee.addEventListener("change", afficherEpreuves);
 
-// COMPTEUR LOCAL DES VISITES
-
 function compterVisites() {
-
   const compteur = document.getElementById("nombre-visites");
+
+  if (!compteur) return;
 
   try {
     let total = Number(
       localStorage.getItem("monUniversVisites") || 0
     );
 
-    // Une seule augmentation par session de navigation
     if (!sessionStorage.getItem("visiteEnregistree")) {
       total++;
       localStorage.setItem("monUniversVisites", total);
@@ -201,13 +167,10 @@ function compterVisites() {
     }
 
     compteur.textContent = total;
-
   } catch (erreur) {
     compteur.textContent = "Indisponible";
   }
 }
-
-// LANCEMENT
 
 compterVisites();
 afficherEpreuves();
