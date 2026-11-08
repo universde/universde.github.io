@@ -1,6 +1,7 @@
+
 /* =================================
    MON UNIVERS ÉDUCATIF 🇹🇬
-   Bibliothèque des épreuves AREX
+   Bibliothèque des épreuves
 ================================= */
 
 const PROPRIETAIRE = "universde";
@@ -11,6 +12,8 @@ const matiere = document.getElementById("matiere");
 const annee = document.getElementById("annee");
 const liste = document.getElementById("liste-epreuves");
 const message = document.getElementById("message");
+
+/* ÉPREUVES AREX DE SECONDE */
 
 const fichiers = [
   "Img_20261024_010958_876.jpg",
@@ -43,15 +46,78 @@ const fichiers = [
   "IMG_20261024_012428_300.jpg"
 ];
 
-const epreuves = fichiers.map((nom, index) => ({
+const epreuvesSeconde = fichiers.map((nom, index) => ({
   nom,
+  titre: "AREX - Physique-Chimie",
   numero: index + 1,
   code: "AREX",
-  niveau: "Seconde",
-  matiere: "Physique-Chimie",
+  niveau: "seconde",
+  matiere: "physique-chimie",
   annee: "2026",
-  image: `https://${PROPRIETAIRE}.github.io/${encodeURIComponent(nom)}`
+  type: "image",
+  url: `https://${PROPRIETAIRE}.github.io/${encodeURIComponent(nom)}`
 }));
+
+/* ÉPREUVES PDF DE PREMIÈRE */
+
+const fichiersPremiere = [
+  {
+    nom: "Mathématiques D Remplacement.pdf",
+    matiere: "mathematiques"
+  },
+  {
+    nom: "Mathématiques D.pdf",
+    matiere: "mathematiques"
+  },
+  {
+    nom: "Mathématiques.pdf",
+    matiere: "mathematiques"
+  },
+  {
+    nom: "PCT (1).pdf",
+    matiere: "physique-chimie"
+  },
+  {
+    nom: "Remplacement du PCT D (1).pdf",
+    matiere: "physique-chimie"
+  },
+  {
+    nom: "Remplacement PCT D.pdf",
+    matiere: "physique-chimie"
+  },
+  {
+    nom: "PCT D.pdf",
+    matiere: "physique-chimie"
+  },
+  {
+    nom: "PCT.pdf",
+    matiere: "physique-chimie"
+  },
+  {
+    nom: "SVT D (1).pdf",
+    matiere: "sciences"
+  },
+  {
+    nom: "Remplacement SVT D.pdf",
+    matiere: "sciences"
+  },
+  {
+    nom: "SVT D.pdf",
+    matiere: "sciences"
+  }
+];
+
+const epreuvesPremiere = fichiersPremiere.map(fichier => ({
+  nom: fichier.nom,
+  titre: fichier.nom.replace(".pdf", ""),
+  niveau: "premiere",
+  matiere: fichier.matiere,
+  annee: "",
+  type: "pdf",
+  url: `https://${PROPRIETAIRE}.github.io/epreuves/premiere/${encodeURIComponent(fichier.nom)}`
+}));
+
+/* RECHERCHE */
 
 function normaliser(texte) {
   return texte.toLowerCase()
@@ -61,25 +127,34 @@ function normaliser(texte) {
 }
 
 function afficherEpreuves() {
-
   liste.innerHTML = "";
 
-  const classe = normaliser(niveau.value);
-  const discipline = normaliser(matiere.value);
-
-  // Ne rien afficher avant le choix du niveau et de la matière
-  if (classe !== "seconde" || discipline !== "physique-chimie") {
-    message.textContent =
-      "Choisis Seconde puis Physique-Chimie pour consulter les épreuves AREX.";
-    return;
-  }
-
+  const classe = niveau.value;
+  const discipline = matiere.value;
   const mot = normaliser(recherche.value);
   const session = annee.value;
 
-  const resultats = epreuves.filter(epreuve => {
+  if (!classe || !discipline) {
+    message.textContent =
+      "Choisis un niveau et une matière pour consulter les épreuves.";
+    return;
+  }
+
+  let disponibles = [];
+
+  if (classe === "seconde" && discipline === "physique-chimie") {
+    disponibles = epreuvesSeconde;
+  }
+
+  if (classe === "premiere") {
+    disponibles = epreuvesPremiere.filter(
+      epreuve => epreuve.matiere === discipline
+    );
+  }
+
+  const resultats = disponibles.filter(epreuve => {
     const informations = normaliser(
-      epreuve.code + " " + epreuve.nom
+      epreuve.titre + " " + epreuve.nom
     );
 
     return (
@@ -97,50 +172,46 @@ function afficherEpreuves() {
     resultats.length + " épreuve(s) trouvée(s).";
 
   resultats.forEach(epreuve => {
-
     const carte = document.createElement("article");
     carte.className = "carte-epreuve";
-
-    const image = document.createElement("img");
-    image.src = epreuve.image;
-    image.alt = "Épreuve AREX numéro " + epreuve.numero;
-    image.loading = "lazy";
-
-    image.onerror = function() {
-      this.alt = "Photo introuvable sur GitHub";
-    };
 
     const contenu = document.createElement("div");
     contenu.className = "contenu-epreuve";
 
     const titre = document.createElement("h3");
-    titre.textContent = "AREX - Physique-Chimie";
+    titre.textContent = epreuve.titre;
 
     const classeTexte = document.createElement("p");
-    classeTexte.textContent = "Niveau : Seconde";
+    classeTexte.textContent =
+      "Niveau : " +
+      (epreuve.niveau === "premiere" ? "Première" : "Seconde");
 
-    const anneeTexte = document.createElement("p");
-    anneeTexte.textContent = "Année : 2026";
+    const matiereTexte = document.createElement("p");
 
-    const numero = document.createElement("p");
-    numero.textContent = "Sujet numéro : " + epreuve.numero;
+    const nomsMatieres = {
+      mathematiques: "Mathématiques",
+      "physique-chimie": "Physique-Chimie",
+      sciences: "Sciences"
+    };
+
+    matiereTexte.textContent =
+      "Matière : " + nomsMatieres[epreuve.matiere];
 
     const bouton = document.createElement("a");
     bouton.className = "bouton-voir";
-    bouton.href = epreuve.image;
+    bouton.href = epreuve.url;
     bouton.target = "_blank";
     bouton.rel = "noopener";
-    bouton.textContent = "Voir l'épreuve";
+    bouton.textContent = "Consulter l'épreuve";
 
     contenu.append(
       titre,
       classeTexte,
-      anneeTexte,
-      numero,
+      matiereTexte,
       bouton
     );
 
-    carte.append(image, contenu);
+    carte.appendChild(contenu);
     liste.appendChild(carte);
   });
 }
@@ -149,6 +220,8 @@ recherche.addEventListener("input", afficherEpreuves);
 niveau.addEventListener("change", afficherEpreuves);
 matiere.addEventListener("change", afficherEpreuves);
 annee.addEventListener("change", afficherEpreuves);
+
+/* COMPTEUR DE VISITES */
 
 function compterVisites() {
   const compteur = document.getElementById("nombre-visites");
@@ -174,3 +247,4 @@ function compterVisites() {
 
 compterVisites();
 afficherEpreuves();
+   
