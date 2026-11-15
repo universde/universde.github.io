@@ -18,7 +18,7 @@ body{
 }
 
 header{
- background:#172b4d;
+ background:#12345a;
  color:white;
  padding:25px 15px;
  text-align:center;
@@ -28,15 +28,15 @@ header h1{margin:0;font-size:25px}
 header p{margin:8px 0 0}
 
 nav{
- background:#fff;
- padding:13px;
+ background:white;
+ padding:12px;
  text-align:center;
- box-shadow:0 2px 7px #0001;
+ box-shadow:0 2px 8px #0001;
 }
 
 nav a{
  display:inline-block;
- color:#174b88;
+ color:#12345a;
  text-decoration:none;
  margin:5px 9px;
  font-weight:bold;
@@ -51,90 +51,98 @@ nav a{
 .card{
  background:white;
  padding:22px;
+ margin-bottom:18px;
  border-radius:12px;
- margin-bottom:20px;
  box-shadow:0 3px 12px #0000000d;
 }
 
-h2,h3{color:#174b88}
+h2{color:#12345a}
+h3{color:#1764a0}
 
-.lecon{
- display:block;
+.lecon-btn{
  width:100%;
- padding:15px;
- margin:10px 0;
- background:#f0f5fc;
- border:1px solid #d8e4f3;
- border-radius:9px;
  text-align:left;
- color:#173d68;
+ padding:15px;
+ margin:7px 0;
+ border:1px solid #d5e2ef;
+ border-radius:9px;
+ background:#fff;
+ color:#12345a;
  font-size:16px;
  font-weight:bold;
  cursor:pointer;
 }
 
-.lecon:hover{
- background:#dceaff;
+.lecon-btn:hover{
+ background:#eaf3fc;
 }
 
-.contenu{
- display:none;
-}
+.contenu{display:none}
+.contenu.active{display:block}
 
-.contenu.active{
- display:block;
-}
-
-.exemple{
- background:#edf5ff;
- border-left:4px solid #2675c9;
- padding:13px;
- margin:15px 0;
+.objectif{
+ background:#eaf3fc;
+ padding:12px;
+ border-left:4px solid #1764a0;
  border-radius:5px;
 }
 
-.formule{
- background:#f5f5f5;
+.exemple{
+ background:#f5f8fc;
+ border-left:4px solid #15956b;
+ padding:12px;
+ margin:12px 0;
+ border-radius:5px;
+}
+
+.exercice{
+ background:#fff8e8;
+ padding:13px;
+ border-radius:8px;
+ margin:12px 0;
+}
+
+.correction{
+ display:none;
+ background:#e8f7ed;
  padding:12px;
  border-radius:7px;
- font-weight:bold;
+ margin-top:8px;
 }
 
-.action{
- background:#174b88;
+button.action{
+ background:#1764a0;
  color:white;
  border:0;
- padding:12px 18px;
+ padding:11px 17px;
  border-radius:7px;
- margin:8px 5px 8px 0;
  cursor:pointer;
- font-size:15px;
+ margin:5px;
 }
 
-.action:hover{background:#0d315c}
+button.action:hover{background:#0d4777}
 
-.question{
- padding:13px;
- margin:15px 0;
- background:#f5f7fa;
- border-radius:8px;
+.navigation{
+ display:flex;
+ justify-content:space-between;
+ flex-wrap:wrap;
+ margin-top:25px;
 }
 
-.question label{
+.quiz-question{
+ padding:12px;
+ border-bottom:1px solid #ddd;
+}
+
+.quiz-question label{
  display:block;
  margin:6px 0;
- cursor:pointer;
-}
-
-#resultat{
- font-weight:bold;
- margin-top:15px;
 }
 
 footer{
- background:#172b4d;
- color:white;
  text-align:center;
+ background:#12345a;
+ color:white;
  padding:20px;
  margin-top:30px;
 }
@@ -145,8 +153,8 @@ footer{
 
 <header>
 <h1>🇹🇬 MON UNIVERS ÉDUCATIF</h1>
-<p>Mathématiques – Classe de Seconde</p>
 <p>Le savoir au service de la réussite scolaire au Togo</p>
+<h2 style="color:white">Mathématiques – Classe de Seconde</h2>
 </header>
 
 <nav>
@@ -156,70 +164,117 @@ footer{
 <a href="epreuves.html">Épreuves</a>
 </nav>
 
-<div class="container">
+<main class="container">
 
 <section class="card" id="sommaire">
 <h2>📘 Programme de mathématiques</h2>
-<p>Choisis une leçon pour accéder à son cours complet.</p>
+<p>Bienvenue dans ton espace de mathématiques. Choisis une leçon pour commencer ton apprentissage.</p>
 
-<button class="lecon" onclick="ouvrirLecon(1)">Leçon 1 : Ensembles de nombres et intervalles</button>
-<button class="lecon" onclick="ouvrirLecon(2)">Leçon 2 : Calcul numérique et puissances</button>
-<button class="lecon" onclick="ouvrirLecon(3)">Leçon 3 : Calcul littéral et factorisation</button>
-<button class="lecon" onclick="ouvrirLecon(4)">Leçon 4 : Équations et inéquations</button>
-<button class="lecon" onclick="ouvrirLecon(5)">Leçon 5 : Généralités sur les fonctions</button>
-<button class="lecon" onclick="ouvrirLecon(6)">Leçon 6 : Vecteurs et repérage</button>
-<button class="lecon" onclick="ouvrirLecon(7)">Leçon 7 : Géométrie plane</button>
-<button class="lecon" onclick="ouvrirLecon(8)">Leçon 8 : Statistiques</button>
+<div id="listeLecons">
+<button class="lecon-btn" onclick="ouvrirLecon(1)">Leçon 1 : Ensembles de nombres et intervalles</button>
+<button class="lecon-btn" onclick="ouvrirLecon(2)">Leçon 2 : Calcul numérique et puissances</button>
+<button class="lecon-btn" onclick="ouvrirLecon(3)">Leçon 3 : Calcul littéral et factorisation</button>
+<button class="lecon-btn" onclick="ouvrirLecon(4)">Leçon 4 : Équations et inéquations</button>
+<button class="lecon-btn" onclick="ouvrirLecon(5)">Leçon 5 : Généralités sur les fonctions</button>
+<button class="lecon-btn" onclick="ouvrirLecon(6)">Leçon 6 : Vecteurs et repérage</button>
+<button class="lecon-btn" onclick="ouvrirLecon(7)">Leçon 7 : Géométrie plane</button>
+<button class="lecon-btn" onclick="ouvrirLecon(8)">Leçon 8 : Statistiques</button>
+</div>
 </section>
 
 <!-- LEÇON 1 -->
 <section class="card contenu" id="lecon1">
 <h2>Leçon 1 : Ensembles de nombres et intervalles</h2>
 
-<h3>1. Les différents ensembles de nombres</h3>
-<p>Un ensemble de nombres est un regroupement de nombres qui possèdent certaines propriétés.</p>
+<div class="objectif">
+<strong>Objectifs :</strong>
+<ul>
+<li>Connaître les principaux ensembles de nombres.</li>
+<li>Savoir reconnaître un nombre et son ensemble.</li>
+<li>Comprendre et utiliser les intervalles.</li>
+</ul>
+</div>
+
+<h3>1. Les ensembles de nombres</h3>
+<p>En mathématiques, les nombres sont regroupés en plusieurs ensembles.</p>
 
 <ul>
-<li><b>ℕ :</b> ensemble des entiers naturels : 0 ; 1 ; 2 ; 3 ; ...</li>
-<li><b>ℤ :</b> ensemble des entiers relatifs : ... ; -2 ; -1 ; 0 ; 1 ; 2 ; ...</li>
-<li><b>𝔻 :</b> ensemble des nombres décimaux, qui possèdent une écriture décimale finie.</li>
-<li><b>ℚ :</b> ensemble des nombres rationnels, qui peuvent s'écrire sous la forme a/b avec b différent de 0.</li>
-<li><b>ℝ :</b> ensemble des nombres réels.</li>
+<li><strong>ℕ : nombres entiers naturels.</strong> Exemples : 0 ; 1 ; 2 ; 3 ; 15.</li>
+<li><strong>ℤ : nombres entiers relatifs.</strong> Exemples : -5 ; -2 ; 0 ; 4.</li>
+<li><strong>𝔻 : nombres décimaux.</strong> Exemples : 2,5 ; -3,75 ; 0,25.</li>
+<li><strong>ℚ : nombres rationnels.</strong> Ce sont les nombres qui peuvent s'écrire sous la forme a/b avec a et b entiers et b différent de 0.</li>
+<li><strong>ℝ : nombres réels.</strong> Ils comprennent les nombres rationnels et irrationnels.</li>
 </ul>
 
-<div class="formule">ℕ ⊂ ℤ ⊂ 𝔻 ⊂ ℚ ⊂ ℝ</div>
+<p>On a les inclusions suivantes :</p>
+<p><strong>ℕ ⊂ ℤ ⊂ 𝔻 ⊂ ℚ ⊂ ℝ</strong></p>
+
+<div class="exemple">
+<strong>Exemple :</strong>
+<ul>
+<li>7 appartient à ℕ, ℤ, 𝔻, ℚ et ℝ.</li>
+<li>-4 appartient à ℤ, 𝔻, ℚ et ℝ.</li>
+<li>2,5 appartient à 𝔻, ℚ et ℝ.</li>
+<li>√2 appartient à ℝ mais pas à ℚ.</li>
+</ul>
+</div>
 
 <h3>2. Les intervalles</h3>
-<p>Un intervalle est une partie de la droite réelle comprise entre deux bornes.</p>
+<p>Un intervalle est un ensemble de nombres réels compris entre deux bornes.</p>
 
 <ul>
 <li>[a ; b] : les deux bornes sont incluses.</li>
 <li>]a ; b[ : les deux bornes sont exclues.</li>
-<li>[a ; b[ : a est inclus, b est exclu.</li>
-<li>]a ; b] : a est exclu, b est inclus.</li>
+<li>[a ; b[ : a est inclus et b est exclu.</li>
+<li>]a ; b] : a est exclu et b est inclus.</li>
 </ul>
 
-<h3>3. Exemples</h3>
 <div class="exemple">
-<b>Exemple 1 :</b> 3 appartient-il à [2 ; 5] ?<br>
-Oui, car 2 ≤ 3 ≤ 5.
+<strong>Exemple :</strong>
+x ∈ [2 ; 5] signifie que 2 ≤ x ≤ 5.
+<br>
+x ∈ ]2 ; 5[ signifie que 2 < x < 5.
 </div>
 
-<div class="exemple">
-<b>Exemple 2 :</b> -2 appartient-il à ]-2 ; 4] ?<br>
-Non, car la borne -2 est exclue.
+<h3>3. Exercices corrigés</h3>
+<div class="exercice">
+<strong>Exercice 1 :</strong> Dans quel ensemble se trouve le nombre -8 parmi ℕ, ℤ, 𝔻, ℚ et ℝ ?
+<button class="action" onclick="afficherCorrection('c1')">Voir la correction</button>
+<div class="correction" id="c1">
+-8 n'est pas naturel. C'est un entier relatif, donc il appartient à ℤ, 𝔻, ℚ et ℝ.
+</div>
 </div>
 
-<h3>4. À retenir</h3>
-<p>Les symboles ∈ et ∉ signifient respectivement « appartient à » et « n'appartient pas à ».</p>
+<div class="exercice">
+<strong>Exercice 2 :</strong> Traduire x ∈ [3 ; 7[ par une inégalité.
+<button class="action" onclick="afficherCorrection('c2')">Voir la correction</button>
+<div class="correction" id="c2">
+La réponse est : 3 ≤ x < 7.
+</div>
+</div>
+
+<h3>À retenir</h3>
+<p>Les ensembles de nombres permettent de classer les nombres. Les intervalles permettent de représenter des ensembles de réels compris entre des bornes.</p>
 </section>
 
 <!-- LEÇON 2 -->
 <section class="card contenu" id="lecon2">
 <h2>Leçon 2 : Calcul numérique et puissances</h2>
 
-<h3>1. Les priorités opératoires</h3>
-<p>Dans une expression numérique, on respecte l'ordre suivant :</p>
+<div class="objectif">
+<strong>Objectifs :</strong>
+<ul>
+<li>Effectuer correctement des opérations numériques.</li>
+<li>Utiliser les règles de priorité.</li>
+<li>Manipuler les puissances.</li>
+</ul>
+</div>
+
+<h3>1. Les opérations numériques</h3>
+<p>Les opérations fondamentales sont l'addition, la soustraction, la multiplication et la division.</p>
+
+<h3>2. Les priorités opératoires</h3>
+<p>Dans un calcul, on respecte généralement l'ordre suivant :</p>
 <ol>
 <li>Les calculs entre parenthèses.</li>
 <li>Les puissances.</li>
@@ -228,78 +283,115 @@ Non, car la borne -2 est exclue.
 </ol>
 
 <div class="exemple">
-<b>Exemple :</b><br>
-A = 5 + 3 × 2<br>
-On effectue d'abord la multiplication :<br>
-A = 5 + 6 = <b>11</b>.
+<strong>Exemple :</strong>
+<br>
+A = 3 + 2 × 5
+<br>
+On effectue d'abord la multiplication :
+<br>
+A = 3 + 10 = <strong>13</strong>.
 </div>
 
-<h3>2. Les puissances</h3>
-<p>Une puissance permet d'écrire plus simplement un produit de facteurs identiques.</p>
-<div class="formule">aⁿ = a × a × ... × a (n facteurs)</div>
+<h3>3. Les puissances</h3>
+<p>Une puissance permet d'écrire plus simplement une multiplication répétée.</p>
+<p>Par exemple : 2³ = 2 × 2 × 2 = 8.</p>
 
-<h3>3. Propriétés des puissances</h3>
+<p>Pour un nombre a non nul :</p>
 <ul>
 <li>aᵐ × aⁿ = aᵐ⁺ⁿ</li>
-<li>aᵐ / aⁿ = aᵐ⁻ⁿ, si a ≠ 0</li>
+<li>aᵐ ÷ aⁿ = aᵐ⁻ⁿ</li>
 <li>(aᵐ)ⁿ = aᵐˣⁿ</li>
-<li>a⁰ = 1, si a ≠ 0</li>
-<li>a⁻ⁿ = 1/aⁿ, si a ≠ 0</li>
+<li>a⁰ = 1</li>
+<li>a⁻ⁿ = 1/aⁿ</li>
 </ul>
 
 <div class="exemple">
-<b>Exemple :</b><br>
+<strong>Exemple :</strong>
+<br>
 2³ × 2² = 2⁵ = 32.
+<br>
+(3²)³ = 3⁶ = 729.
 </div>
 
-<h3>4. Racines carrées</h3>
-<p>La racine carrée d'un nombre positif a est le nombre positif dont le carré est égal à a.</p>
-<div class="formule">√25 = 5 car 5² = 25.</div>
+<h3>4. La notation scientifique</h3>
+<p>Un nombre en notation scientifique s'écrit sous la forme a × 10ⁿ, avec 1 ≤ |a| < 10 et n entier.</p>
 
-<p>Pour a et b positifs :</p>
-<ul>
-<li>√(a × b) = √a × √b</li>
-<li>√(a/b) = √a / √b, si b est positif et non nul.</li>
-</ul>
+<div class="exemple">
+<strong>Exemple :</strong>
+<br>
+45 000 = 4,5 × 10⁴.
+<br>
+0,0032 = 3,2 × 10⁻³.
+</div>
+
+<h3>5. Exercices corrigés</h3>
+<div class="exercice">
+<strong>Exercice 1 :</strong> Calculer A = 5 + 3 × 4.
+<button class="action" onclick="afficherCorrection('c3')">Voir la correction</button>
+<div class="correction" id="c3">
+A = 5 + 12 = <strong>17</strong>.
+</div>
+</div>
+
+<div class="exercice">
+<strong>Exercice 2 :</strong> Simplifier 10³ × 10².
+<button class="action" onclick="afficherCorrection('c4')">Voir la correction</button>
+<div class="correction" id="c4">
+10³ × 10² = 10⁵ = 100 000.
+</div>
+</div>
 </section>
 
 <!-- LEÇON 3 -->
 <section class="card contenu" id="lecon3">
 <h2>Leçon 3 : Calcul littéral et factorisation</h2>
 
-<h3>1. Définition</h3>
-<p>Le calcul littéral consiste à utiliser des lettres pour représenter des nombres.</p>
-
-<div class="exemple">
-Si x représente un nombre, alors 3x signifie 3 multiplié par x.
-Pour x = 4, on obtient 3x = 3 × 4 = 12.
+<div class="objectif">
+<strong>Objectifs :</strong>
+<ul>
+<li>Réduire une expression littérale.</li>
+<li>Développer une expression.</li>
+<li>Factoriser une expression.</li>
+</ul>
 </div>
 
+<h3>1. Le calcul littéral</h3>
+<p>Le calcul littéral consiste à utiliser des lettres pour représenter des nombres.</p>
+<p>Exemple : 3x + 2x = 5x.</p>
+
 <h3>2. Réduction d'une expression</h3>
-<p>Réduire une expression consiste à regrouper les termes semblables.</p>
+<p>Réduire consiste à regrouper les termes semblables.</p>
 
 <div class="exemple">
-A = 3x + 5x - 2<br>
-A = 8x - 2.
+<strong>Exemple :</strong>
+<br>
+A = 4x + 3 + 2x - 5
+<br>
+A = 4x + 2x + 3 - 5
+<br>
+<strong>A = 6x - 2</strong>.
 </div>
 
 <h3>3. Développement</h3>
 <p>Développer consiste à supprimer les parenthèses en utilisant la distributivité.</p>
-
-<div class="formule">k(a + b) = ka + kb</div>
+<p>a(b + c) = ab + ac.</p>
 
 <div class="exemple">
-A = 3(x + 4)<br>
+<strong>Exemple :</strong>
+<br>
+A = 3(x + 4)
+<br>
 A = 3x + 12.
 </div>
 
 <h3>4. Factorisation</h3>
 <p>Factoriser consiste à transformer une somme en produit.</p>
 
-<div class="formule">ka + kb = k(a + b)</div>
-
 <div class="exemple">
-A = 5x + 15<br>
+<strong>Exemple :</strong>
+<br>
+A = 5x + 15
+<br>
 A = 5(x + 3).
 </div>
 
@@ -311,7 +403,26 @@ A = 5(x + 3).
 </ul>
 
 <div class="exemple">
+<strong>Exemple :</strong>
+<br>
 (x + 3)² = x² + 6x + 9.
+</div>
+
+<h3>6. Exercices corrigés</h3>
+<div class="exercice">
+<strong>Exercice 1 :</strong> Développer A = 2(x + 5).
+<button class="action" onclick="afficherCorrection('c5')">Voir la correction</button>
+<div class="correction" id="c5">
+A = 2x + 10.
+</div>
+</div>
+
+<div class="exercice">
+<strong>Exercice 2 :</strong> Factoriser B = 4x + 12.
+<button class="action" onclick="afficherCorrection('c6')">Voir la correction</button>
+<div class="correction" id="c6">
+B = 4(x + 3).
+</div>
 </div>
 </section>
 
@@ -319,43 +430,72 @@ A = 5(x + 3).
 <section class="card contenu" id="lecon4">
 <h2>Leçon 4 : Équations et inéquations</h2>
 
-<h3>1. Les équations</h3>
+<div class="objectif">
+<strong>Objectifs :</strong>
+<ul>
+<li>Résoudre une équation du premier degré.</li>
+<li>Résoudre une inéquation simple.</li>
+<li>Présenter correctement un ensemble de solutions.</li>
+</ul>
+</div>
+
+<h3>1. Définition d'une équation</h3>
 <p>Une équation est une égalité contenant une ou plusieurs inconnues.</p>
 
-<p>Résoudre une équation consiste à trouver les valeurs de l'inconnue qui rendent l'égalité vraie.</p>
+<h3>2. Résolution d'une équation</h3>
+<p>Pour résoudre une équation, on cherche la valeur de l'inconnue qui rend l'égalité vraie.</p>
 
 <div class="exemple">
-<b>Exemple :</b><br>
-Résoudre 2x + 4 = 10.<br>
-2x = 10 - 4<br>
-2x = 6<br>
-x = 6/2<br>
-<b>x = 3</b>.
+<strong>Exemple :</strong>
+<br>
+Résoudre 2x + 4 = 10.
+<br>
+2x = 10 - 4
+<br>
+2x = 6
+<br>
+x = 6/2
+<br>
+<strong>x = 3</strong>.
+<br>
+Vérification : 2 × 3 + 4 = 10.
 </div>
-
-<h3>2. Vérification</h3>
-<p>On remplace x par 3 dans l'équation initiale :</p>
-<p>2 × 3 + 4 = 6 + 4 = 10.</p>
-<p>L'égalité est vraie. La solution est donc 3.</p>
 
 <h3>3. Les inéquations</h3>
-<p>Une inéquation est une inégalité qui contient une inconnue.</p>
-<p>Les symboles utilisés sont : inférieur à (&lt;), supérieur à (&gt;), inférieur ou égal à (≤), supérieur ou égal à (≥).</p>
+<p>Une inéquation est une inégalité contenant une inconnue.</p>
+<p>Les signes utilisés sont : <, >, ≤ et ≥.</p>
+
+<p><strong>Attention :</strong> lorsqu'on multiplie ou divise les deux membres d'une inéquation par un nombre négatif, on inverse le sens du signe.</p>
 
 <div class="exemple">
-<b>Exemple :</b><br>
-Résoudre 2x + 4 &lt; 10.<br>
-2x &lt; 6<br>
-x &lt; 3.
+<strong>Exemple :</strong>
+<br>
+Résoudre -2x > 6.
+<br>
+En divisant par -2, on inverse le signe :
+<br>
+<strong>x < -3</strong>.
 </div>
 
-<h3>4. Règle importante</h3>
-<p>Lorsqu'on multiplie ou divise les deux membres d'une inéquation par un nombre négatif, on inverse le sens de l'inégalité.</p>
+<h3>4. Exercices corrigés</h3>
+<div class="exercice">
+<strong>Exercice 1 :</strong> Résoudre 3x - 6 = 9.
+<button class="action" onclick="afficherCorrection('c7')">Voir la correction</button>
+<div class="correction" id="c7">
+3x = 9 + 6 = 15.
+<br>
+x = 15/3 = <strong>5</strong>.
+</div>
+</div>
 
-<div class="exemple">
--2x &lt; 6<br>
-En divisant par -2, on obtient :<br>
-<b>x &gt; -3</b>.
+<div class="exercice">
+<strong>Exercice 2 :</strong> Résoudre x + 4 ≤ 9.
+<button class="action" onclick="afficherCorrection('c8')">Voir la correction</button>
+<div class="correction" id="c8">
+x ≤ 9 - 4.
+<br>
+<strong>x ≤ 5</strong>.
+</div>
 </div>
 </section>
 
@@ -363,46 +503,69 @@ En divisant par -2, on obtient :<br>
 <section class="card contenu" id="lecon5">
 <h2>Leçon 5 : Généralités sur les fonctions</h2>
 
-<h3>1. Définition</h3>
-<p>Une fonction est un procédé qui associe à un nombre x un unique nombre appelé image de x.</p>
-
-<p>On note généralement f(x) l'image de x par la fonction f.</p>
-
-<h3>2. Image et antécédent</h3>
-<div class="exemple">
-Soit f(x) = 2x + 3.<br>
-L'image de 4 est :<br>
-f(4) = 2 × 4 + 3 = 11.<br>
-Donc 11 est l'image de 4.
+<div class="objectif">
+<strong>Objectifs :</strong>
+<ul>
+<li>Comprendre la notion de fonction.</li>
+<li>Calculer une image.</li>
+<li>Déterminer un antécédent.</li>
+</ul>
 </div>
 
-<p>Un antécédent de 11 est un nombre x tel que f(x) = 11.</p>
+<h3>1. Définition d'une fonction</h3>
+<p>Une fonction associe à chaque nombre x de son ensemble de définition un nombre unique appelé image de x.</p>
+<p>On note généralement : f(x).</p>
+
+<h3>2. Calcul d'une image</h3>
+<p>Pour calculer l'image d'un nombre, on remplace x par ce nombre dans l'expression de la fonction.</p>
 
 <div class="exemple">
-2x + 3 = 11<br>
-2x = 8<br>
-x = 4.<br>
-Donc 4 est un antécédent de 11.
+<strong>Exemple :</strong>
+<br>
+Soit f(x) = 2x + 3.
+<br>
+Calculons l'image de 4.
+<br>
+f(4) = 2 × 4 + 3
+<br>
+f(4) = 8 + 3 = <strong>11</strong>.
 </div>
 
-<h3>3. Fonction linéaire</h3>
-<p>Une fonction linéaire est de la forme :</p>
-<div class="formule">f(x) = ax</div>
-<p>Sa représentation graphique est une droite qui passe par l'origine du repère.</p>
-
-<h3>4. Fonction affine</h3>
-<p>Une fonction affine est de la forme :</p>
-<div class="formule">f(x) = ax + b</div>
-<p>Sa représentation graphique est une droite.</p>
-
-<h3>5. Tableau de valeurs</h3>
-<p>Pour construire un tableau de valeurs, on choisit des valeurs de x puis on calcule leurs images.</p>
+<h3>3. Déterminer un antécédent</h3>
+<p>Un antécédent de y est un nombre x tel que f(x) = y.</p>
 
 <div class="exemple">
-Pour f(x) = 2x + 1 :<br>
-f(0) = 1<br>
-f(1) = 3<br>
-f(2) = 5.
+<strong>Exemple :</strong>
+<br>
+Soit f(x) = 2x + 3.
+<br>
+Cherchons l'antécédent de 9.
+<br>
+2x + 3 = 9
+<br>
+2x = 6
+<br>
+<strong>x = 3</strong>.
+</div>
+
+<h3>4. Représentation graphique</h3>
+<p>Une fonction peut être représentée dans un repère par une courbe. Les axes permettent de lire les images et les antécédents.</p>
+
+<h3>5. Exercices corrigés</h3>
+<div class="exercice">
+<strong>Exercice 1 :</strong> Soit f(x) = 3x + 2. Calculer f(5).
+<button class="action" onclick="afficherCorrection('c9')">Voir la correction</button>
+<div class="correction" id="c9">
+f(5) = 3 × 5 + 2 = 15 + 2 = <strong>17</strong>.
+</div>
+</div>
+
+<div class="exercice">
+<strong>Exercice 2 :</strong> Soit f(x) = x + 4. Trouver l'antécédent de 10.
+<button class="action" onclick="afficherCorrection('c10')">Voir la correction</button>
+<div class="correction" id="c10">
+x + 4 = 10 donc x = <strong>6</strong>.
+</div>
 </div>
 </section>
 
@@ -410,82 +573,142 @@ f(2) = 5.
 <section class="card contenu" id="lecon6">
 <h2>Leçon 6 : Vecteurs et repérage</h2>
 
-<h3>1. Définition d'un vecteur</h3>
-<p>Un vecteur est caractérisé par :</p>
+<div class="objectif">
+<strong>Objectifs :</strong>
 <ul>
-<li>Sa direction.</li>
-<li>Son sens.</li>
-<li>Sa norme ou longueur.</li>
+<li>Connaître la notion de vecteur.</li>
+<li>Calculer les coordonnées d'un vecteur.</li>
+<li>Utiliser les coordonnées dans un repère.</li>
 </ul>
+</div>
+
+<h3>1. Définition d'un vecteur</h3>
+<p>Un vecteur est caractérisé par une direction, un sens et une longueur appelée norme.</p>
 
 <h3>2. Coordonnées d'un vecteur</h3>
 <p>Dans un repère, si A(xA ; yA) et B(xB ; yB), alors :</p>
-
-<div class="formule">AB = (xB - xA ; yB - yA)</div>
+<p><strong>AB⃗ = (xB - xA ; yB - yA)</strong>.</p>
 
 <div class="exemple">
-A(2 ; 1) et B(5 ; 4).<br>
-AB = (5 - 2 ; 4 - 1)<br>
-<b>AB = (3 ; 3)</b>.
+<strong>Exemple :</strong>
+<br>
+A(2 ; 1) et B(5 ; 4).
+<br>
+AB⃗ = (5 - 2 ; 4 - 1)
+<br>
+<strong>AB⃗ = (3 ; 3)</strong>.
 </div>
 
 <h3>3. Égalité de deux vecteurs</h3>
-<p>Deux vecteurs sont égaux lorsqu'ils ont la même direction, le même sens et la même longueur.</p>
+<p>Deux vecteurs sont égaux s'ils ont la même direction, le même sens et la même norme.</p>
 
 <h3>4. Norme d'un vecteur</h3>
-<p>Si un vecteur u a pour coordonnées (x ; y), sa norme est :</p>
-
-<div class="formule">||u|| = √(x² + y²)</div>
+<p>Pour un vecteur u⃗ = (x ; y), sa norme est :</p>
+<p><strong>||u⃗|| = √(x² + y²)</strong>.</p>
 
 <div class="exemple">
-Pour u = (3 ; 4) :<br>
-||u|| = √(3² + 4²)<br>
-= √(9 + 16)<br>
-= √25 = <b>5</b>.
+<strong>Exemple :</strong>
+<br>
+Pour u⃗ = (3 ; 4) :
+<br>
+||u⃗|| = √(3² + 4²)
+<br>
+= √25 = <strong>5</strong>.
 </div>
 
-<h3>5. Milieu d'un segment</h3>
-<p>Le milieu M de [AB] a pour coordonnées :</p>
-<div class="formule">M((xA + xB)/2 ; (yA + yB)/2)</div>
+<h3>5. Exercices corrigés</h3>
+<div class="exercice">
+<strong>Exercice 1 :</strong> A(1 ; 2) et B(4 ; 6). Calculer les coordonnées de AB⃗.
+<button class="action" onclick="afficherCorrection('c11')">Voir la correction</button>
+<div class="correction" id="c11">
+AB⃗ = (4 - 1 ; 6 - 2) = <strong>(3 ; 4)</strong>.
+</div>
+</div>
+
+<div class="exercice">
+<strong>Exercice 2 :</strong> Calculer la norme du vecteur (6 ; 8).
+<button class="action" onclick="afficherCorrection('c12')">Voir la correction</button>
+<div class="correction" id="c12">
+√(6² + 8²) = √100 = <strong>10</strong>.
+</div>
+</div>
 </section>
 
 <!-- LEÇON 7 -->
 <section class="card contenu" id="lecon7">
 <h2>Leçon 7 : Géométrie plane</h2>
 
-<h3>1. Le théorème de Pythagore</h3>
-<p>Dans un triangle rectangle, le carré de la longueur de l'hypoténuse est égal à la somme des carrés des longueurs des deux autres côtés.</p>
-
-<div class="formule">AB² + AC² = BC²</div>
-<p>Si BC est l'hypoténuse du triangle ABC rectangle en A.</p>
-
-<div class="exemple">
-AB = 3 cm et AC = 4 cm.<br>
-BC² = 3² + 4²<br>
-BC² = 9 + 16 = 25.<br>
-BC = <b>5 cm</b>.
+<div class="objectif">
+<strong>Objectifs :</strong>
+<ul>
+<li>Connaître les propriétés des figures planes.</li>
+<li>Utiliser le théorème de Pythagore.</li>
+<li>Utiliser le théorème de Thalès.</li>
+</ul>
 </div>
 
-<h3>2. La réciproque de Pythagore</h3>
-<p>Si, dans un triangle, le carré du plus grand côté est égal à la somme des carrés des deux autres côtés, alors ce triangle est rectangle.</p>
-
-<h3>3. Le théorème de Thalès</h3>
-<p>Lorsque deux droites sécantes sont coupées par deux droites parallèles, les longueurs correspondantes sont proportionnelles.</p>
-
-<div class="formule">AM/AB = AN/AC = MN/BC</div>
-
-<h3>4. La trigonométrie</h3>
-<p>Dans un triangle rectangle, pour un angle aigu α :</p>
+<h3>1. Les triangles</h3>
+<p>Un triangle est un polygone qui possède trois côtés et trois angles.</p>
 
 <ul>
-<li>sin(α) = côté opposé / hypoténuse</li>
-<li>cos(α) = côté adjacent / hypoténuse</li>
-<li>tan(α) = côté opposé / côté adjacent</li>
+<li>Triangle équilatéral : trois côtés égaux.</li>
+<li>Triangle isocèle : deux côtés égaux.</li>
+<li>Triangle rectangle : un angle droit.</li>
 </ul>
 
+<h3>2. Théorème de Pythagore</h3>
+<p>Dans un triangle rectangle, le carré de la longueur de l'hypoténuse est égal à la somme des carrés des longueurs des deux autres côtés.</p>
+
+<p><strong>BC² = AB² + AC²</strong> si le triangle ABC est rectangle en A.</p>
+
 <div class="exemple">
-Dans un triangle rectangle, si le côté opposé à l'angle mesure 3 cm et l'hypoténuse 5 cm :<br>
-sin(α) = 3/5 = 0,6.
+<strong>Exemple :</strong>
+<br>
+Un triangle rectangle possède deux côtés de longueurs 3 cm et 4 cm.
+<br>
+L'hypoténuse vaut :
+<br>
+c² = 3² + 4² = 9 + 16 = 25.
+<br>
+c = √25 = <strong>5 cm</strong>.
+</div>
+
+<h3>3. Théorème de Thalès</h3>
+<p>Dans un triangle ABC, si M appartient à [AB], N appartient à [AC] et si (MN) est parallèle à (BC), alors :</p>
+
+<p><strong>AM/AB = AN/AC = MN/BC</strong>.</p>
+
+<div class="exemple">
+<strong>Exemple :</strong>
+<br>
+Si AM = 2 cm, AB = 4 cm et AC = 6 cm, alors :
+<br>
+AN/6 = 2/4
+<br>
+AN = 6 × 2/4
+<br>
+<strong>AN = 3 cm</strong>.
+</div>
+
+<h3>4. Exercices corrigés</h3>
+<div class="exercice">
+<strong>Exercice 1 :</strong> Un triangle rectangle a pour côtés de l'angle droit 5 cm et 12 cm. Calculer son hypoténuse.
+<button class="action" onclick="afficherCorrection('c13')">Voir la correction</button>
+<div class="correction" id="c13">
+c² = 5² + 12² = 25 + 144 = 169.
+<br>
+c = √169 = <strong>13 cm</strong>.
+</div>
+</div>
+
+<div class="exercice">
+<strong>Exercice 2 :</strong> Dans une configuration de Thalès, AM/AB = 3/5 et AC = 10 cm. Calculer AN.
+<button class="action" onclick="afficherCorrection('c14')">Voir la correction</button>
+<div class="correction" id="c14">
+AN/10 = 3/5.
+<br>
+AN = 10 × 3/5 = <strong>6 cm</strong>.
+</div>
 </div>
 </section>
 
@@ -493,211 +716,94 @@ sin(α) = 3/5 = 0,6.
 <section class="card contenu" id="lecon8">
 <h2>Leçon 8 : Statistiques</h2>
 
+<div class="objectif">
+<strong>Objectifs :</strong>
+<ul>
+<li>Organiser une série statistique.</li>
+<li>Calculer une moyenne.</li>
+<li>Déterminer une médiane et une étendue.</li>
+</ul>
+</div>
+
 <h3>1. Définition</h3>
-<p>La statistique est une branche des mathématiques qui permet de recueillir, organiser, représenter et analyser des données.</p>
+<p>Les statistiques permettent de recueillir, organiser et analyser des données.</p>
 
-<h3>2. Effectif et fréquence</h3>
-<p>L'effectif d'une valeur est le nombre de fois où cette valeur apparaît.</p>
+<h3>2. La moyenne</h3>
+<p>La moyenne d'une série est égale à la somme des valeurs divisée par le nombre de valeurs.</p>
 
-<div class="formule">Fréquence = Effectif / Effectif total</div>
+<p><strong>Moyenne = Somme des valeurs / Effectif total</strong>.</p>
 
 <div class="exemple">
-Dans une classe de 40 élèves, 10 élèves ont obtenu 15/20.<br>
-La fréquence est :<br>
-10/40 = 0,25 = <b>25 %</b>.
+<strong>Exemple :</strong>
+<br>
+Notes : 10 ; 12 ; 14 ; 16.
+<br>
+Moyenne = (10 + 12 + 14 + 16)/4
+<br>
+= 52/4
+<br>
+<strong>= 13</strong>.
 </div>
 
-<h3>3. La moyenne</h3>
-<p>La moyenne d'une série statistique est la somme des valeurs divisée par leur nombre.</p>
-
-<div class="formule">Moyenne = Somme des valeurs / Effectif total</div>
+<h3>3. La médiane</h3>
+<p>La médiane partage une série ordonnée en deux groupes contenant chacun environ la moitié des valeurs.</p>
 
 <div class="exemple">
-Notes : 10 ; 12 ; 14 ; 16.<br>
-Moyenne = (10 + 12 + 14 + 16)/4<br>
-= 52/4 = <b>13</b>.
+<strong>Exemple :</strong>
+<br>
+Série : 5 ; 8 ; 10 ; 12 ; 15.
+<br>
+La valeur centrale est 10.
+<br>
+<strong>Médiane = 10</strong>.
 </div>
 
-<h3>4. La médiane</h3>
-<p>La médiane partage une série statistique ordonnée en deux groupes contenant chacun au moins la moitié des données.</p>
+<p>Si la série comporte un nombre pair de valeurs, la médiane est la moyenne des deux valeurs centrales.</p>
+
+<h3>4. L'étendue</h3>
+<p>L'étendue est la différence entre la plus grande et la plus petite valeur.</p>
 
 <div class="exemple">
-Série : 4 ; 6 ; 8 ; 10 ; 12.<br>
-La valeur centrale est 8.<br>
-La médiane est donc <b>8</b>.
+<strong>Exemple :</strong>
+<br>
+Série : 4 ; 6 ; 9 ; 12.
+<br>
+Étendue = 12 - 4 = <strong>8</strong>.
 </div>
 
-<h3>5. L'étendue</h3>
-<p>L'étendue est la différence entre la plus grande valeur et la plus petite valeur.</p>
+<h3>5. Exercices corrigés</h3>
+<div class="exercice">
+<strong>Exercice 1 :</strong> Calculer la moyenne des nombres 8 ; 10 ; 12 ; 14.
+<button class="action" onclick="afficherCorrection('c15')">Voir la correction</button>
+<div class="correction" id="c15">
+Moyenne = (8 + 10 + 12 + 14)/4 = 44/4 = <strong>11</strong>.
+</div>
+</div>
 
-<div class="formule">Étendue = Maximum - Minimum</div>
-
-<div class="exemple">
-Pour la série 4 ; 6 ; 8 ; 10 ; 12 :<br>
-Étendue = 12 - 4 = <b>8</b>.
+<div class="exercice">
+<strong>Exercice 2 :</strong> Calculer l'étendue de la série 3 ; 7 ; 9 ; 15 ; 18.
+<button class="action" onclick="afficherCorrection('c16')">Voir la correction</button>
+<div class="correction" id="c16">
+Étendue = 18 - 3 = <strong>15</strong>.
+</div>
 </div>
 </section>
 
-<div class="card" id="navigation" style="display:none">
-<button class="action" onclick="retourSommaire()">← Retour aux leçons</button>
-<button class="action" onclick="leconSuivante()">Leçon suivante →</button>
-</div>
-
 <!-- QUIZ -->
-<section class="card" id="quiz">
+<section class="card contenu" id="quiz">
 <h2>📝 Quiz de mathématiques</h2>
 <p>Teste tes connaissances avec ces 8 questions.</p>
 
 <form id="quizForm">
 
-<div class="question">
-<b>1. Quel ensemble contient les entiers naturels ?</b>
+<div class="quiz-question">
+<strong>1. Quel ensemble contient les nombres entiers naturels ?</strong>
 <label><input type="radio" name="q1" value="a"> ℕ</label>
-<label><input type="radio" name="q1" value="b"> ℝ</label>
-<label><input type="radio" name="q1" value="c"> ℚ</label>
+<label><input type="radio" name="q1" value="b"> ℤ</label>
+<label><input type="radio" name="q1" value="c"> ℝ</label>
 </div>
 
-<div class="question">
-<b>2. Combien vaut 2³ ?</b>
+<div class="quiz-question">
+<strong>2. Combien vaut 2³ ?</strong>
 <label><input type="radio" name="q2" value="a"> 6</label>
-<label><input type="radio" name="q2" value="b"> 8</label>
-<label><input type="radio" name="q2" value="c"> 9</label>
-</div>
-
-<div class="question">
-<b>3. Factoriser 3x + 6 donne :</b>
-<label><input type="radio" name="q3" value="a"> 3(x + 2)</label>
-<label><input type="radio" name="q3" value="b"> 3(x + 6)</label>
-<label><input type="radio" name="q3" value="c"> x(3 + 6)</label>
-</div>
-
-<div class="question">
-<b>4. La solution de 2x = 10 est :</b>
-<label><input type="radio" name="q4" value="a"> 10</label>
-<label><input type="radio" name="q4" value="b"> 2</label>
-<label><input type="radio" name="q4" value="c"> 5</label>
-</div>
-
-<div class="question">
-<b>5. Si f(x) = 2x + 1, combien vaut f(3) ?</b>
-<label><input type="radio" name="q5" value="a"> 5</label>
-<label><input type="radio" name="q5" value="b"> 7</label>
-<label><input type="radio" name="q5" value="c"> 6</label>
-</div>
-
-<div class="question">
-<b>6. Le vecteur AB a pour coordonnées :</b>
-<label><input type="radio" name="q6" value="a"> (xA - xB ; yA - yB)</label>
-<label><input type="radio" name="q6" value="b"> (xB - xA ; yB - yA)</label>
-<label><input type="radio" name="q6" value="c"> (xA + xB ; yA + yB)</label>
-</div>
-
-<div class="question">
-<b>7. Dans un triangle rectangle, le théorème de Pythagore utilise :</b>
-<label><input type="radio" name="q7" value="a"> Les carrés des côtés</label>
-<label><input type="radio" name="q7" value="b"> Les périmètres</label>
-<label><input type="radio" name="q7" value="c"> Les angles uniquement</label>
-</div>
-
-<div class="question">
-<b>8. Quelle est la moyenne de 10, 12 et 14 ?</b>
-<label><input type="radio" name="q8" value="a"> 10</label>
-<label><input type="radio" name="q8" value="b"> 11</label>
-<label><input type="radio" name="q8" value="c"> 12</label>
-</div>
-
-<button class="action" type="button" onclick="corrigerQuiz()">Corriger mes réponses</button>
-</form>
-
-<p id="resultat"></p>
-</section>
-
-</div>
-
-<footer>
-<p>© Mon Univers Éducatif 🇹🇬</p>
-<p>Apprendre aujourd'hui pour réussir demain.</p>
-</footer>
-
-<script>
-let leconActuelle = 0;
-
-function ouvrirLecon(numero){
- const lecons = document.querySelectorAll(".contenu");
-
- lecons.forEach(function(lecon){
-  lecon.classList.remove("active");
- });
-
- const cible = document.getElementById("lecon" + numero);
-
- if(!cible){
-  alert("Cette leçon est introuvable.");
-  return;
- }
-
- cible.classList.add("active");
- leconActuelle = numero;
-
- document.getElementById("sommaire").style.display = "none";
- document.getElementById("quiz").style.display = "none";
- document.getElementById("navigation").style.display = "block";
-
- window.scrollTo(0,0);
-}
-
-function retourSommaire(){
- document.querySelectorAll(".contenu").forEach(function(lecon){
-  lecon.classList.remove("active");
- });
-
- document.getElementById("sommaire").style.display = "block";
- document.getElementById("quiz").style.display = "block";
- document.getElementById("navigation").style.display = "none";
-
- leconActuelle = 0;
- window.scrollTo(0,0);
-}
-
-function leconSuivante(){
- if(leconActuelle < 8){
-  ouvrirLecon(leconActuelle + 1);
- }else{
-  retourSommaire();
- }
-}
-
-function corrigerQuiz(){
- const reponses = {
-  q1:"a",
-  q2:"b",
-  q3:"a",
-  q4:"c",
-  q5:"b",
-  q6:"b",
-  q7:"a",
-  q8:"c"
- };
-
- let score = 0;
-
- for(let i=1;i<=8;i++){
-  const choix = document.querySelector(
-   'input[name="q'+i+'"]:checked'
-  );
-
-  if(choix && choix.value === reponses["q"+i]){
-   score++;
-  }
- }
-
- document.getElementById("resultat").textContent =
- "Ton résultat : " + score + " / 8. " +
- (score >= 6 ? "Bravo, très bon travail !" :
- "Continue à réviser et réessaie !");
-}
-</script>
-
-</body>
- </html>
- 
+<label><input typ
