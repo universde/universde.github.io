@@ -4,104 +4,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Physique-Chimie | Mon Univers éducatif</title>
+<meta name="description" content="Cours complets de Physique-Chimie niveau Seconde au Togo : leçons, exemples corrigés et exercices interactifs.">
+<title>Physique-Chimie Seconde | Mon Univers éducatif</title>
+
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:#f1f5fb;
- color:#25334a;
- line-height:1.7;
+* {
+  box-sizing: border-box;
 }
-header{
- background:linear-gradient(120deg,#103c75,#168bd0);
- color:white;
- text-align:center;
- padding:30px 15px;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f1f5fb;
+  color: #25334a;
+  line-height: 1.7;
 }
-header h1{margin:0}
-nav{
- background:#092d55;
- padding:13px;
- text-align:center;
+
+header {
+  background: linear-gradient(120deg, #103c75, #168bd0);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
 }
-nav a{
- color:white;
- text-decoration:none;
- margin:0 10px;
- font-weight:bold;
+
+header h1 {
+  margin: 0;
 }
-.conteneur {​
- largeur maximale : 900 px ;
- marge : 22 px  auto ;
- marge intérieure : 15 px ;
+
+nav {
+  background: #092d55;
+  padding: 13px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
-. carte {
- fond : blanc ;
- marge intérieure : 22 px ;
- bordure-radius : 15 px ;
- marge inférieure : 18 px ;
- box-shadow : 0  3 px  12 px #0000000c;
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
 }
-h2 { couleur :#1267a7 }
-h3 { couleur :#185b91 }
-tableau {
- largeur : 100 % ;
- effondrement de la frontière : effondrement ;
- marge : 12 px  0 ;
+
+nav a:hover {
+  text-decoration: underline;
 }
-td , th {
- bordure : 1 px  solide #dce5ef;
- marge intérieure : 9 px ;
- text-align : gauche ;
+
+.container {
+  max-width: 950px;
+  margin: 22px auto;
+  padding: 15px;
 }
-th { arrière-plan :#e6f2ff }
-. formule {
- arrière-plan :#eaf4ff;
- marge intérieure : 12 px ;
- bordure gauche : 4 px  solide #1683d2;
- bordure-radius : 6 px ;
- marge : 12 px  0 ;
- police-weight : gras ;
+
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 15px;
+  margin-bottom: 18px;
+  box-shadow: 0 3px 12px #0000000c;
 }
-bouton {
- arrière-plan :#087bc1;
- couleur : blanc ;
- bordure : 0 ;
- bordure-radius : 8 px ;
- marge intérieure : 12 px  18 px ;
- taille de police : 15 px ;
- curseur : pointeur ;
+
+h2 {
+  color: #1267a7;
 }
-. question {
- marge intérieure : 12 px  0 ;
- bordure inférieure : 1 px  solide #ddd;
+
+h3 {
+  color: #185b91;
+  margin-top: 24px;
 }
-. résultat {
- police-weight : gras ;
- marge supérieure : 15 px ;
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0;
 }
-pied de page {
- arrière-plan :#092d55;
- couleur : blanc ;
- alignement du texte : centre ;
- marge intérieure : 20 px ;
- marge supérieure : 30 px ;
+
+td, th {
+  border: 1px solid #dce5ef;
+  padding: 9px;
+  text-align: left;
 }
-@media ( max-width : 550 px ) {
- tableau { taille de police : 13 px }
- nav a{display:inline-block;margin:5px}
+
+th {
+  background: #e6f2ff;
+}
+
+.formule {
+  background: #eaf4ff;
+  padding: 12px;
+  border-left: 4px solid #1683d2;
+  border-radius: 6px;
+  margin: 12px 0;
+  font-weight: bold;
+}
+
+.question {
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.question label {
+  display: inline-block;
+  margin: 4px 0;
+}
+
+button {
+  background: #087bc1;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+button:hover {
+  background: #075c91;
+}
+
+.resultat {
+  font-weight: bold;
+  margin-top: 15px;
+  padding: 12px;
+  background: #eaf4ff;
+  border-radius: 8px;
+}
+
+.illustration-cours {
+  text-align: center;
+}
+
+.illustration-cours img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 12px;
+}
+
+footer {
+  background: #092d55;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+@media (max-width: 550px) {
+  table {
+    font-size: 13px;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .card {
+    padding: 16px;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header>
 <h1>📚 Mon Univers éducatif 🇹🇬</h1>
 <p>Le savoir au service de la réussite scolaire au Togo</p>
 <h2 style="color:white">Physique-Chimie</h2>
-<p>Niveau Seconde</p>
+<p>Niveau Seconde C et D</p>
 </header>
 
 <nav>
@@ -118,42 +191,48 @@ pied de page {
 Retrouve ici des cours complets, des exemples
 corrigés et des exercices pour améliorer tes connaissances.
 </p>
-<p><b>Niveau :</b> Seconde</p>
+<p><b>Niveau :</b> Seconde C et D</p>
+<p><b>Conseil :</b> Lis chaque leçon, étudie les exemples
+et réalise les exercices avant de consulter les corrections.</p>
 </section>
 
-<section class="illustration-cours">
-  <h2>🔬 Illustration du cours</h2>
-  <img
-    src="illustration-physique-seconde.png"
-    alt="Illustration des instruments et grandeurs physiques"
-    style="width:100%; max-width:900px; height:auto; display:block; margin:auto; border-radius:12px;"
-  >
+<section class="card illustration-cours">
+<h2>🔬 Illustration du cours</h2>
+<img
+src="illustration-physique-seconde.png"
+alt="Instruments et grandeurs physiques"
+onerror="this.style.display='none';"
+>
 </section>
- 
-<section class="card">
+
+<!-- LEÇON 1 -->
+
+<section class="card" id="lecon1">
+
 <h2>Leçon 1 : Grandeurs physiques et mesures</h2>
-<p><b>Objectifs :</b></p>
+
+<h3>Objectifs</h3>
 <ul>
 <li>Définir une grandeur physique.</li>
 <li>Connaître les unités du système international.</li>
 <li>Identifier les instruments de mesure.</li>
 <li>Effectuer des conversions.</li>
 </ul>
-</section>
 
-<section class="card">
-<h2>I. Définition d'une grandeur physique</h2>
+<h3>I. Définition d'une grandeur physique</h3>
+
 <p>
 Une grandeur physique est une propriété d'un corps
 ou d'un phénomène que l'on peut mesurer et exprimer
 avec une valeur numérique et une unité.
 </p>
-<div class="formule">Exemple : L = 5 m</div>
-<p>La longueur vaut cinq mètres.</p>
-</section>
 
-<section class="card">
-<h2>II. Les grandeurs fondamentales</h2>
+<div class="formule">Exemple : L = 5 m</div>
+
+<p>La longueur vaut cinq mètres.</p>
+
+<h3>II. Les grandeurs fondamentales</h3>
+
 <table>
 <tr><th>Grandeur</th><th>Unité SI</th><th>Symbole</th></tr>
 <tr><td>Longueur</td><td>Mètre</td><td>m</td></tr>
@@ -162,21 +241,19 @@ avec une valeur numérique et une unité.
 <tr><td>Température</td><td>Kelvin</td><td>K</td></tr>
 <tr><td>Intensité électrique</td><td>Ampère</td><td>A</td></tr>
 </table>
-</section>
 
-<section class="card">
-<h2>III. Les grandeurs dérivées</h2>
+<h3>III. Les grandeurs dérivées</h3>
+
 <table>
 <tr><th>Grandeur</th><th>Formule</th><th>Unité SI</th></tr>
 <tr><td>Surface</td><td>L × l</td><td>m²</td></tr>
 <tr><td>Volume</td><td>L × l × h</td><td>m³</td></tr>
-<tr><td>Vitesse</td><td>d / t</td><td>m/s</td></tr>
+<tr><td>Vitesse moyenne</td><td>d / Δt</td><td>m/s</td></tr>
 <tr><td>Masse volumique</td><td>m / V</td><td>kg/m³</td></tr>
 </table>
-</section>
 
-<section class="card">
-<h2>IV. Les instruments de mesure</h2>
+<h3>IV. Les instruments de mesure</h3>
+
 <ul>
 <li>Règle graduée : mesure les longueurs.</li>
 <li>Balance : mesure les masses.</li>
@@ -184,56 +261,277 @@ avec une valeur numérique et une unité.
 <li>Thermomètre : mesure la température.</li>
 <li>Chronomètre : mesure les durées.</li>
 </ul>
-</section>
 
-<section class="card">
-<h2>V. Les conversions d'unités</h2>
-<h3>Longueurs</h3>
+<h3>V. Les conversions d'unités</h3>
+
+<p><b>Longueurs</b></p>
 <p>1 km = 1 000 m</p>
 <p>1 m = 100 cm</p>
 <p>1 cm = 10 mm</p>
+
 <div class="formule">3,5 km = 3 500 m</div>
 
-<h3>Durées</h3>
+<p><b>Durées</b></p>
 <p>1 h = 60 min = 3 600 s</p>
+
 <div class="formule">2 h 15 min = 8 100 s</div>
 
-<h3>Volumes</h3>
+<p><b>Volumes</b></p>
 <p>1 m³ = 1 000 L</p>
 <p>1 L = 1 000 mL</p>
 <p>1 L = 1 dm³</p>
-</section>
 
-<section class="card">
-<h2>VI. Exemples corrigés</h2>
-<h3>Exemple 1 : Calcul de la vitesse</h3>
+<h3>VI. Exemples corrigés</h3>
+
+<p><b>Exemple 1 : Calcul de la vitesse moyenne</b></p>
+
 <p>Un élève parcourt 100 m en 20 secondes.</p>
+
 <div class="formule">
-v = d / t = 100 / 20 = 5 m/s
+v = d / Δt<br>
+v = 100 / 20<br>
+v = 5 m/s
 </div>
 
-<h3>Exemple 2 : Masse volumique</h3>
+<p><b>Exemple 2 : Masse volumique</b></p>
+
 <p>Un objet possède une masse de 200 g et un volume de 100 cm³.</p>
-<div class="formule">
-ρ = m / V = 200 / 100 = 2 g/cm³
-</div>
-</section>
 
-<section class="card">
-<h2>VII. Résumé à retenir</h2>
+<div class="formule">
+ρ = m / V<br>
+ρ = 200 / 100<br>
+ρ = 2 g/cm³
+</div>
+
+<h3>VII. Résumé à retenir</h3>
+
 <ul>
 <li>Une grandeur physique est mesurable.</li>
 <li>Une mesure comporte une valeur et une unité.</li>
 <li>Le mètre est l'unité SI de longueur.</li>
 <li>Le kilogramme est l'unité SI de masse.</li>
 <li>La seconde est l'unité SI de temps.</li>
-<li>La vitesse est égale à la distance divisée par la durée.</li>
+<li>La vitesse moyenne est la distance divisée par la durée.</li>
 </ul>
+
 </section>
 
-<section class="card">
-<h2>VIII. Exercices interactifs</h2>
-<p>Choisis la bonne réponse.</p>
+<!-- LEÇON 2 -->
+
+<section class="card" id="lecon2">
+
+<h2>Leçon 2 : Le courant électrique continu</h2>
+
+<h3>Objectifs pédagogiques</h3>
+
+<ul>
+<li>Définir le courant électrique.</li>
+<li>Identifier le sens conventionnel du courant.</li>
+<li>Définir l'intensité du courant électrique.</li>
+<li>Utiliser un ampèremètre.</li>
+<li>Appliquer les lois du courant électrique.</li>
+</ul>
+
+<h3>I. Notion de courant électrique</h3>
+
+<p>
+Le courant électrique correspond à un déplacement ordonné
+de porteurs de charges électriques.
+</p>
+
+<p>
+Dans les métaux, les porteurs de charges mobiles sont
+principalement les électrons. Dans les solutions
+électrolytiques, le transport des charges est assuré
+par les ions.
+</p>
+
+<p>
+Pour qu'un courant permanent circule dans un circuit,
+il faut notamment un circuit fermé et un générateur.
+</p>
+
+<h3>II. Sens du courant électrique</h3>
+
+<p>
+Par convention, à l'extérieur du générateur, le courant
+circule de la borne positive (+) vers la borne négative (-).
+</p>
+
+<p>
+Dans un conducteur métallique, les électrons se déplacent
+en sens opposé au sens conventionnel du courant.
+</p>
+
+<h3>III. L'intensité du courant électrique</h3>
+
+<p>
+L'intensité mesure la quantité de charge électrique
+traversant une section du conducteur pendant une durée donnée.
+</p>
+
+<div class="formule">
+I = |ΔQ| / Δt
+</div>
+
+<ul>
+<li>I : intensité en ampères (A).</li>
+<li>ΔQ : valeur de la charge transportée en coulombs (C).</li>
+<li>Δt : durée en secondes (s).</li>
+</ul>
+
+<p>
+L'unité internationale de l'intensité est l'ampère (A).
+</p>
+
+<h3>IV. Mesure de l'intensité</h3>
+
+<p>
+On utilise un ampèremètre pour mesurer l'intensité
+du courant électrique.
+</p>
+
+<ul>
+<li>L'ampèremètre se branche en série dans le circuit.</li>
+<li>On respecte les bornes et les polarités de l'appareil.</li>
+<li>On choisit un calibre adapté à la mesure.</li>
+<li>On ne branche jamais directement un ampèremètre aux bornes d'un générateur.</li>
+</ul>
+
+<h3>V. Les lois du courant électrique</h3>
+
+<p><b>1. Dans un circuit en série</b></p>
+
+<p>
+L'intensité du courant est la même en tous les points
+d'un circuit comportant uniquement des dipôles en série.
+</p>
+
+<div class="formule">
+I = I₁ = I₂ = I₃
+</div>
+
+<p><b>2. Dans un circuit avec dérivations</b></p>
+
+<p>
+La somme des intensités des courants qui arrivent à un nœud
+est égale à la somme des intensités qui en repartent.
+</p>
+
+<div class="formule">
+Somme des courants entrants = Somme des courants sortants
+</div>
+
+<p>Dans le cas de deux courants entrants et d'un courant sortant :</p>
+
+<div class="formule">
+I = I₁ + I₂
+</div>
+
+<h3>VI. Exemples corrigés</h3>
+
+<p><b>Exemple 1 : Calcul d'une intensité</b></p>
+
+<p>
+Une charge électrique de 120 C traverse une section
+de conducteur pendant 30 secondes. Calculer l'intensité.
+</p>
+
+<p><b>Données :</b> Q = 120 C ; Δt = 30 s.</p>
+
+<p><b>Formule :</b></p>
+
+<div class="formule">
+I = Q / Δt<br>
+I = 120 / 30<br>
+I = 4 A
+</div>
+
+<p><b>Conclusion :</b> l'intensité vaut 4 ampères.</p>
+
+<p><b>Exemple 2 : Circuit en série</b></p>
+
+<p>
+Un ampèremètre indique 2 A dans un circuit en série.
+Quelle est l'intensité dans les autres parties du circuit ?
+</p>
+
+<div class="formule">
+I₁ = I₂ = I₃ = 2 A
+</div>
+
+<p><b>Conclusion :</b> l'intensité est de 2 A partout.</p>
+
+<p><b>Exemple 3 : Circuit avec dérivations</b></p>
+
+<p>
+Deux courants de 3 A et 2 A arrivent à un nœud.
+Calculer le courant qui repart.
+</p>
+
+<div class="formule">
+I = 3 + 2 = 5 A
+</div>
+
+<p><b>Conclusion :</b> le courant qui repart vaut 5 A.</p>
+
+<h3>VII. Exercices d'application corrigés</h3>
+
+<p><b>Exercice 1</b></p>
+
+<p>
+Une charge de 240 C traverse un conducteur pendant 60 s.
+Calculer l'intensité du courant.
+</p>
+
+<div class="formule">
+I = Q / Δt<br>
+I = 240 / 60<br>
+I = 4 A
+</div>
+
+<p><b>Exercice 2</b></p>
+
+<p>
+Dans un circuit en série, un ampèremètre indique 1,5 A.
+Quelle est l'intensité dans les autres dipôles ?
+</p>
+
+<div class="formule">
+I₁ = I₂ = 1,5 A
+</div>
+
+<p><b>Exercice 3</b></p>
+
+<p>
+Deux courants de 4 A et 3 A arrivent à un nœud.
+Calculer le courant qui repart.
+</p>
+
+<div class="formule">
+I = 4 + 3 = 7 A
+</div>
+
+<h3>VIII. Résumé à retenir</h3>
+
+<ul>
+<li>Le courant électrique est un déplacement ordonné de charges.</li>
+<li>Son sens conventionnel va du positif vers le négatif à l'extérieur du générateur.</li>
+<li>L'intensité se mesure avec un ampèremètre.</li>
+<li>L'ampèremètre se branche en série.</li>
+<li>En série, l'intensité est la même partout.</li>
+<li>Au niveau d'un nœud, la somme des courants entrants égale celle des courants sortants.</li>
+</ul>
+
+</section>
+
+<!-- QUESTIONNAIRE GENERAL -->
+
+<section class="card" id="exercices">
+
+<h2>📝 Exercices interactifs : Leçons 1 et 2</h2>
+
+<p>Choisis une seule réponse pour chaque question.</p>
 
 <div class="question">
 <p>1. Quelle est l'unité SI de longueur ?</p>
@@ -257,8 +555,7 @@ v = d / t = 100 / 20 = 5 m/s
 </div>
 
 <div class="question">
-<p>4. Un mobile parcourt 60 m en 10 s.
-Quelle est sa vitesse ?</p>
+<p>4. Un mobile parcourt 60 m en 10 s. Quelle est sa vitesse moyenne ?</p>
 <label><input type="radio" name="q4" value="a"> 6 m/s</label><br>
 <label><input type="radio" name="q4" value="b"> 10 m/s</label><br>
 <label><input type="radio" name="q4" value="c"> 600 m/s</label>
@@ -271,8 +568,45 @@ Quelle est sa vitesse ?</p>
 <label><input type="radio" name="q5" value="c"> Seconde</label>
 </div>
 
+<div class="question">
+<p>6. Quelle est l'unité de l'intensité électrique ?</p>
+<label><input type="radio" name="q6" value="a"> Le volt</label><br>
+<label><input type="radio" name="q6" value="b"> L'ampère</label><br>
+<label><input type="radio" name="q6" value="c"> Le watt</label>
+</div>
+
+<div class="question">
+<p>7. Quel appareil mesure l'intensité ?</p>
+<label><input type="radio" name="q7" value="a"> Le voltmètre</label><br>
+<label><input type="radio" name="q7" value="b"> La balance</label><br>
+<label><input type="radio" name="q7" value="c"> L'ampèremètre</label>
+</div>
+
+<div class="question">
+<p>8. Comment branche-t-on un ampèremètre ?</p>
+<label><input type="radio" name="q8" value="a"> En série</label><br>
+<label><input type="radio" name="q8" value="b"> En dérivation</label><br>
+<label><input type="radio" name="q8" value="c"> Sans connexion</label>
+</div>
+
+<div class="question">
+<p>9. Une charge de 100 C traverse un conducteur en 20 s. Quelle est l'intensité ?</p>
+<label><input type="radio" name="q9" value="a"> 2 A</label><br>
+<label><input type="radio" name="q9" value="b"> 5 A</label><br>
+<label><input type="radio" name="q9" value="c"> 20 A</label>
+</div>
+
+<div class="question">
+<p>10. Dans un circuit en série, l'intensité est :</p>
+<label><input type="radio" name="q10" value="a"> Différente partout</label><br>
+<label><input type="radio" name="q10" value="b"> Toujours nulle</label><br>
+<label><input type="radio" name="q10" value="c"> La même partout</label>
+</div>
+
 <button onclick="corriger()">Corriger mes réponses</button>
-<div id="resultat" class="resultat"></div>
+
+<div id="resultat" class="resultat" aria-live="polite"></div>
+
 </section>
 
 </main>
@@ -283,31 +617,54 @@ Quelle est sa vitesse ?</p>
 </footer>
 
 <script>
-function corriger(){
- const reponses={
- q1:"b",
- q2:"b",
- q3:"a",
- q4:"a",
- q5:"c"
- };
- let score=0;
- for(let q in reponses){
-  const choix=document.querySelector(
-   'input[name="'+q+'"]:checked'
-  );
-  if(choix && choix.value===reponses[q]){
-   score++;
+function corriger() {
+
+  const reponses = {
+    q1: "b",
+    q2: "b",
+    q3: "a",
+    q4: "a",
+    q5: "c",
+    q6: "b",
+    q7: "c",
+    q8: "a",
+    q9: "b",
+    q10: "c"
+  };
+
+  let score = 0;
+  let repondues = 0;
+
+  for (let q in reponses) {
+
+    const choix = document.querySelector(
+      'input[name="' + q + '"]:checked'
+    );
+
+    if (choix) {
+      repondues++;
+
+      if (choix.value === reponses[q]) {
+        score++;
+      }
+    }
   }
- }
- document.getElementById("resultat").innerHTML=
- "Ton résultat : "+score+"/5"+
- "<br>"+(score===5?
- "Excellent travail !":
- "Continue à réviser et à progresser !");
+
+  const resultat = document.getElementById("resultat");
+
+  resultat.innerHTML =
+    "Réponses données : " + repondues + "/10" +
+    "<br>Ton résultat : " + score + "/10" +
+    "<br>" + (
+      repondues < 10
+        ? "Tu peux répondre aux questions restantes."
+        : score === 10
+          ? "Excellent travail ! Félicitations !"
+          : "Continue à réviser pour progresser."
+    );
 }
 </script>
 
 </body>
-  </html>
-  
+ </html>
+ 
