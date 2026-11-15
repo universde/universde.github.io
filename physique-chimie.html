@@ -3,166 +3,266 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Cours complets de Physique-Chimie niveau Seconde au Togo : leçons, exemples corrigés et exercices interactifs.">
-<title>Physique-Chimie Seconde | Mon Univers éducatif</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Physique-Chimie Seconde | Mon Univers Éducatif</title>
 
 <style>
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background: #f1f5fb;
-  color: #25334a;
+  background: #f5f6f8;
+  color: #202124;
   line-height: 1.7;
 }
 
 header {
-  background: linear-gradient(120deg, #103c75, #168bd0);
+  background: #171717;
   color: white;
+  padding: 27px 15px;
   text-align: center;
-  padding: 30px 15px;
 }
 
 header h1 {
-  margin: 0;
+  font-size: 25px;
+}
+
+header p {
+  color: #ddd;
+  margin-top: 5px;
 }
 
 nav {
-  background: #092d55;
+  background: white;
   padding: 13px;
   text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  border-bottom: 1px solid #ddd;
 }
 
 nav a {
-  color: white;
+  display: inline-block;
+  margin: 5px 9px;
   text-decoration: none;
-  margin: 0 10px;
+  color: #222;
   font-weight: bold;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: #777;
 }
 
 .container {
-  max-width: 950px;
-  margin: 22px auto;
+  max-width: 1050px;
+  margin: 25px auto;
   padding: 15px;
 }
 
-.card {
+.intro, .lesson, .quiz, .catalogue {
   background: white;
-  padding: 22px;
-  border-radius: 15px;
-  margin-bottom: 18px;
-  box-shadow: 0 3px 12px #0000000c;
+  padding: 23px;
+  border-radius: 12px;
+  margin-bottom: 23px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05);
 }
 
 h2 {
-  color: #1267a7;
+  font-size: 23px;
+  border-bottom: 2px solid #222;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
 }
 
 h3 {
-  color: #185b91;
-  margin-top: 24px;
+  margin: 20px 0 10px;
+}
+
+p {
+  margin-bottom: 12px;
+}
+
+ul, ol {
+  padding-left: 24px;
+  margin-bottom: 15px;
+}
+
+.catalogue {
+  display: block;
+}
+
+.lesson-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 13px;
+}
+
+.lesson-button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: #f5f5f5;
+  color: #202124;
+  border: 1px solid #ddd;
+  padding: 17px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: .2s;
+  margin: 0;
+}
+
+.lesson-button:hover {
+  background: #e8e8e8;
+  border-color: #777;
+}
+
+.lesson-button strong {
+  display: block;
+  font-size: 16px;
+}
+
+.lesson-button small {
+  display: block;
+  color: #666;
+  margin-top: 5px;
+}
+
+.lesson {
+  display: none;
+}
+
+.lesson.active {
+  display: block;
+}
+
+.lesson-number {
+  color: #666;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.formula {
+  background: #f0f0f0;
+  padding: 14px;
+  border-left: 4px solid #222;
+  margin: 15px 0;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.example {
+  background: #f8f8f8;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.exercise, .summary {
+  background: #f2f2f2;
+  padding: 16px;
+  border-radius: 8px;
+  margin: 15px 0;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 12px 0;
+  margin: 15px 0;
 }
 
-td, th {
-  border: 1px solid #dce5ef;
-  padding: 9px;
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
   text-align: left;
 }
 
 th {
-  background: #e6f2ff;
+  background: #eaeaea;
 }
 
-.formule {
-  background: #eaf4ff;
-  padding: 12px;
-  border-left: 4px solid #1683d2;
+.lesson-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
+.action-button {
+  background: #171717;
+  color: white;
+  padding: 11px 17px;
+  border: none;
   border-radius: 6px;
-  margin: 12px 0;
-  font-weight: bold;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 0;
+}
+
+.action-button:hover {
+  background: #444;
 }
 
 .question {
-  padding: 12px 0;
   border-bottom: 1px solid #ddd;
+  padding: 15px 0;
 }
 
 .question label {
-  display: inline-block;
-  margin: 4px 0;
-}
-
-button {
-  background: #087bc1;
-  color: white;
-  border: 0;
-  border-radius: 8px;
-  padding: 12px 18px;
-  font-size: 15px;
+  display: block;
+  margin: 7px 0;
   cursor: pointer;
-  margin-top: 15px;
 }
 
-button:hover {
-  background: #075c91;
+.question input {
+  margin-right: 7px;
 }
 
-.resultat {
-  font-weight: bold;
-  margin-top: 15px;
-  padding: 12px;
-  background: #eaf4ff;
+#resultat {
+  margin-top: 18px;
+  padding: 15px;
+  background: #eee;
   border-radius: 8px;
-}
-
-.illustration-cours {
-  text-align: center;
-}
-
-.illustration-cours img {
-  width: 100%;
-  max-width: 900px;
-  height: auto;
-  border-radius: 12px;
+  font-weight: bold;
 }
 
 footer {
-  background: #092d55;
+  background: #171717;
   color: white;
   text-align: center;
-  padding: 20px;
-  margin-top: 30px;
+  padding: 25px;
+  margin-top: 35px;
 }
 
-@media (max-width: 550px) {
+@media(max-width:600px) {
+  header h1 {
+    font-size: 21px;
+  }
+
+  .lesson-list {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .intro, .lesson, .quiz, .catalogue {
+    padding: 16px;
+  }
+
   table {
     font-size: 13px;
   }
 
-  nav a {
-    display: inline-block;
-    margin: 5px;
-  }
-
-  .card {
-    padding: 16px;
+  th, td {
+    padding: 7px;
   }
 }
 </style>
@@ -171,47 +271,93 @@ footer {
 <body>
 
 <header>
-<h1>📚 Mon Univers éducatif 🇹🇬</h1>
-<p>Le savoir au service de la réussite scolaire au Togo</p>
-<h2 style="color:white">Physique-Chimie</h2>
-<p>Niveau Seconde C et D</p>
+  <h1>🇹🇬 MON UNIVERS ÉDUCATIF</h1>
+  <p>Le savoir au service de la réussite scolaire au Togo</p>
+  <p>Physique-Chimie | Seconde C et D</p>
 </header>
 
 <nav>
-<a href="index.html">Accueil</a>
-<a href="index.html#epreuves">Épreuves</a>
-<a href="cours.html">Bibliothèque</a>
+  <a href="index.html">Accueil</a>
+  <a href="cours.html">Tous les cours</a>
+  <a href="index.html#matieres">Matières</a>
+  <a href="index.html#epreuves">Épreuves</a>
 </nav>
 
 <main class="container">
 
-<section class="card">
-<h2>Bienvenue en Physique-Chimie</h2>
-<p>
-Retrouve ici des cours complets, des exemples
-corrigés et des exercices pour améliorer tes connaissances.
-</p>
-<p><b>Niveau :</b> Seconde C et D</p>
-<p><b>Conseil :</b> Lis chaque leçon, étudie les exemples
-et réalise les exercices avant de consulter les corrections.</p>
+<section class="intro">
+  <h2>Physique-Chimie en Seconde</h2>
+
+  <p>
+    Bienvenue dans votre espace de Physique-Chimie.
+    Retrouvez ici vos cours, les explications,
+    les formules importantes et les exercices corrigés.
+  </p>
+
+  <p>
+    Choisissez une leçon pour commencer votre apprentissage.
+  </p>
 </section>
 
-<section class="card illustration-cours">
-<h2>🔬 Illustration du cours</h2>
-<img
-src="illustration-physique-seconde.png"
-alt="Instruments et grandeurs physiques"
-onerror="this.style.display='none';"
->
+<!-- SOMMAIRE DES 8 LEÇONS -->
+
+<section class="catalogue" id="sommaire">
+
+<h2>📚 Nos 8 leçons de Physique-Chimie</h2>
+
+<div class="lesson-list">
+
+<button class="lesson-button" onclick="ouvrirLecon(1)">
+<strong>Leçon 1 : Grandeurs physiques et mesures</strong>
+<small>Mesures, unités et conversions</small>
+</button>
+
+<button class="lesson-button" onclick="ouvrirLecon(2)">
+<strong>Leçon 2 : Le courant électrique continu</strong>
+<small>Intensité et lois électriques</small>
+</button>
+
+<button class="lesson-button" onclick="ouvrirLecon(3)">
+<strong>Leçon 3 : La tension électrique</strong>
+<small>Voltmètre et lois de tension</small>
+</button>
+
+<button class="lesson-button" onclick="ouvrirLecon(4)">
+<strong>Leçon 4 : Les dipôles passifs</strong>
+<small>Résistance électrique et loi d'Ohm</small>
+</button>
+
+<button class="lesson-button" onclick="ouvrirLecon(5)">
+<strong>Leçon 5 : Les générateurs électriques</strong>
+<small>Caractéristiques et point de fonctionnement</small>
+</button>
+
+<button class="lesson-button" onclick="ouvrirLecon(6)">
+<strong>Leçon 6 : Structure de l'atome</strong>
+<small>Protons, neutrons et électrons</small>
+</button>
+
+<button class="lesson-button" onclick="ouvrirLecon(7)">
+<strong>Leçon 7 : Ions et molécules</strong>
+<small>Cations, anions et molécules</small>
+</button>
+
+<button class="lesson-button" onclick="ouvrirLecon(8)">
+<strong>Leçon 8 : La mole et les grandeurs molaires</strong>
+<small>Quantité de matière et masse molaire</small>
+</button>
+
+</div>
 </section>
+
 
 <!-- LEÇON 1 -->
 
-<section class="card" id="lecon1">
-
+<section class="lesson" id="lecon1">
+<span class="lesson-number">Physique-Chimie | Seconde</span>
 <h2>Leçon 1 : Grandeurs physiques et mesures</h2>
 
-<h3>Objectifs</h3>
+<h3>1. Objectifs</h3>
 <ul>
 <li>Définir une grandeur physique.</li>
 <li>Connaître les unités du système international.</li>
@@ -219,452 +365,460 @@ onerror="this.style.display='none';"
 <li>Effectuer des conversions.</li>
 </ul>
 
-<h3>I. Définition d'une grandeur physique</h3>
-
+<h3>2. Définition</h3>
 <p>
-Une grandeur physique est une propriété d'un corps
-ou d'un phénomène que l'on peut mesurer et exprimer
-avec une valeur numérique et une unité.
+Une grandeur physique est une propriété d'un corps ou d'un phénomène
+que l'on peut mesurer et exprimer par une valeur numérique
+accompagnée d'une unité.
 </p>
 
-<div class="formule">Exemple : L = 5 m</div>
-
-<p>La longueur vaut cinq mètres.</p>
-
-<h3>II. Les grandeurs fondamentales</h3>
+<h3>3. Les grandeurs physiques fondamentales</h3>
 
 <table>
-<tr><th>Grandeur</th><th>Unité SI</th><th>Symbole</th></tr>
-<tr><td>Longueur</td><td>Mètre</td><td>m</td></tr>
-<tr><td>Masse</td><td>Kilogramme</td><td>kg</td></tr>
-<tr><td>Temps</td><td>Seconde</td><td>s</td></tr>
-<tr><td>Température</td><td>Kelvin</td><td>K</td></tr>
-<tr><td>Intensité électrique</td><td>Ampère</td><td>A</td></tr>
+<tr><th>Grandeur</th><th>Symbole</th><th>Unité SI</th><th>Symbole</th></tr>
+<tr><td>Longueur</td><td>l</td><td>Mètre</td><td>m</td></tr>
+<tr><td>Masse</td><td>m</td><td>Kilogramme</td><td>kg</td></tr>
+<tr><td>Temps</td><td>t</td><td>Seconde</td><td>s</td></tr>
+<tr><td>Température</td><td>T</td><td>Kelvin</td><td>K</td></tr>
+<tr><td>Intensité électrique</td><td>I</td><td>Ampère</td><td>A</td></tr>
 </table>
 
-<h3>III. Les grandeurs dérivées</h3>
+<h3>4. Instruments de mesure</h3>
+<ul>
+<li>Règle graduée : longueur.</li>
+<li>Balance : masse.</li>
+<li>Chronomètre : durée.</li>
+<li>Thermomètre : température.</li>
+<li>Ampèremètre : intensité.</li>
+<li>Voltmètre : tension.</li>
+</ul>
 
+<h3>5. Conversions</h3>
 <table>
-<tr><th>Grandeur</th><th>Formule</th><th>Unité SI</th></tr>
-<tr><td>Surface</td><td>L × l</td><td>m²</td></tr>
-<tr><td>Volume</td><td>L × l × h</td><td>m³</td></tr>
-<tr><td>Vitesse moyenne</td><td>d / Δt</td><td>m/s</td></tr>
-<tr><td>Masse volumique</td><td>m / V</td><td>kg/m³</td></tr>
+<tr><th>Unité</th><th>Équivalence</th></tr>
+<tr><td>1 km</td><td>1 000 m</td></tr>
+<tr><td>1 m</td><td>100 cm</td></tr>
+<tr><td>1 cm</td><td>10 mm</td></tr>
+<tr><td>1 kg</td><td>1 000 g</td></tr>
+<tr><td>1 h</td><td>3 600 s</td></tr>
 </table>
 
-<h3>IV. Les instruments de mesure</h3>
-
-<ul>
-<li>Règle graduée : mesure les longueurs.</li>
-<li>Balance : mesure les masses.</li>
-<li>Éprouvette graduée : mesure les volumes.</li>
-<li>Thermomètre : mesure la température.</li>
-<li>Chronomètre : mesure les durées.</li>
-</ul>
-
-<h3>V. Les conversions d'unités</h3>
-
-<p><b>Longueurs</b></p>
-<p>1 km = 1 000 m</p>
-<p>1 m = 100 cm</p>
-<p>1 cm = 10 mm</p>
-
-<div class="formule">3,5 km = 3 500 m</div>
-
-<p><b>Durées</b></p>
-<p>1 h = 60 min = 3 600 s</p>
-
-<div class="formule">2 h 15 min = 8 100 s</div>
-
-<p><b>Volumes</b></p>
-<p>1 m³ = 1 000 L</p>
-<p>1 L = 1 000 mL</p>
-<p>1 L = 1 dm³</p>
-
-<h3>VI. Exemples corrigés</h3>
-
-<p><b>Exemple 1 : Calcul de la vitesse moyenne</b></p>
-
-<p>Un élève parcourt 100 m en 20 secondes.</p>
-
-<div class="formule">
-v = d / Δt<br>
-v = 100 / 20<br>
-v = 5 m/s
+<div class="example">
+<strong>Exemple corrigé :</strong>
+<p>Convertir 2,5 km en mètres.</p>
+<p>2,5 × 1 000 = 2 500 m.</p>
+<strong>Réponse : 2 500 m.</strong>
 </div>
 
-<p><b>Exemple 2 : Masse volumique</b></p>
-
-<p>Un objet possède une masse de 200 g et un volume de 100 cm³.</p>
-
-<div class="formule">
-ρ = m / V<br>
-ρ = 200 / 100<br>
-ρ = 2 g/cm³
+<div class="exercise">
+<strong>Exercices :</strong>
+<p>1. Convertir 3,5 km en mètres.</p>
+<p>2. Convertir 450 cm en mètres.</p>
+<p>3. Convertir 2 heures en secondes.</p>
+<p>4. Citer trois instruments de mesure.</p>
 </div>
 
-<h3>VII. Résumé à retenir</h3>
-
-<ul>
-<li>Une grandeur physique est mesurable.</li>
-<li>Une mesure comporte une valeur et une unité.</li>
-<li>Le mètre est l'unité SI de longueur.</li>
-<li>Le kilogramme est l'unité SI de masse.</li>
-<li>La seconde est l'unité SI de temps.</li>
-<li>La vitesse moyenne est la distance divisée par la durée.</li>
-</ul>
-
+<div class="summary">
+<strong>À retenir :</strong>
+Une grandeur physique possède une valeur numérique et une unité.
+Le système international permet d'uniformiser les mesures.
+</div>
 </section>
+
 
 <!-- LEÇON 2 -->
 
-<section class="card" id="lecon2">
-
+<section class="lesson" id="lecon2">
+<span class="lesson-number">Physique-Chimie | Seconde</span>
 <h2>Leçon 2 : Le courant électrique continu</h2>
 
-<h3>Objectifs pédagogiques</h3>
-
+<h3>1. Objectifs</h3>
 <ul>
 <li>Définir le courant électrique.</li>
-<li>Identifier le sens conventionnel du courant.</li>
-<li>Définir l'intensité du courant électrique.</li>
-<li>Utiliser un ampèremètre.</li>
-<li>Appliquer les lois du courant électrique.</li>
+<li>Connaître son sens conventionnel.</li>
+<li>Calculer l'intensité.</li>
+<li>Appliquer les lois de l'intensité.</li>
 </ul>
 
-<h3>I. Notion de courant électrique</h3>
-
+<h3>2. Définition</h3>
 <p>
-Le courant électrique correspond à un déplacement ordonné
-de porteurs de charges électriques.
+Le courant électrique correspond au déplacement ordonné
+de charges électriques dans un conducteur.
 </p>
 
 <p>
-Dans les métaux, les porteurs de charges mobiles sont
-principalement les électrons. Dans les solutions
-électrolytiques, le transport des charges est assuré
-par les ions.
+Dans un conducteur métallique, les porteurs de charges
+sont les électrons.
 </p>
 
+<h3>3. Sens conventionnel du courant</h3>
 <p>
-Pour qu'un courant permanent circule dans un circuit,
-il faut notamment un circuit fermé et un générateur.
+À l'extérieur du générateur, le courant conventionnel circule
+du pôle positif vers le pôle négatif.
+Le déplacement des électrons métalliques se fait en sens inverse.
 </p>
 
-<h3>II. Sens du courant électrique</h3>
+<h3>4. Intensité du courant</h3>
+<p>L'intensité mesure la quantité de charge qui traverse une section de conducteur pendant une durée donnée.</p>
 
-<p>
-Par convention, à l'extérieur du générateur, le courant
-circule de la borne positive (+) vers la borne négative (-).
-</p>
-
-<p>
-Dans un conducteur métallique, les électrons se déplacent
-en sens opposé au sens conventionnel du courant.
-</p>
-
-<h3>III. L'intensité du courant électrique</h3>
-
-<p>
-L'intensité mesure la quantité de charge électrique
-traversant une section du conducteur pendant une durée donnée.
-</p>
-
-<div class="formule">
-I = |ΔQ| / Δt
-</div>
+<div class="formula">I = Q / Δt</div>
 
 <ul>
 <li>I : intensité en ampères (A).</li>
-<li>ΔQ : valeur de la charge transportée en coulombs (C).</li>
+<li>Q : charge électrique en coulombs (C).</li>
 <li>Δt : durée en secondes (s).</li>
 </ul>
 
-<p>
-L'unité internationale de l'intensité est l'ampère (A).
-</p>
-
-<h3>IV. Mesure de l'intensité</h3>
-
-<p>
-On utilise un ampèremètre pour mesurer l'intensité
-du courant électrique.
-</p>
-
-<ul>
-<li>L'ampèremètre se branche en série dans le circuit.</li>
-<li>On respecte les bornes et les polarités de l'appareil.</li>
-<li>On choisit un calibre adapté à la mesure.</li>
-<li>On ne branche jamais directement un ampèremètre aux bornes d'un générateur.</li>
-</ul>
-
-<h3>V. Les lois du courant électrique</h3>
-
-<p><b>1. Dans un circuit en série</b></p>
-
-<p>
-L'intensité du courant est la même en tous les points
-d'un circuit comportant uniquement des dipôles en série.
-</p>
-
-<div class="formule">
-I = I₁ = I₂ = I₃
+<div class="example">
+<strong>Exemple corrigé :</strong>
+<p>Une charge de 20 C traverse un conducteur en 5 secondes.</p>
+<p>I = Q / Δt</p>
+<div class="formula">I = 20 / 5 = 4 A</div>
+<strong>Réponse : 4 A.</strong>
 </div>
 
-<p><b>2. Dans un circuit avec dérivations</b></p>
-
+<h3>5. Mesure de l'intensité</h3>
 <p>
-La somme des intensités des courants qui arrivent à un nœud
-est égale à la somme des intensités qui en repartent.
+L'intensité se mesure avec un ampèremètre branché en série.
 </p>
 
-<div class="formule">
-Somme des courants entrants = Somme des courants sortants
+<h3>6. Loi de l'intensité en série</h3>
+<p>Dans un circuit en série, l'intensité est la même en tout point.</p>
+<div class="formula">I = I₁ = I₂ = I₃</div>
+
+<h3>7. Loi des nœuds</h3>
+<p>La somme des intensités qui arrivent à un nœud est égale à la somme de celles qui en repartent.</p>
+<div class="formula">I = I₁ + I₂</div>
+
+<div class="example">
+<strong>Exemple corrigé :</strong>
+<p>Un courant de 2 A se partage en deux branches. La première reçoit 0,8 A.</p>
+<div class="formula">I₂ = 2 - 0,8 = 1,2 A</div>
+<strong>Réponse : 1,2 A.</strong>
 </div>
 
-<p>Dans le cas de deux courants entrants et d'un courant sortant :</p>
-
-<div class="formule">
-I = I₁ + I₂
+<div class="exercise">
+<strong>Exercices :</strong>
+<p>1. Une charge de 60 C traverse un conducteur en 10 s. Calculer I.</p>
+<p>2. Quelle est la valeur de l'intensité après une résistance en série si elle est de 0,3 A avant celle-ci ?</p>
+<p>3. Un courant de 5 A arrive à un nœud. Une branche reçoit 2 A. Calculer l'autre intensité.</p>
 </div>
 
-<h3>VI. Exemples corrigés</h3>
-
-<p><b>Exemple 1 : Calcul d'une intensité</b></p>
-
-<p>
-Une charge électrique de 120 C traverse une section
-de conducteur pendant 30 secondes. Calculer l'intensité.
-</p>
-
-<p><b>Données :</b> Q = 120 C ; Δt = 30 s.</p>
-
-<p><b>Formule :</b></p>
-
-<div class="formule">
-I = Q / Δt<br>
-I = 120 / 30<br>
-I = 4 A
+<div class="summary">
+<strong>À retenir :</strong>
+I = Q / Δt. L'ampèremètre se branche en série.
+L'intensité se conserve dans un circuit en série et aux nœuds.
 </div>
-
-<p><b>Conclusion :</b> l'intensité vaut 4 ampères.</p>
-
-<p><b>Exemple 2 : Circuit en série</b></p>
-
-<p>
-Un ampèremètre indique 2 A dans un circuit en série.
-Quelle est l'intensité dans les autres parties du circuit ?
-</p>
-
-<div class="formule">
-I₁ = I₂ = I₃ = 2 A
-</div>
-
-<p><b>Conclusion :</b> l'intensité est de 2 A partout.</p>
-
-<p><b>Exemple 3 : Circuit avec dérivations</b></p>
-
-<p>
-Deux courants de 3 A et 2 A arrivent à un nœud.
-Calculer le courant qui repart.
-</p>
-
-<div class="formule">
-I = 3 + 2 = 5 A
-</div>
-
-<p><b>Conclusion :</b> le courant qui repart vaut 5 A.</p>
-
-<h3>VII. Exercices d'application corrigés</h3>
-
-<p><b>Exercice 1</b></p>
-
-<p>
-Une charge de 240 C traverse un conducteur pendant 60 s.
-Calculer l'intensité du courant.
-</p>
-
-<div class="formule">
-I = Q / Δt<br>
-I = 240 / 60<br>
-I = 4 A
-</div>
-
-<p><b>Exercice 2</b></p>
-
-<p>
-Dans un circuit en série, un ampèremètre indique 1,5 A.
-Quelle est l'intensité dans les autres dipôles ?
-</p>
-
-<div class="formule">
-I₁ = I₂ = 1,5 A
-</div>
-
-<p><b>Exercice 3</b></p>
-
-<p>
-Deux courants de 4 A et 3 A arrivent à un nœud.
-Calculer le courant qui repart.
-</p>
-
-<div class="formule">
-I = 4 + 3 = 7 A
-</div>
-
-<h3>VIII. Résumé à retenir</h3>
-
-<ul>
-<li>Le courant électrique est un déplacement ordonné de charges.</li>
-<li>Son sens conventionnel va du positif vers le négatif à l'extérieur du générateur.</li>
-<li>L'intensité se mesure avec un ampèremètre.</li>
-<li>L'ampèremètre se branche en série.</li>
-<li>En série, l'intensité est la même partout.</li>
-<li>Au niveau d'un nœud, la somme des courants entrants égale celle des courants sortants.</li>
-</ul>
-
 </section>
 
-<!-- QUESTIONNAIRE GENERAL -->
 
-<section class="card" id="exercices">
+<!-- LEÇON 3 -->
 
-<h2>📝 Exercices interactifs : Leçons 1 et 2</h2>
+<section class="lesson" id="lecon3">
+<span class="lesson-number">Physique-Chimie | Seconde</span>
+<h2>Leçon 3 : La tension électrique</h2>
 
-<p>Choisis une seule réponse pour chaque question.</p>
+<h3>1. Objectifs</h3>
+<ul>
+<li>Définir la tension électrique.</li>
+<li>Connaître son unité.</li>
+<li>Utiliser un voltmètre.</li>
+<li>Appliquer les lois de la tension.</li>
+</ul>
 
-<div class="question">
-<p>1. Quelle est l'unité SI de longueur ?</p>
-<label><input type="radio" name="q1" value="a"> Kilogramme</label><br>
-<label><input type="radio" name="q1" value="b"> Mètre</label><br>
-<label><input type="radio" name="q1" value="c"> Seconde</label>
+<h3>2. Définition</h3>
+<p>
+La tension électrique entre deux points représente la différence
+de potentiel électrique entre ces deux points.
+</p>
+
+<h3>3. Symbole et unité</h3>
+<ul>
+<li>Symbole : U.</li>
+<li>Unité : volt (V).</li>
+<li>Appareil : voltmètre.</li>
+</ul>
+
+<h3>4. Mesure de la tension</h3>
+<p>
+Le voltmètre se branche en dérivation aux bornes du dipôle.
+On respecte les bornes positive et négative de l'appareil
+pour obtenir une indication correcte du signe.
+</p>
+
+<h3>5. Loi de la tension en série</h3>
+<p>La tension du générateur est égale à la somme des tensions des dipôles montés en série.</p>
+<div class="formula">U = U₁ + U₂</div>
+
+<div class="example">
+<strong>Exemple corrigé :</strong>
+<p>Un générateur fournit 12 V. Une lampe reçoit 5 V. Calculer la tension de la deuxième lampe en série.</p>
+<div class="formula">U₂ = 12 - 5 = 7 V</div>
+<strong>Réponse : 7 V.</strong>
 </div>
 
-<div class="question">
-<p>2. 4 km correspondent à :</p>
-<label><input type="radio" name="q2" value="a"> 400 m</label><br>
-<label><input type="radio" name="q2" value="b"> 4 000 m</label><br>
-<label><input type="radio" name="q2" value="c"> 40 000 m</label>
+<h3>6. Loi de la tension en dérivation</h3>
+<p>La tension est identique aux bornes des différentes branches d'un circuit en dérivation.</p>
+<div class="formula">U = U₁ = U₂</div>
+
+<div class="exercise">
+<strong>Exercices :</strong>
+<p>1. Quel appareil mesure la tension ?</p>
+<p>2. Comment branche-t-on un voltmètre ?</p>
+<p>3. Un générateur fournit 9 V. Une lampe reçoit 4 V. Calculer la tension de la deuxième lampe en série.</p>
+<p>4. Deux lampes sont en dérivation sur un générateur de 6 V. Quelle est la tension de chaque lampe ?</p>
 </div>
 
-<div class="question">
-<p>3. Quel instrument mesure la masse ?</p>
-<label><input type="radio" name="q3" value="a"> Balance</label><br>
-<label><input type="radio" name="q3" value="b"> Thermomètre</label><br>
-<label><input type="radio" name="q3" value="c"> Chronomètre</label>
+<div class="summary">
+<strong>À retenir :</strong>
+La tension se mesure en volts avec un voltmètre branché en dérivation.
+En série, les tensions s'additionnent. En dérivation, elles sont égales.
 </div>
-
-<div class="question">
-<p>4. Un mobile parcourt 60 m en 10 s. Quelle est sa vitesse moyenne ?</p>
-<label><input type="radio" name="q4" value="a"> 6 m/s</label><br>
-<label><input type="radio" name="q4" value="b"> 10 m/s</label><br>
-<label><input type="radio" name="q4" value="c"> 600 m/s</label>
-</div>
-
-<div class="question">
-<p>5. Quelle est l'unité SI du temps ?</p>
-<label><input type="radio" name="q5" value="a"> Heure</label><br>
-<label><input type="radio" name="q5" value="b"> Minute</label><br>
-<label><input type="radio" name="q5" value="c"> Seconde</label>
-</div>
-
-<div class="question">
-<p>6. Quelle est l'unité de l'intensité électrique ?</p>
-<label><input type="radio" name="q6" value="a"> Le volt</label><br>
-<label><input type="radio" name="q6" value="b"> L'ampère</label><br>
-<label><input type="radio" name="q6" value="c"> Le watt</label>
-</div>
-
-<div class="question">
-<p>7. Quel appareil mesure l'intensité ?</p>
-<label><input type="radio" name="q7" value="a"> Le voltmètre</label><br>
-<label><input type="radio" name="q7" value="b"> La balance</label><br>
-<label><input type="radio" name="q7" value="c"> L'ampèremètre</label>
-</div>
-
-<div class="question">
-<p>8. Comment branche-t-on un ampèremètre ?</p>
-<label><input type="radio" name="q8" value="a"> En série</label><br>
-<label><input type="radio" name="q8" value="b"> En dérivation</label><br>
-<label><input type="radio" name="q8" value="c"> Sans connexion</label>
-</div>
-
-<div class="question">
-<p>9. Une charge de 100 C traverse un conducteur en 20 s. Quelle est l'intensité ?</p>
-<label><input type="radio" name="q9" value="a"> 2 A</label><br>
-<label><input type="radio" name="q9" value="b"> 5 A</label><br>
-<label><input type="radio" name="q9" value="c"> 20 A</label>
-</div>
-
-<div class="question">
-<p>10. Dans un circuit en série, l'intensité est :</p>
-<label><input type="radio" name="q10" value="a"> Différente partout</label><br>
-<label><input type="radio" name="q10" value="b"> Toujours nulle</label><br>
-<label><input type="radio" name="q10" value="c"> La même partout</label>
-</div>
-
-<button onclick="corriger()">Corriger mes réponses</button>
-
-<div id="resultat" class="resultat" aria-live="polite"></div>
-
 </section>
 
-</main>
 
-<footer>
-<p>© 2026 Mon Univers éducatif 🇹🇬</p>
-<p>Apprendre aujourd'hui, réussir demain.</p>
-</footer>
+<!-- LEÇON 4 -->
 
-<script>
-function corriger() {
+<section class="lesson" id="lecon4">
+<span class="lesson-number">Physique-Chimie | Seconde</span>
+<h2>Leçon 4 : Étude des dipôles passifs</h2>
 
-  const reponses = {
-    q1: "b",
-    q2: "b",
-    q3: "a",
-    q4: "a",
-    q5: "c",
-    q6: "b",
-    q7: "c",
-    q8: "a",
-    q9: "b",
-    q10: "c"
-  };
+<h3>1. Objectifs</h3>
+<ul>
+<li>Reconnaître un dipôle.</li>
+<li>Étudier la résistance électrique.</li>
+<li>Comprendre la loi d'Ohm.</li>
+<li>Calculer R, U et I.</li>
+</ul>
 
-  let score = 0;
-  let repondues = 0;
+<h3>2. Définition</h3>
+<p>Un dipôle est un composant électrique qui possède deux bornes.</p>
+<p>Un dipôle passif reçoit de l'énergie électrique et peut la transformer ou la dissiper.</p>
 
-  for (let q in reponses) {
+<h3>3. Résistance électrique</h3>
+<p>Une résistance électrique s'oppose au passage du courant électrique.</p>
+<ul>
+<li>Symbole : R.</li>
+<li>Unité : ohm (Ω).</li>
+<li>Appareil : ohmmètre.</li>
+</ul>
 
-    const choix = document.querySelector(
-      'input[name="' + q + '"]:checked'
-    );
+<h3>4. Loi d'Ohm</h3>
+<p>Pour un conducteur ohmique à température constante, la tension est proportionnelle à l'intensité.</p>
 
-    if (choix) {
-      repondues++;
+<div class="formula">U = R × I</div>
 
-      if (choix.value === reponses[q]) {
-        score++;
-      }
-    }
-  }
+<p>Formules dérivées :</p>
+<div class="formula">R = U / I</div>
+<div class="formula">I = U / R</div>
 
-  const resultat = document.getElementById("resultat");
+<div class="example">
+<strong>Exemple corrigé :</strong>
+<p>Une résistance de 20 Ω est traversée par un courant de 0,5 A.</p>
+<div class="formula">U = 20 × 0,5 = 10 V</div>
+<strong>Réponse : 10 V.</strong>
+</div>
 
-  resultat.innerHTML =
-    "Réponses données : " + repondues + "/10" +
-    "<br>Ton résultat : " + score + "/10" +
-    "<br>" + (
-      repondues < 10
-        ? "Tu peux répondre aux questions restantes."
-        : score === 10
-          ? "Excellent travail ! Félicitations !"
-          : "Continue à réviser pour progresser."
-    );
-}
-</script>
+<h3>5. Association en série</h3>
+<p>La résistance équivalente de deux résistances en série est :</p>
+<div class="formula">R = R₁ + R₂</div>
 
-</body>
- </html>
- 
+<h3>6. Association en dérivation</h3>
+<p>Pour deux résistances en dérivation :</p>
+<div class="formula">1/R = 1/R₁ + 1/R₂</div>
+
+<div class="example">
+<strong>Exemple corrigé :</strong>
+<p>Deux résistances de 10 Ω et 20 Ω sont en série.</p>
+<div class="formula">R = 10 + 20 = 30 Ω</div>
+<strong>Réponse : 30 Ω.</strong>
+</div>
+
+<div class="exercise">
+<strong>Exercices :</strong>
+<p>1. Une résistance de 5 Ω est traversée par 2 A. Calculer U.</p>
+<p>2. Une résistance reçoit 12 V et est traversée par 3 A. Calculer R.</p>
+<p>3. Deux résistances de 15 Ω et 25 Ω sont en série. Calculer R.</p>
+<p>4. Deux résistances identiques de 10 Ω sont en dérivation. Calculer R.</p>
+</div>
+
+<div class="summary">
+<strong>À retenir :</strong>
+La loi d'Ohm est U = R × I.
+En série, les résistances s'additionnent.
+</div>
+</section>
+
+
+<!-- LEÇON 5 -->
+
+<section class="lesson" id="lecon5">
+<span class="lesson-number">Physique-Chimie | Seconde</span>
+<h2>Leçon 5 : Générateurs électriques et point de fonctionnement</h2>
+
+<h3>1. Objectifs</h3>
+<ul>
+<li>Identifier un générateur.</li>
+<li>Comprendre ses caractéristiques.</li>
+<li>Étudier sa caractéristique tension-intensité.</li>
+<li>Déterminer un point de fonctionnement.</li>
+</ul>
+
+<h3>2. Définition</h3>
+<p>Un générateur électrique est un dipôle capable de fournir de l'énergie électrique à un circuit.</p>
+
+<p>Exemples : pile, batterie et accumulateur.</p>
+
+<h3>3. Générateur réel</h3>
+<p>Un générateur réel peut être modélisé par une force électromotrice E et une résistance interne r.</p>
+
+<div class="formula">U = E - rI</div>
+
+<ul>
+<li>U : tension en volts.</li>
+<li>E : force électromotrice en volts.</li>
+<li>r : résistance interne en ohms.</li>
+<li>I : intensité en ampères.</li>
+</ul>
+
+<h3>4. Caractéristique du générateur</h3>
+<p>La caractéristique représente graphiquement la tension U en fonction de l'intensité I.</p>
+<p>Pour un générateur réel de modèle U = E - rI, c'est une droite décroissante.</p>
+
+<h3>5. Point de fonctionnement</h3>
+<p>Le point de fonctionnement est le point commun aux caractéristiques du générateur et du récepteur associés.</p>
+
+<div class="example">
+<strong>Exemple corrigé :</strong>
+<p>Un générateur possède E = 12 V et r = 2 Ω. Il débite 1 A.</p>
+<div class="formula">U = E - rI</div>
+<div class="formula">U = 12 - (2 × 1) = 10 V</div>
+<strong>Réponse : 10 V.</strong>
+</div>
+
+<h3>6. Exercices</h3>
+<div class="exercise">
+<p>1. Citer deux générateurs électriques.</p>
+<p>2. Un générateur possède E = 9 V et r = 1 Ω. Calculer U lorsqu'il débite 2 A.</p>
+<p>3. Définir le point de fonctionnement.</p>
+<p>4. Quelle est l'allure de la caractéristique d'un générateur réel ?</p>
+</div>
+
+<div class="summary">
+<strong>À retenir :</strong>
+Pour le modèle d'un générateur réel : U = E - rI.
+Le point de fonctionnement est l'intersection des caractéristiques du générateur et du récepteur.
+</div>
+</section>
+
+
+<!-- LEÇON 6 -->
+
+<section class="lesson" id="lecon6">
+<span class="lesson-number">Physique-Chimie | Seconde</span>
+<h2>Leçon 6 : Élément chimique et structure de l'atome</h2>
+
+<h3>1. Objectifs</h3>
+<ul>
+<li>Définir un atome.</li>
+<li>Identifier ses constituants.</li>
+<li>Comprendre le numéro atomique.</li>
+<li>Calculer le nombre de neutrons.</li>
+</ul>
+
+<h3>2. Définition</h3>
+<p>L'atome est une entité microscopique constituant la matière. Il est électriquement neutre.</p>
+
+<h3>3. Structure de l'atome</h3>
+<p>Un atome est constitué d'un noyau et d'électrons qui occupent l'espace autour du noyau.</p>
+
+<table>
+<tr><th>Particule</th><th>Charge</th><th>Localisation</th></tr>
+<tr><td>Proton</td><td>Positive</td><td>Noyau</td></tr>
+<tr><td>Neutron</td><td>Nulle</td><td>Noyau</td></tr>
+<tr><td>Électron</td><td>Négative</td><td>Autour du noyau</td></tr>
+</table>
+
+<h3>4. Numéro atomique et nombre de masse</h3>
+<p>Z représente le nombre de protons du noyau.</p>
+<p>A représente le nombre total de nucléons.</p>
+
+<div class="formula">A = Z + N</div>
+<div class="formula">N = A - Z</div>
+
+<p>N représente le nombre de neutrons.</p>
+
+<h3>5. Exemple corrigé</h3>
+<div class="example">
+<p>Un atome possède Z = 11 et A = 23.</p>
+<p>Calculer le nombre de neutrons.</p>
+<div class="formula">N = 23 - 11 = 12</div>
+<strong>Réponse : 12 neutrons.</strong>
+</div>
+
+<h3>6. Exercices</h3>
+<div class="exercise">
+<p>1. Citer les trois particules de l'atome.</p>
+<p>2. Un atome possède A = 35 et Z = 17. Calculer N.</p>
+<p>3. Que représente Z ?</p>
+<p>4. Pourquoi un atome est-il électriquement neutre ?</p>
+</div>
+
+<div class="summary">
+<strong>À retenir :</strong>
+Z est le nombre de protons, A est le nombre de nucléons et N = A - Z.
+</div>
+</section>
+
+
+<!-- LEÇON 7 -->
+
+<section class="lesson" id="lecon7">
+<span class="lesson-number">Physique-Chimie | Seconde</span>
+<h2>Leçon 7 : Ions et molécules</h2>
+
+<h3>1. Objectifs</h3>
+<ul>
+<li>Définir un ion.</li>
+<li>Différencier cation et anion.</li>
+<li>Comprendre la formation des ions.</li>
+<li>Définir une molécule.</li>
+</ul>
+
+<h3>2. Définition d'un ion</h3>
+<p>Un ion est un atome ou un groupe d'atomes qui a gagné ou perdu un ou plusieurs électrons.</p>
+
+<h3>3. Les cations</h3>
+<p>Un cation est un ion chargé positivement. Il se forme lorsqu'un atome ou un groupe d'atomes perd des électrons.</p>
+
+<div class="formula">Na → Na⁺ + e⁻</div>
+
+<h3>4. Les anions</h3>
+<p>Un anion est un ion chargé négativement. Il se forme lorsqu'un atome ou un groupe d'atomes gagne des électrons.</p>
+
+<div class="formula">Cl + e⁻ → Cl⁻</div>
+
+<h3>5. Quelques ions</h3>
+<table>
+<tr><th>Ion</th><th>Nom</th><th>Charge</th></tr>
+<tr><td>Na⁺</td><td>Sodium</td><td>+1</td></tr>
+<tr><td>Cl⁻</td><td>Chlorure</td><td>-1</td></tr>
+<tr><td>Ca²⁺</td><td>Calcium</td><td>+2</td></tr>
+<tr><td>O²⁻</td><td>Oxyde</td><td>-2</td></tr>
+</table>
+
+<h3>6. Les molécules</h3>
+<p>Une molécule est un assemblage électriquement neutre d'atomes liés entre eux.</p>
+
+<p>Exemples :</p>
+<ul>
+<li>H₂O : eau.</li>
+<li>O₂ : dioxygène.</li>
+<li>CO₂ : dioxyde de carbone.</li>
+<li>H₂ : dihydrogène.</li>
+</ul>
+
+<div class="example">
+<strong>Exemple corrigé :</strong>
+<p>Un atome de magnésium possède 12 électrons. Il perd deux électrons pour devenir Mg²⁺.</p>
+<div class="formula">12 - 2 = 10 électron
