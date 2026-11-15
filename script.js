@@ -1,10 +1,11 @@
 
-/* =================================
+/* ==========================================
    MON UNIVERS ÉDUCATIF 🇹🇬
-   Bibliothèque des épreuves
-================================= */
+   Moteur intelligent des épreuves
+========================================== */
 
 const PROPRIETAIRE = "universde";
+const SITE = `https://${PROPRIETAIRE}.github.io`;
 
 const recherche = document.getElementById("recherche");
 const niveau = document.getElementById("niveau");
@@ -13,7 +14,9 @@ const annee = document.getElementById("annee");
 const liste = document.getElementById("liste-epreuves");
 const message = document.getElementById("message");
 
-/* ÉPREUVES AREX DE SECONDE */
+/* ==========================================
+   1. ÉPREUVES AREX DE SECONDE
+========================================== */
 
 const fichiers = [
   "Img_20261024_010958_876.jpg",
@@ -55,84 +58,79 @@ const epreuvesSeconde = fichiers.map((nom, index) => ({
   matiere: "physique-chimie",
   annee: "2026",
   type: "image",
-  url: `https://${PROPRIETAIRE}.github.io/${encodeURIComponent(nom)}`
+  url: `${SITE}/${encodeURIComponent(nom)}`
 }));
 
-/* ÉPREUVES PDF DE PREMIÈRE */
+/* ==========================================
+   2. ÉPREUVES DE PREMIÈRE
+========================================== */
 
 const fichiersPremiere = [
-  {
-    nom: "Mathématiques D Remplacement.pdf",
-    matiere: "mathematiques"
-  },
-  {
-    nom: "Mathématiques D.pdf",
-    matiere: "mathematiques"
-  },
-  {
-    nom: "Mathématiques.pdf",
-    matiere: "mathematiques"
-  },
-  {
-    nom: "PCT (1).pdf",
-    matiere: "physique-chimie"
-  },
-  {
-    nom: "Remplacement du PCT D (1).pdf",
-    matiere: "physique-chimie"
-  },
-  {
-    nom: "Remplacement PCT D.pdf",
-    matiere: "physique-chimie"
-  },
-  {
-    nom: "PCT D.pdf",
-    matiere: "physique-chimie"
-  },
-  {
-    nom: "PCT.pdf",
-    matiere: "physique-chimie"
-  },
-  {
-    nom: "SVT D (1).pdf",
-    matiere: "sciences"
-  },
-  {
-    nom: "Remplacement SVT D.pdf",
-    matiere: "sciences"
-  },
-  {
-    nom: "SVT D.pdf",
-    matiere: "sciences"
-  }
+  { nom: "Mathématiques D Remplacement.pdf", matiere: "mathematiques" },
+  { nom: "Mathématiques D.pdf", matiere: "mathematiques" },
+  { nom: "Mathématiques.pdf", matiere: "mathematiques" },
+  { nom: "PCT (1).pdf", matiere: "physique-chimie" },
+  { nom: "Remplacement du PCT D (1).pdf", matiere: "physique-chimie" },
+  { nom: "Remplacement PCT D.pdf", matiere: "physique-chimie" },
+  { nom: "PCT D.pdf", matiere: "physique-chimie" },
+  { nom: "PCT.pdf", matiere: "physique-chimie" },
+  { nom: "SVT D (1).pdf", matiere: "sciences" },
+  { nom: "Remplacement SVT D.pdf", matiere: "sciences" },
+  { nom: "SVT D.pdf", matiere: "sciences" }
 ];
 
 const epreuvesPremiere = fichiersPremiere.map(fichier => ({
   nom: fichier.nom,
-  titre: fichier.nom.replace(".pdf", ""),
+  titre: fichier.nom.replace(/\.pdf$/i, ""),
   niveau: "premiere",
   matiere: fichier.matiere,
   annee: "",
   type: "pdf",
-  url: `https://${PROPRIETAIRE}.github.io/epreuves/premiere/${encodeURIComponent(fichier.nom)}`
+  url: `${SITE}/epreuves/premiere/${encodeURIComponent(fichier.nom)}`
 }));
 
-/* RECHERCHE */
+/* ==========================================
+   3. OUTILS DE RECHERCHE
+========================================== */
 
 function normaliser(texte) {
-  return texte.toLowerCase()
+  return String(texte || "")
+    .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
 }
 
+const nomsMatieres = {
+  mathematiques: "Mathématiques",
+  "physique-chimie": "Physique-Chimie",
+  sciences: "Sciences"
+};
+
+const nomsNiveaux = {
+  seconde: "Seconde",
+  premiere: "Première",
+  terminale: "Terminale"
+};
+
+const toutesLesEpreuves = [
+  ...epreuvesSeconde,
+  ...epreuvesPremiere
+];
+
+/* ==========================================
+   4. AFFICHAGE DES ÉPREUVES
+========================================== */
+
 function afficherEpreuves() {
+  if (!liste || !message) return;
+
   liste.innerHTML = "";
 
-  const classe = niveau.value;
-  const discipline = matiere.value;
-  const mot = normaliser(recherche.value);
-  const session = annee.value;
+  const classe = niveau?.value || "";
+  const discipline = matiere?.value || "";
+  const mot = normaliser(recherche?.value || "");
+  const session = annee?.value || "";
 
   if (!classe || !discipline) {
     message.textContent =
@@ -140,36 +138,43 @@ function afficherEpreuves() {
     return;
   }
 
-  let disponibles = [];
-
-  if (classe === "seconde" && discipline === "physique-chimie") {
-    disponibles = epreuvesSeconde;
-  }
-
-  if (classe === "premiere") {
-    disponibles = epreuvesPremiere.filter(
-      epreuve => epreuve.matiere === discipline
-    );
-  }
+  const disponibles = toutesLesEpreuves.filter(epreuve =>
+    epreuve.niveau === classe &&
+    epreuve.matiere === discipline
+  );
 
   const resultats = disponibles.filter(epreuve => {
-    const informations = normaliser(
-      epreuve.titre + " " + epreuve.nom
-    );
+    const informations = normaliser([
+      epreuve.titre,
+      epreuve.nom,
+      epreuve.code,
+      epreuve.niveau,
+      nomsNiveaux[epreuve.niveau],
+      epreuve.matiere,
+      nomsMatieres[epreuve.matiere],
+      epreuve.annee
+    ].join(" "));
 
-    return (
-      (!mot || informations.includes(mot)) &&
-      (!session || epreuve.annee === session)
-    );
+    const correspondRecherche =
+      !mot || informations.includes(mot);
+
+    const correspondAnnee =
+      !session || epreuve.annee === session;
+
+    return correspondRecherche && correspondAnnee;
   });
 
   if (resultats.length === 0) {
-    message.textContent = "Aucune épreuve trouvée.";
+    message.textContent =
+      disponibles.length === 0
+        ? "Aucune épreuve disponible pour ce niveau et cette matière pour le moment."
+        : "Aucune épreuve ne correspond à ta recherche.";
+
     return;
   }
 
   message.textContent =
-    resultats.length + " épreuve(s) trouvée(s).";
+    `${resultats.length} épreuve(s) trouvée(s).`;
 
   resultats.forEach(epreuve => {
     const carte = document.createElement("article");
@@ -183,45 +188,60 @@ function afficherEpreuves() {
 
     const classeTexte = document.createElement("p");
     classeTexte.textContent =
-      "Niveau : " +
-      (epreuve.niveau === "premiere" ? "Première" : "Seconde");
+      "Niveau : " + nomsNiveaux[epreuve.niveau];
 
     const matiereTexte = document.createElement("p");
-
-    const nomsMatieres = {
-      mathematiques: "Mathématiques",
-      "physique-chimie": "Physique-Chimie",
-      sciences: "Sciences"
-    };
-
     matiereTexte.textContent =
       "Matière : " + nomsMatieres[epreuve.matiere];
+
+    contenu.append(titre, classeTexte, matiereTexte);
+
+    if (epreuve.annee) {
+      const dateTexte = document.createElement("p");
+      dateTexte.textContent = "Année : " + epreuve.annee;
+      contenu.appendChild(dateTexte);
+    }
+
+    if (epreuve.type === "image") {
+      const image = document.createElement("img");
+
+      image.src = epreuve.url;
+      image.alt = `Épreuve ${epreuve.numero} AREX de Physique-Chimie`;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.className = "image-epreuve";
+
+      carte.appendChild(image);
+    }
 
     const bouton = document.createElement("a");
     bouton.className = "bouton-voir";
     bouton.href = epreuve.url;
     bouton.target = "_blank";
-    bouton.rel = "noopener";
-    bouton.textContent = "Consulter l'épreuve";
+    bouton.rel = "noopener noreferrer";
+    bouton.textContent =
+      epreuve.type === "pdf"
+        ? "Consulter le PDF"
+        : "Voir l'épreuve";
 
-    contenu.append(
-      titre,
-      classeTexte,
-      matiereTexte,
-      bouton
-    );
-
+    contenu.appendChild(bouton);
     carte.appendChild(contenu);
     liste.appendChild(carte);
   });
 }
 
-recherche.addEventListener("input", afficherEpreuves);
-niveau.addEventListener("change", afficherEpreuves);
-matiere.addEventListener("change", afficherEpreuves);
-annee.addEventListener("change", afficherEpreuves);
+/* ==========================================
+   5. ÉVÉNEMENTS DE RECHERCHE
+========================================== */
 
-/* COMPTEUR DE VISITES */
+recherche?.addEventListener("input", afficherEpreuves);
+niveau?.addEventListener("change", afficherEpreuves);
+matiere?.addEventListener("change", afficherEpreuves);
+annee?.addEventListener("change", afficherEpreuves);
+
+/* ==========================================
+   6. COMPTEUR LOCAL DE VISITES
+========================================== */
 
 function compterVisites() {
   const compteur = document.getElementById("nombre-visites");
@@ -235,6 +255,7 @@ function compterVisites() {
 
     if (!sessionStorage.getItem("visiteEnregistree")) {
       total++;
+
       localStorage.setItem("monUniversVisites", total);
       sessionStorage.setItem("visiteEnregistree", "oui");
     }
@@ -244,6 +265,10 @@ function compterVisites() {
     compteur.textContent = "Indisponible";
   }
 }
+
+/* ==========================================
+   7. DÉMARRAGE
+========================================== */
 
 compterVisites();
 afficherEpreuves();
